@@ -425,6 +425,7 @@
                 <a href="#" onclick="showSection('accommodations'); return false;">Accommodations</a>
                 <a href="#" onclick="showSection('airfare'); return false;">Airfare</a>
                 <a href="#" onclick="showSection('registrations'); return false;">Registrations</a>
+                <a href="#" onclick="showSection('room-builder'); return false;">Room Builder</a>
             </nav>
 
             <main>
@@ -635,6 +636,9 @@
                         </table>
                     </div>
                 </div>
+
+                <apex:includeLightning/>
+                <div id="room-builder"/>
             </main>
 
             <footer>
@@ -928,6 +932,23 @@
                     });
                     drawCharts();
                 });
+
+
+                $Lightning.use(
+                    "c:roomBuilderAura", 
+                    function() {
+                        $Lightning.createComponent(
+                            "c:roomBuilder",
+                            { 
+                                ksaCode: 
+                                "{!webcode}" 
+                            },
+                            "room-builder",
+                            function(cmp, status, errorMessage) {
+                            }
+                        );
+                    }
+                );
             </script>
         </body>
         </html>
