@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shirt_Size_25__c</fullName>
+    <label>Shirt Size - $25.00</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Small - $25.00</fullName>
+                <default>false</default>
+                <label>Small - $25.00</label>
+            </value>
+            <value>
+                <fullName>Large - $25.00</fullName>
+                <default>false</default>
+                <label>Large - $25.00</label>
+            </value>
+            <value>
+                <fullName>Medium - $25.00</fullName>
+                <default>false</default>
+                <label>Medium - $25.00</label>
+            </value>
+            <value>
+                <fullName>Large XL - $25.00</fullName>
+                <default>false</default>
+                <label>Large XL - $25.00</label>
+            </value>
+            <value>
+                <fullName>Large XXL - $25.00</fullName>
+                <default>false</default>
+                <label>Large XXL - $25.00</label>
+            </value>
+            <value>
+                <fullName>Large</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Large</label>
+            </value>
+            <value>
+                <fullName>Large XL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Large XL</label>
+            </value>
+            <value>
+                <fullName>Large XXXL - $25.00</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Large XXXL - $25.00</label>
+            </value>
+            <value>
+                <fullName>Medium</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Medium</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

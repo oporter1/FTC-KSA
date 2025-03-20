@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tag_Reservations</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Opportunity__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Number_of_Passengers__c</columns>
+    <columns>Sport__c</columns>
+    <columns>Credit_Card_Number__c</columns>
+    <columns>Amount__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Webcode__c</columns>
+    <columns>RGP__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>10/1/2022 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Registrations__c.TAG</value>
+    </filters>
+    <label>Tag Reservations</label>
+</ListView>

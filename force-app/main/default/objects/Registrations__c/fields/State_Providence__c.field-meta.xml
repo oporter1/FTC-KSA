@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>State_Providence__c</fullName>
+    <label>State / Providence</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alabama-AL</fullName>
+                <default>false</default>
+                <label>Alabama-AL</label>
+            </value>
+            <value>
+                <fullName>Alaska-AK</fullName>
+                <default>false</default>
+                <label>Alaska-AK</label>
+            </value>
+            <value>
+                <fullName>Arizona-AZ</fullName>
+                <default>false</default>
+                <label>Arizona-AZ</label>
+            </value>
+            <value>
+                <fullName>Arkansas-AR</fullName>
+                <default>false</default>
+                <label>Arkansas-AR</label>
+            </value>
+            <value>
+                <fullName>California-CA</fullName>
+                <default>false</default>
+                <label>California-CA</label>
+            </value>
+            <value>
+                <fullName>Colorado-CO</fullName>
+                <default>false</default>
+                <label>Colorado-CO</label>
+            </value>
+            <value>
+                <fullName>Connecticut-CT</fullName>
+                <default>false</default>
+                <label>Connecticut-CT</label>
+            </value>
+            <value>
+                <fullName>Delaware-DE</fullName>
+                <default>false</default>
+                <label>Delaware-DE</label>
+            </value>
+            <value>
+                <fullName>District of Columbia-DC</fullName>
+                <default>false</default>
+                <label>District of Columbia-DC</label>
+            </value>
+            <value>
+                <fullName>Florida-FL</fullName>
+                <default>false</default>
+                <label>Florida-FL</label>
+            </value>
+            <value>
+                <fullName>Georgia-GA</fullName>
+                <default>false</default>
+                <label>Georgia-GA</label>
+            </value>
+            <value>
+                <fullName>Hawaii-HI</fullName>
+                <default>false</default>
+                <label>Hawaii-HI</label>
+            </value>
+            <value>
+                <fullName>Idaho-ID</fullName>
+                <default>false</default>
+                <label>Idaho-ID</label>
+            </value>
+            <value>
+                <fullName>Illinois-IL</fullName>
+                <default>false</default>
+                <label>Illinois-IL</label>
+            </value>
+            <value>
+                <fullName>Indiana-IN</fullName>
+                <default>false</default>
+                <label>Indiana-IN</label>
+            </value>
+            <value>
+                <fullName>Iowa-IA</fullName>
+                <default>false</default>
+                <label>Iowa-IA</label>
+            </value>
+            <value>
+                <fullName>Kansas-KS</fullName>
+                <default>false</default>
+                <label>Kansas-KS</label>
+            </value>
+            <value>
+                <fullName>Kentucky-KY</fullName>
+                <default>false</default>
+                <label>Kentucky-KY</label>
+            </value>
+            <value>
+                <fullName>Louisiana-LA</fullName>
+                <default>false</default>
+                <label>Louisiana-LA</label>
+            </value>
+            <value>
+                <fullName>Maine-ME</fullName>
+                <default>false</default>
+                <label>Maine-ME</label>
+            </value>
+            <value>
+                <fullName>Maryland-MD</fullName>
+                <default>false</default>
+                <label>Maryland-MD</label>
+            </value>
+            <value>
+                <fullName>Massachusetts-MA</fullName>
+                <default>false</default>
+                <label>Massachusetts-MA</label>
+            </value>
+            <value>
+                <fullName>Michigan-MI</fullName>
+                <default>false</default>
+                <label>Michigan-MI</label>
+            </value>
+            <value>
+                <fullName>Minnesota-MN</fullName>
+                <default>false</default>
+                <label>Minnesota-MN</label>
+            </value>
+            <value>
+                <fullName>Mississippi-MS</fullName>
+                <default>false</default>
+                <label>Mississippi-MS</label>
+            </value>
+            <value>
+                <fullName>Missouri-MO</fullName>
+                <default>false</default>
+                <label>Missouri-MO</label>
+            </value>
+            <value>
+                <fullName>Montana-MT</fullName>
+                <default>false</default>
+                <label>Montana-MT</label>
+            </value>
+            <value>
+                <fullName>Nebraska-NE</fullName>
+                <default>false</default>
+                <label>Nebraska-NE</label>
+            </value>
+            <value>
+                <fullName>Nevada-NV</fullName>
+                <default>false</default>
+                <label>Nevada-NV</label>
+            </value>
+            <value>
+                <fullName>New Hampshire-NH</fullName>
+                <default>false</default>
+                <label>New Hampshire-NH</label>
+            </value>
+            <value>
+                <fullName>New Jersey-NJ</fullName>
+                <default>false</default>
+                <label>New Jersey-NJ</label>
+            </value>
+            <value>
+                <fullName>New Mexico-NM</fullName>
+                <default>false</default>
+                <label>New Mexico-NM</label>
+            </value>
+            <value>
+                <fullName>New York-NY</fullName>
+                <default>false</default>
+                <label>New York-NY</label>
+            </value>
+            <value>
+                <fullName>North Carolina-NC</fullName>
+                <default>false</default>
+                <label>North Carolina-NC</label>
+            </value>
+            <value>
+                <fullName>North Dakota-ND</fullName>
+                <default>false</default>
+                <label>North Dakota-ND</label>
+            </value>
+            <value>
+                <fullName>Ohio-OH</fullName>
+                <default>false</default>
+                <label>Ohio-OH</label>
+            </value>
+            <value>
+                <fullName>Oklahoma-OK</fullName>
+                <default>false</default>
+                <label>Oklahoma-OK</label>
+            </value>
+            <value>
+                <fullName>Oregon-OR</fullName>
+                <default>false</default>
+                <label>Oregon-OR</label>
+            </value>
+            <value>
+                <fullName>Pennsylvania-PA</fullName>
+                <default>false</default>
+                <label>Pennsylvania-PA</label>
+            </value>
+            <value>
+                <fullName>Rhode Island-RI</fullName>
+                <default>false</default>
+                <label>Rhode Island-RI</label>
+            </value>
+            <value>
+                <fullName>South Carolina-SC</fullName>
+                <default>false</default>
+                <label>South Carolina-SC</label>
+            </value>
+            <value>
+                <fullName>South Dakota-SD</fullName>
+                <default>false</default>
+                <label>South Dakota-SD</label>
+            </value>
+            <value>
+                <fullName>Tennessee-TN</fullName>
+                <default>false</default>
+                <label>Tennessee-TN</label>
+            </value>
+            <value>
+                <fullName>Texas-TX</fullName>
+                <default>false</default>
+                <label>Texas-TX</label>
+            </value>
+            <value>
+                <fullName>Utah-UT</fullName>
+                <default>false</default>
+                <label>Utah-UT</label>
+            </value>
+            <value>
+                <fullName>Vermont-VT</fullName>
+                <default>false</default>
+                <label>Vermont-VT</label>
+            </value>
+            <value>
+                <fullName>Virginia-VA</fullName>
+                <default>false</default>
+                <label>Virginia-VA</label>
+            </value>
+            <value>
+                <fullName>Washington-WA</fullName>
+                <default>false</default>
+                <label>Washington-WA</label>
+            </value>
+            <value>
+                <fullName>West Virginia-WV</fullName>
+                <default>false</default>
+                <label>West Virginia-WV</label>
+            </value>
+            <value>
+                <fullName>Wisconsin-WI</fullName>
+                <default>false</default>
+                <label>Wisconsin-WI</label>
+            </value>
+            <value>
+                <fullName>Wyoming-WY</fullName>
+                <default>false</default>
+                <label>Wyoming-WY</label>
+            </value>
+            <value>
+                <fullName>AB - Alberta</fullName>
+                <default>false</default>
+                <label>AB - Alberta</label>
+            </value>
+            <value>
+                <fullName>LB - Labrador</fullName>
+                <default>false</default>
+                <label>LB - Labrador</label>
+            </value>
+            <value>
+                <fullName>NB - New Brunswick</fullName>
+                <default>false</default>
+                <label>NB - New Brunswick</label>
+            </value>
+            <value>
+                <fullName>NS - Nova Scotia</fullName>
+                <default>false</default>
+                <label>NS - Nova Scotia</label>
+            </value>
+            <value>
+                <fullName>NW - North West Terr.</fullName>
+                <default>false</default>
+                <label>NW - North West Terr.</label>
+            </value>
+            <value>
+                <fullName>PE - Prince Edward Is.</fullName>
+                <default>false</default>
+                <label>PE - Prince Edward Is.</label>
+            </value>
+            <value>
+                <fullName>SK - Saskatchewen</fullName>
+                <default>false</default>
+                <label>SK - Saskatchewen</label>
+            </value>
+            <value>
+                <fullName>BC - British Columbia</fullName>
+                <default>false</default>
+                <label>BC - British Columbia</label>
+            </value>
+            <value>
+                <fullName>MB - Manitoba</fullName>
+                <default>false</default>
+                <label>MB - Manitoba</label>
+            </value>
+            <value>
+                <fullName>NF - Newfoundland</fullName>
+                <default>false</default>
+                <label>NF - Newfoundland</label>
+            </value>
+            <value>
+                <fullName>NU - Nunavut</fullName>
+                <default>false</default>
+                <label>NU - Nunavut</label>
+            </value>
+            <value>
+                <fullName>ON - Ontario</fullName>
+                <default>false</default>
+                <label>ON - Ontario</label>
+            </value>
+            <value>
+                <fullName>QC - Quebec</fullName>
+                <default>false</default>
+                <label>QC - Quebec</label>
+            </value>
+            <value>
+                <fullName>YU - Yukon</fullName>
+                <default>false</default>
+                <label>YU - Yukon</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

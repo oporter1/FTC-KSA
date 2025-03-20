@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_VB_Team_Apps</fullName>
+    <columns>Related_Opportunity__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>Date_of_Event__c</columns>
+    <columns>Sport_Event__c</columns>
+    <columns>Head_Coach__c</columns>
+    <columns>Coaches_Cell_Phone__c</columns>
+    <columns>School_City__c</columns>
+    <columns>Title__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Returning_Starters__c</columns>
+    <columns>Seniors__c</columns>
+    <columns>X2_Years_Prior_Season_Record__c</columns>
+    <columns>Approx_Female_Enrollment_9_12__c</columns>
+    <columns>Bringing_your_Junior_Varsity_Team__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Related_Opportunity__c</field>
+        <operation>startsWith</operation>
+        <value>2019 VB</value>
+    </filters>
+    <label>2019 VB Team Apps</label>
+</ListView>

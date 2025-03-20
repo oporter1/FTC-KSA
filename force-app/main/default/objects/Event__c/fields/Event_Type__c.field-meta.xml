@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Type__c</fullName>
+    <label>Event Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Event__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Universal Studios</fullName>
+                <default>false</default>
+                <label>Universal Studios</label>
+            </value>
+            <value>
+                <fullName>Walt Disney World</fullName>
+                <default>false</default>
+                <label>Walt Disney World</label>
+            </value>
+            <value>
+                <fullName>Sea World</fullName>
+                <default>false</default>
+                <label>Sea World</label>
+            </value>
+            <value>
+                <fullName>Resort Buffet Breakfast</fullName>
+                <default>false</default>
+                <label>Resort Buffet Breakfast</label>
+            </value>
+            <value>
+                <fullName>Resort Counter Service Breakfast</fullName>
+                <default>false</default>
+                <label>Resort Counter Service Breakfast</label>
+            </value>
+            <value>
+                <fullName>Specialty Breakfast</fullName>
+                <default>false</default>
+                <label>Specialty Breakfast</label>
+            </value>
+            <value>
+                <fullName>Pep Rally Breakfast</fullName>
+                <default>false</default>
+                <label>Pep Rally Breakfast</label>
+            </value>
+            <value>
+                <fullName>Pre Game Pasta Meal</fullName>
+                <default>false</default>
+                <label>Pre Game Pasta Meal</label>
+            </value>
+            <value>
+                <fullName>Box Lunch</fullName>
+                <default>false</default>
+                <label>Box Lunch</label>
+            </value>
+            <value>
+                <fullName>Hard Rock Cafe</fullName>
+                <default>false</default>
+                <label>Hard Rock Cafe</label>
+            </value>
+            <value>
+                <fullName>Fogo De Chao</fullName>
+                <default>false</default>
+                <label>Fogo De Chao</label>
+            </value>
+            <value>
+                <fullName>NBC Grille</fullName>
+                <default>false</default>
+                <label>NBC Grille</label>
+            </value>
+            <value>
+                <fullName>Rainforest Cafe</fullName>
+                <default>false</default>
+                <label>Rainforest Cafe</label>
+            </value>
+            <value>
+                <fullName>Kobe Steakhouse</fullName>
+                <default>false</default>
+                <label>Kobe Steakhouse</label>
+            </value>
+            <value>
+                <fullName>Margaritaville</fullName>
+                <default>false</default>
+                <label>Margaritaville</label>
+            </value>
+            <value>
+                <fullName>Pizza Party</fullName>
+                <default>false</default>
+                <label>Pizza Party</label>
+            </value>
+            <value>
+                <fullName>Toothsome Chocolate Factory</fullName>
+                <default>false</default>
+                <label>Toothsome Chocolate Factory</label>
+            </value>
+            <value>
+                <fullName>Birthday Cake</fullName>
+                <default>false</default>
+                <label>Birthday Cake</label>
+            </value>
+            <value>
+                <fullName>Universal Orlando - Meal Coupon</fullName>
+                <default>false</default>
+                <label>Universal Orlando - Meal Coupon</label>
+            </value>
+            <value>
+                <fullName>DisneyWorld  - Meal Coupon</fullName>
+                <default>false</default>
+                <label>DisneyWorld  - Meal Coupon</label>
+            </value>
+            <value>
+                <fullName>Sea World - Meal Coupon</fullName>
+                <default>false</default>
+                <label>Sea World - Meal Coupon</label>
+            </value>
+            <value>
+                <fullName>Celebration of Athletes</fullName>
+                <default>false</default>
+                <label>Celebration of Athletes</label>
+            </value>
+            <value>
+                <fullName>Unlimited Beverage Mug</fullName>
+                <default>false</default>
+                <label>Unlimited Beverage Mug</label>
+            </value>
+            <value>
+                <fullName>Resort Lunch Vouchers</fullName>
+                <default>false</default>
+                <label>Resort Lunch Vouchers</label>
+            </value>
+            <value>
+                <fullName>Resort Dinner Vouchers</fullName>
+                <default>false</default>
+                <label>Resort Dinner Vouchers</label>
+            </value>
+            <value>
+                <fullName>Resort Counter Breakfast</fullName>
+                <default>false</default>
+                <label>Resort Counter Breakfast</label>
+            </value>
+            <value>
+                <fullName>Pre Game Past Meal</fullName>
+                <default>false</default>
+                <label>Pre Game Past Meal</label>
+            </value>
+            <value>
+                <fullName>Team Movie</fullName>
+                <default>false</default>
+                <label>Team Movie</label>
+            </value>
+            <value>
+                <fullName>Disney World Performance</fullName>
+                <default>false</default>
+                <label>Disney World Performance</label>
+            </value>
+            <value>
+                <fullName>Disney World Workshop</fullName>
+                <default>false</default>
+                <label>Disney World Workshop</label>
+            </value>
+            <value>
+                <fullName>Universal Orlando - Workshop</fullName>
+                <default>false</default>
+                <label>Universal Orlando - Workshop</label>
+            </value>
+            <value>
+                <fullName>Universal Orlando - Performance</fullName>
+                <default>false</default>
+                <label>Universal Orlando - Performance</label>
+            </value>
+            <value>
+                <fullName>Top Golf</fullName>
+                <default>false</default>
+                <label>Top Golf</label>
+            </value>
+            <value>
+                <fullName>Cabana Bay Galaxy Bowling</fullName>
+                <default>false</default>
+                <label>Cabana Bay Galaxy Bowling</label>
+            </value>
+            <value>
+                <fullName>Cocktail Party</fullName>
+                <default>false</default>
+                <label>Cocktail Party</label>
+            </value>
+            <value>
+                <fullName>CoCoa Beach</fullName>
+                <default>false</default>
+                <label>CoCoa Beach</label>
+            </value>
+            <value>
+                <fullName>Disney Springs</fullName>
+                <default>false</default>
+                <label>Disney Springs</label>
+            </value>
+            <value>
+                <fullName>Icon Park</fullName>
+                <default>false</default>
+                <label>Icon Park</label>
+            </value>
+            <value>
+                <fullName>Kennedy Space Center</fullName>
+                <default>false</default>
+                <label>Kennedy Space Center</label>
+            </value>
+            <value>
+                <fullName>Orlando Magic</fullName>
+                <default>false</default>
+                <label>Orlando Magic</label>
+            </value>
+            <value>
+                <fullName>MLB Spring Training Game</fullName>
+                <default>false</default>
+                <label>MLB Spring Training Game</label>
+            </value>
+            <value>
+                <fullName>Church</fullName>
+                <default>false</default>
+                <label>Church</label>
+            </value>
+            <value>
+                <fullName>Welcome Reception</fullName>
+                <default>false</default>
+                <label>Welcome Reception</label>
+            </value>
+            <value>
+                <fullName>Orlando Tree Trek</fullName>
+                <default>false</default>
+                <label>Orlando Tree Trek</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Theme Park</controllingFieldValue>
+            <valueName>Universal Studios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Theme Park</controllingFieldValue>
+            <valueName>Walt Disney World</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Theme Park</controllingFieldValue>
+            <valueName>Sea World</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Meal</controllingFieldValue>
+            <valueName>Resort Buffet Breakfast</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Meal</controllingFieldValue>
+            <valueName>Resort Counter Service Breakfast</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Meal</controllingFieldValue>
+            <valueName>Specialty Breakfast</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Meal</controllingFieldValue>
+            <valueName>Pep Rally Breakfast</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Meal</controllingFieldValue>
+            <valueName>Pre Game Pasta Meal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Box Lunch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Hard Rock Cafe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Fogo De Chao</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>NBC Grille</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Rainforest Cafe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Kobe Steakhouse</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Margaritaville</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Pizza Party</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Toothsome Chocolate Factory</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Birthday Cake</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Universal Orlando - Meal Coupon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>DisneyWorld  - Meal Coupon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Sea World - Meal Coupon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Celebration of Athletes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Unlimited Beverage Mug</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Resort Lunch Vouchers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Resort Dinner Vouchers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Resort Counter Breakfast</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Pre Game Past Meal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Team Movie</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Disney World Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Disney World Workshop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Universal Orlando - Workshop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Universal Orlando - Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Top Golf</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Cabana Bay Galaxy Bowling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Cocktail Party</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>CoCoa Beach</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Disney Springs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Icon Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Kennedy Space Center</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Orlando Magic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>MLB Spring Training Game</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Church</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Welcome Reception</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Meal</controllingFieldValue>
+            <valueName>Orlando Tree Trek</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

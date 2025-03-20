@@ -1,0 +1,36 @@
+<template>
+    <lightning-quick-action-panel title="Transfer Payment">
+        <div>
+            <lightning-input
+                class="inputamount"
+                type="number" 
+                name="inputamount" 
+                label="Amount to transfer" 
+                placeholder={amountPlaceholder}
+                formatter="currency"
+                step="0.01"
+                onchange={handleAmountChange}
+                required="true">
+            </lightning-input>
+            <br/>
+            <br/>
+            <lightning-input type="search" label="Search Invoice" onchange={handleSearch}></lightning-input><br/>
+            <lightning-datatable
+                key-field="id"
+                data={invoiceList}
+                columns={columns}
+                onrowselection={getSelected}
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={onHandleSort}>
+            </lightning-datatable>
+        </div>
+        <div slot="footer">
+            <lightning-button-group>
+                <lightning-button variant="neutral" label="Cancel" onclick={closeAction}></lightning-button>
+                <lightning-button variant="brand" label="Transfer Payment" onclick={saveAction}></lightning-button>
+            </lightning-button-group>
+        </div>
+    </lightning-quick-action-panel>
+</template>

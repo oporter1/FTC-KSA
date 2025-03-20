@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Theme_Park_Package__c</fullName>
+    <label>Theme Park Package</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Event_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2 Park – 1 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park – 1 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park – 2 Day park to Park</fullName>
+                <default>false</default>
+                <label>2 Park – 2 Day park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park – 3 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park – 3 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 park – 4 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 park – 4 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park – 5 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park – 5 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 park – 2 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 park – 2 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park – 3 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park – 3 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park – 4 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park – 4 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park – 5 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park – 5 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>Volcano Bay - 1 Day</fullName>
+                <default>false</default>
+                <label>Volcano Bay - 1 Day</label>
+            </value>
+            <value>
+                <fullName>1 Day Base</fullName>
+                <default>false</default>
+                <label>1 Day Base</label>
+            </value>
+            <value>
+                <fullName>1 Day park Hopper</fullName>
+                <default>false</default>
+                <label>1 Day park Hopper</label>
+            </value>
+            <value>
+                <fullName>1 Day Premium</fullName>
+                <default>false</default>
+                <label>1 Day Premium</label>
+            </value>
+            <value>
+                <fullName>2 Day Base</fullName>
+                <default>false</default>
+                <label>2 Day Base</label>
+            </value>
+            <value>
+                <fullName>2 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>2 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>2 Day Premium</fullName>
+                <default>false</default>
+                <label>2 Day Premium</label>
+            </value>
+            <value>
+                <fullName>3 Day Base</fullName>
+                <default>false</default>
+                <label>3 Day Base</label>
+            </value>
+            <value>
+                <fullName>3 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>3 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>3 Day Premium</fullName>
+                <default>false</default>
+                <label>3 Day Premium</label>
+            </value>
+            <value>
+                <fullName>4 Day Base</fullName>
+                <default>false</default>
+                <label>4 Day Base</label>
+            </value>
+            <value>
+                <fullName>4 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>4 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>4 Day Premium</fullName>
+                <default>false</default>
+                <label>4 Day Premium</label>
+            </value>
+            <value>
+                <fullName>1 Day</fullName>
+                <default>false</default>
+                <label>1 Day</label>
+            </value>
+            <value>
+                <fullName>1 Day Aquatica</fullName>
+                <default>false</default>
+                <label>1 Day Aquatica</label>
+            </value>
+            <value>
+                <fullName>1 Day Combo</fullName>
+                <default>false</default>
+                <label>1 Day Combo</label>
+            </value>
+            <value>
+                <fullName>2 Day Combo</fullName>
+                <default>false</default>
+                <label>2 Day Combo</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>2 Park – 1 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>2 Park – 2 Day park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>2 Park – 3 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>2 park – 4 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>2 Park – 5 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>3 park – 2 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>3 Park – 3 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>3 Park – 4 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>3 Park – 5 Day Park to Park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Universal Studios</controllingFieldValue>
+            <valueName>Volcano Bay - 1 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>1 Day Base</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>1 Day park Hopper</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>1 Day Premium</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>2 Day Base</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>2 Day Park Hopper</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>2 Day Premium</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>3 Day Base</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>3 Day Park Hopper</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>3 Day Premium</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>4 Day Base</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>4 Day Park Hopper</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Walt Disney World</controllingFieldValue>
+            <valueName>4 Day Premium</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sea World</controllingFieldValue>
+            <valueName>1 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sea World</controllingFieldValue>
+            <valueName>1 Day Aquatica</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sea World</controllingFieldValue>
+            <valueName>1 Day Combo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sea World</controllingFieldValue>
+            <valueName>2 Day Combo</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

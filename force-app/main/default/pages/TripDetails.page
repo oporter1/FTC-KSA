@@ -1,0 +1,935 @@
+<apex:page controller="TripWebcodeController" action="{!loadTripDetails}" docType="html-5.0" standardStylesheets="false" showHeader="false"
+    sidebar="false" applyHtmlTag="false" applyBodyTag="false" cache="false">
+    <apex:outputPanel rendered="{!ISNULL(foundTrip)}">
+        <script>
+            window.location.href = '{!URLFOR($Page.TripSearch)}';
+        </script>
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!NOT(ISNULL(foundTrip))}">
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'"/>
+            <title>KSA Trip Details</title>
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <style>
+                :root {
+                    --ksa-red: #e31837;
+                    --header-height: 5rem;
+                    --nav-width: 15rem;
+                }
+
+                body {
+                    background-color: #121212;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    margin: 0;
+                }
+
+                header {
+                    background-color: #1e1e1e;
+                    padding: 1.25rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: var(--header-height);
+                    z-index: 1003;
+                    border-bottom: 0.188rem solid var(--ksa-red);
+                    box-shadow: 0 0.25rem 0.625rem -0.125rem rgba(0, 0, 0, 0.8);
+                }
+
+                .menu-toggle {
+                    display: none;  /* Hidden by default on desktop */
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: white;
+                    position: fixed;
+                    left: 1rem;
+                    top: 1.75rem;
+                    z-index: 1004;
+                }
+
+                .header-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0 1rem;
+                }
+
+                .header-title {
+                    text-align: center;
+                    margin: 0;
+                    flex-grow: 1;
+                }
+
+                nav {
+                    width: var(--nav-width);
+                    background-color: #1a1a1a;
+                    height: calc(100vh - var(--header-height));
+                    position: fixed;
+                    top: var(--header-height);
+                    left: 0;
+                    padding-top: 4.25rem;
+                    border-right: 0.188rem solid var(--ksa-red);
+                    transition: transform 0.3s ease;
+                    z-index: 1002;
+                }
+
+                nav a {
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    text-decoration: none;
+                    display: block;
+                    margin-bottom: 0.313rem;
+                }
+
+                nav a:hover {
+                    color: var(--ksa-red);
+                    background-color: #2a2a2a;
+                }
+
+                nav a.active {
+                    background-color: #2a2a2a;
+                }
+
+                /* Add overlay for mobile menu */
+                .menu-overlay {
+                    display: none;
+                    position: fixed;
+                    top: var(--header-height);
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    z-index: 1000;
+                }
+
+                main {
+                    margin-left: calc(var(--nav-width) + 1.5rem);
+                    margin-top: calc(var(--header-height) + 4.2rem);
+                    padding: 1.25rem;
+                    min-height: calc(100vh - var(--header-height));
+                    background-color: #121212;
+                    border-radius: 0.625rem 0.625rem 0 0;
+                    box-shadow: -0.25rem 0 0.625rem -0.125rem rgba(0, 0, 0, 0.8),
+                        0 -0.25rem 0.625rem -0.125rem rgba(0, 0, 0, 0.8);
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .stats-container {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2rem;
+                    margin-bottom: 3rem;
+                }
+
+                .chart-container {
+                    background: #2a2a2a;
+                    padding: 2rem;
+                    border-radius: 0.625rem;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+
+                @media screen and (max-width: 768px) {
+                    :root {
+                        --nav-width: 12rem;
+                    }
+
+                    .stats-container {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                @media screen and (max-width: 480px) {
+                    :root {
+                        --nav-width: 100%;
+                        --header-height: 6rem;
+                    }
+
+                    header {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: 1003;
+                        padding: 0.5rem;
+                    }
+
+                    main {
+                        margin-left: 1rem;
+                        margin-right: 1rem;
+                        margin-top: calc(var(--header-height) + 1rem);
+                        transition: opacity 0.3s ease;
+                        padding: 1rem;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .header-content {
+                        padding: 0.5rem 2rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        gap: 0.5rem;
+                        width: 100%;
+                        position: relative;
+                        margin-top: 0.5rem;
+                    }
+
+                    .header-title {
+                        font-size: 0.9rem;
+                        margin: 0;
+                        width: 100%;
+                        text-align: center;
+                        line-height: 1.2;
+                        padding: 0 2rem;
+                    }
+
+                    .header-content img {
+                        height: 2.5rem !important;
+                        margin-top: 0.25rem;
+                        margin-bottom: 0.25rem;
+                    }
+
+                    .menu-toggle {
+                        top: 0.75rem;
+                        display: block;
+                        font-size: 2rem;
+                        padding: 0.5rem;
+                        left: 0.5rem;
+                        z-index: 1004;
+                        width: 2rem;
+                        text-align: center;
+                    }
+
+                    .welcome-section {
+                        padding-top: 0.5rem;
+                        margin-top: 0;
+                    }
+
+                    .welcome-section h1 {
+                        margin-top: 0;
+                    }
+
+                    .table-section {
+                        padding: 1rem 0.5rem;
+                        margin: 0 -0.5rem 1.5rem;
+                        width: calc(100% + 1rem);
+                    }
+
+                    .table-section h2 {
+                        padding: 0 1rem;
+                    }
+
+                    /* Adjust table container for mobile */
+                    .table-section::-webkit-scrollbar {
+                        height: 4px;
+                    }
+
+                    .table-section::-webkit-scrollbar-track {
+                        background: #1e1e1e;
+                    }
+
+                    .table-section::-webkit-scrollbar-thumb {
+                        background: var(--ksa-red);
+                        border-radius: 2px;
+                    }
+
+                    nav {
+                        transform: translateX(-100%);
+                        width: 100%;
+                        height: calc(100vh - var(--header-height));
+                        top: var(--header-height);
+                        z-index: 1002;
+                        padding-top: 1rem;
+                    }
+
+                    .menu-overlay.active {
+                        display: block;
+                        z-index: 1001;
+                    }
+
+                    main.menu-open {
+                        opacity: 0.3;
+                        pointer-events: none;
+                    }
+                }
+
+                .gauge-details {
+                    text-align: center;
+                    margin-top: 1rem;
+                }
+
+                .gauge-text {
+                    font-size: 1.2rem;
+                }
+
+                .table-section {
+                    margin-bottom: 3rem;
+                    background: #2a2a2a;
+                    padding: 2rem;
+                    border-radius: 0.625rem;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .table-section h2 {
+                    color: var(--ksa-red);
+                    margin-bottom: 1.5rem;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    padding-bottom: 0.5rem;
+                    border-bottom: 2px solid var(--ksa-red);
+                }
+
+                .registration-table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    background: #1e1e1e;
+                    border-radius: 0.625rem;
+                    min-width: 800px; /* Prevent table from getting too squeezed */
+                    margin-bottom: 2rem;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+
+                .registration-table th {
+                    background: #1565C0;  /* Darker blue */
+                    color: white;
+                    padding: 1.2rem 1rem;
+                    text-align: left;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 0.875rem;
+                    letter-spacing: 0.05em;
+                }
+
+                .registration-table td {
+                    color: white;
+                    padding: 1rem;
+                    border-bottom: 1px solid #333;
+                    transition: background-color 0.2s ease;
+                }
+
+                .registration-table tr:last-child td {
+                    border-bottom: none;
+                }
+
+                .registration-table tbody tr:hover {
+                    background-color: #252525;
+                }
+
+                .registration-table th:first-child {
+                    border-top-left-radius: 0.625rem;
+                }
+
+                .registration-table th:last-child {
+                    border-top-right-radius: 0.625rem;
+                }
+
+                .registration-table tbody tr:last-child td:first-child {
+                    border-bottom-left-radius: 0.625rem;
+                }
+
+                .registration-table tbody tr:last-child td:last-child {
+                    border-bottom-right-radius: 0.625rem;
+                }
+
+                /* Text shadow for better readability */
+                .registration-table th {
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                }
+
+                footer {
+                    text-align: center;
+                    padding: 2rem 0;
+                    margin-top: 3rem;
+                    background-color: #1e1e1e;
+                    border-top: 0.188rem solid var(--ksa-red);
+                    width: 100%;
+                }
+
+                footer p {
+                    margin: 0;
+                    color: #ffffff;
+                    font-size: 0.875rem;
+                }
+
+                .accommodation-details {
+                    padding: 1rem 0;
+                }
+
+                .detail-row {
+                    margin-bottom: 2rem;
+                }
+
+                .detail-row h3 {
+                    color: var(--ksa-red);
+                    font-size: 1.4rem;
+                    margin-bottom: 0.5rem;
+                    font-weight: 500;
+                }
+
+                .detail-row p {
+                    color: #ffffff;
+                    font-size: 1.2rem;
+                    margin: 0;
+                    padding-left: 1rem;
+                }
+
+                .booking-notes {
+                    margin-top: 2rem;
+                    padding: 1rem;
+                    background: #1e1e1e;
+                    border-radius: 0.625rem;
+                }
+
+                .booking-notes h3 {
+                    color: var(--ksa-red);
+                    margin-bottom: 1rem;
+                }
+
+                .booking-notes p {
+                    color: #ffffff;
+                    white-space: pre-wrap;
+                }
+            </style>
+        </head>
+
+        <body>
+            <header>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="header-content">
+                    <img src="https://ksaevents.my.salesforce.com/servlet/servlet.ImageServer?id=015PQ0000046IUc&oid=00Df4000003AdqV&lastMod=1731267083000"
+                        style="height: 5rem; width: auto;" alt="KSA Events Logo" />
+                    <h2 class="header-title">{!foundTrip.Account.Name} - {!foundTrip.KSASport_or_Performing_Art__c} - {!YEAR(foundTrip.Departure_Date__c)}</h2>
+                    <div style="width: 5rem;"></div>
+                </div>
+            </header>
+
+            <div class="menu-overlay" onclick="toggleMenu()"></div>
+
+            <nav>
+                <a href="#" class="active" onclick="showSection('home'); return false;">Home</a>
+                <a href="#" onclick="showSection('accommodations'); return false;">Accommodations</a>
+                <a href="#" onclick="showSection('airfare'); return false;">Airfare</a>
+                <a href="#" onclick="showSection('registrations'); return false;">Registrations</a>
+            </nav>
+
+            <main>
+                <div id="home" class="content-section active">
+                    <div class="welcome-section">
+                        <h1>Welcome to Your Event</h1>
+                        <div class="stats-container">
+                            <div class="chart-container">
+                                <div id="registrationGauge"></div>
+                                <div class="gauge-details">
+                                    <p class="gauge-text">
+                                        {!registeredList.size} of 
+                                        {!IF(ISNULL(foundTrip.Predicted_Coaches__c), 0, foundTrip.Predicted_Coaches__c) + 
+                                          IF(ISNULL(foundTrip.Predicted_Fans__c), 0, foundTrip.Predicted_Fans__c) + 
+                                          IF(ISNULL(foundTrip.Predicted_Athletes__c), 0, foundTrip.Predicted_Athletes__c)} 
+                                        Registered
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <div id="paymentChart"></div>
+                            </div>
+                            <div class="chart-container">
+                                <div id="registrationProgressChart"></div>
+                            </div>
+                            <div class="chart-container">
+                                <div id="registrationTypeChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="accommodations" class="content-section">
+                    <div class="welcome-section">
+                        <div class="table-section">
+                            <h2>Accommodations</h2>
+                            <div class="accommodation-details">
+                                <div class="detail-row">
+                                    <h3>School</h3>
+                                    <p>{!foundTrip.Account.Name}</p>
+                                </div>
+                                <div class="detail-row">
+                                    <h3>Arrival Date</h3>
+                                    <p>
+                                        <apex:outputText value="{0,date,MMMM dd, yyyy}">
+                                            <apex:param value="{!foundTrip.Arrival_Date__c}"/>
+                                        </apex:outputText>
+                                    </p>
+                                </div>
+                                <div class="detail-row">
+                                    <h3>Departure Date</h3>
+                                    <p>
+                                        <apex:outputText value="{0,date,MMMM dd, yyyy}">
+                                            <apex:param value="{!foundTrip.Departure_Date__c}"/>
+                                        </apex:outputText>
+                                    </p>
+                                </div>
+                                <div class="detail-row">
+                                    <h3>Resort Option</h3>
+                                    <p>{!foundTrip.Resort_Option__c}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-section">
+                            <h2>Event Schedule</h2>
+                            <table class="registration-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Theme Park Package</th>
+                                        <th>Date</th>
+                                        <th>Quantity</th>
+                                        <th>Departure Time</th>
+                                        <th>Event Time</th>
+                                        <th>Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!eventList}" var="event">
+                                        <tr>
+                                            <td>{!event.Event_Type__c}</td>
+                                            <td>{!event.Theme_Park_Package__c}</td>
+                                            <td>
+                                                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                    <apex:param value="{!event.Date__c}"/>
+                                                </apex:outputText>
+                                            </td>
+                                            <td>{!event.Quantity__c}</td>
+                                            <td>{!event.Departure_Time__c}</td>
+                                            <td>{!event.Event_Time__c}</td>
+                                            <td>{!event.Location__c}</td>
+                                        </tr>
+                                    </apex:repeat>
+                                    <apex:outputPanel rendered="{!ISNULL(eventList) || eventList.size == 0}">
+                                        <tr>
+                                            <td colspan="7" style="text-align: center;">No events scheduled yet</td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="airfare" class="content-section">
+                    <div class="welcome-section">
+                        <div class="table-section">
+                            <h2>Flight Schedule</h2>
+                            <table class="registration-table">
+                                <thead>
+                                    <tr>
+                                        <th>Airline</th>
+                                        <th>Direction</th>
+                                        <th>Flight #</th>
+                                        <th>Date</th>
+                                        <th>Departure Time</th>
+                                        <th>Arrival Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{!foundTrip.X2nd_Air_Schedule__c}</td>
+                                        <td>Inbound</td>
+                                        <td>{!foundTrip.Inbound_Flight__c}</td>
+                                        <td>
+                                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                <apex:param value="{!foundTrip.Air_Arrival_Date__c}"/>
+                                            </apex:outputText>
+                                        </td>
+                                        <td>{!foundTrip.Inbound_Departure_Time__c}</td>
+                                        <td>{!foundTrip.Inbound_Arrival_Time__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!foundTrip.X2nd_Air_Schedule__c}</td>
+                                        <td>Outbound</td>
+                                        <td>{!foundTrip.Outbound_Flight__c}</td>
+                                        <td>
+                                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                <apex:param value="{!foundTrip.Air_Departure_Date__c}"/>
+                                            </apex:outputText>
+                                        </td>
+                                        <td>{!foundTrip.Outbound_Departure_Time__c}</td>
+                                        <td>{!foundTrip.Outbound_Arrival_Time__c}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="booking-notes">
+                                <h3>Booking Notes</h3>
+                                <p>{!foundTrip.Air_Booking_Notes__c}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="registrations" class="content-section">
+                    <div class="table-section">
+                        <h2>Not Registered</h2>
+                        <table class="registration-table">
+                            <thead>
+                                <tr>
+                                    <th>Contact Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!notRegisteredList}" var="opp">
+                                    <tr>
+                                        <td>{!opp.School_Contact__r.Name}</td>
+                                        <td>{!opp.School_Contact__r.Email}</td>
+                                        <td>{!opp.School_Contact__r.Phone}</td>
+                                        <td>{!IF(opp.RecordTypeId == '012f4000000aRkZAAU', 'Fan', IF(opp.RecordTypeId == '012f4000000aRkUAAU',
+                                            'Athlete', ''))}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-section">
+                        <h2>Registered</h2>
+                        <table class="registration-table">
+                            <thead>
+                                <tr>
+                                    <th>Contact Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Paid</th>
+                                    <th>Due</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!registeredList}" var="reg">
+                                    <tr>
+                                        <td>{!reg.opportunity.School_Contact__r.Name}</td>
+                                        <td>{!reg.opportunity.School_Contact__r.Email}</td>
+                                        <td>{!reg.opportunity.School_Contact__r.Phone}</td>
+                                        <td>{!reg.travelerType}</td>
+                                        <td>${!reg.invoice.fw1__Total_Invoice_Amount__c}</td>
+                                        <td>${!reg.invoice.fw1__Total_Paid_Amount__c}</td>
+                                        <td>${!reg.invoice.fw1__Total_Invoice_Amount__c - reg.invoice.fw1__Total_Paid_Amount__c}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <p>© {!YEAR(TODAY())} KSA Events. All rights reserved.</p>
+            </footer>
+
+            <script>
+                google.charts.load('current', { 'packages': ['corechart', 'gauge'] });
+                google.charts.setOnLoadCallback(drawCharts);
+
+                function drawCharts() {
+                    drawRegistrationGauge();
+                    drawPaymentChart();
+                    drawRegistrationProgressChart();
+                    drawRegistrationTypeChart();
+                }
+
+                function drawRegistrationGauge() {
+                    var registered = {!registeredList.size};
+                    var predictedTotal = {!IF(ISNULL(foundTrip.Predicted_Coaches__c), 0, foundTrip.Predicted_Coaches__c) + 
+                                         IF(ISNULL(foundTrip.Predicted_Fans__c), 0, foundTrip.Predicted_Fans__c) + 
+                                         IF(ISNULL(foundTrip.Predicted_Athletes__c), 0, foundTrip.Predicted_Athletes__c)};
+                    var total = predictedTotal > 0 ? predictedTotal : {!registeredList.size + notRegisteredList.size};
+                    var percentage = total > 0 ? Math.round((registered / total) * 100) : 0;
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Category', 'Progress', { role: 'style' }, { role: 'annotation' }],
+                        ['', percentage, getBarColor(percentage), percentage + '%']
+                    ]);
+
+                    function getBarColor(percent) {
+                        if (percent >= 70) return '#4CAF50';  // Green
+                        if (percent >= 40) return '#FFA500';  // Orange
+                        return '#e31837';  // Red
+                    }
+
+                    var options = {
+                        width: '100%',
+                        height: 80,
+                        backgroundColor: 'transparent',
+                        chartArea: {
+                            width: '80%',
+                            height: '60%'
+                        },
+                        bar: { groupWidth: '60%' },
+                        legend: { position: 'none' },
+                        hAxis: {
+                            minValue: 0,
+                            maxValue: 100,
+                            textStyle: { color: '#ffffff' },
+                            baselineColor: '#ffffff',
+                            gridlines: { color: 'transparent' }
+                        },
+                        vAxis: {
+                            textStyle: { color: 'transparent' },
+                            gridlines: { color: 'transparent' },
+                            baselineColor: 'transparent'
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'out'
+                        }
+                    };
+
+                    var chart = new google.visualization.BarChart(document.getElementById('registrationGauge'));
+                    chart.draw(data, options);
+                }
+
+                function drawPaymentChart() {
+                    var athletePaid = 0;
+                    var athleteDue = 0;
+                    var fanPaid = 0;
+                    var fanDue = 0;
+
+                    <apex:repeat value="{!registeredList}" var="reg">
+                        var amount = {!IF(ISNULL(reg.invoice.fw1__Total_Invoice_Amount__c), 0, reg.invoice.fw1__Total_Invoice_Amount__c)};
+                        var paid = {!IF(ISNULL(reg.invoice.fw1__Total_Paid_Amount__c), 0, reg.invoice.fw1__Total_Paid_Amount__c)};
+                        var due = amount - paid;
+
+                        if ('{!reg.travelerType}' === 'Athlete') {
+                            athletePaid += paid;
+                        athleteDue += due;
+                        } else {
+                            fanPaid += paid;
+                        fanDue += due;
+                        }
+                    </apex:repeat>
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Category', 'Amount', { role: 'tooltip' }],
+                        ['Athlete Paid', athletePaid, 'Athlete Paid: $' + athletePaid.toFixed(2)],
+                        ['Athlete Due', athleteDue, 'Athlete Due: $' + athleteDue.toFixed(2)],
+                        ['Fan Paid', fanPaid, 'Fan Paid: $' + fanPaid.toFixed(2)],
+                        ['Fan Due', fanDue, 'Fan Due: $' + fanDue.toFixed(2)]
+                    ]);
+
+                    var options = {
+                        title: 'Payment Status by Type',
+                        backgroundColor: 'transparent',
+                        colors: [
+                            '#FFD700',  // Yellow for Athlete Paid
+                            '#FF8C00',  // Dark Orange for Athlete Due
+                            '#FFA500',  // Orange for Fan Paid
+                            '#e31837'   // KSA Red for Fan Due
+                        ],
+                        legend: {
+                            textStyle: { color: '#ffffff' },
+                            position: 'right'
+                        },
+                        titleTextStyle: { color: '#ffffff' },
+                        pieHole: 0.4,
+                        chartArea: { width: '80%', height: '80%' },
+                        tooltip: {
+                            textStyle: { color: '#000000' },
+                            showColorCode: true
+                        }
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('paymentChart'));
+                    chart.draw(data, options);
+                }
+
+                function drawRegistrationProgressChart() {
+                    var athletePaid = 0;
+                    var athleteDue = 0;
+                    var fanPaid = 0;
+                    var fanDue = 0;
+
+                    <apex:repeat value="{!registeredList}" var="reg">
+                        var amount = {!IF(ISNULL(reg.invoice.fw1__Total_Invoice_Amount__c), 0, reg.invoice.fw1__Total_Invoice_Amount__c)};
+                        var paid = {!IF(ISNULL(reg.invoice.fw1__Total_Paid_Amount__c), 0, reg.invoice.fw1__Total_Paid_Amount__c)};
+                        var due = amount - paid;
+
+                        if ('{!reg.travelerType}' === 'Athlete') {
+                            athletePaid += paid;
+                        athleteDue += due;
+                        } else {
+                            fanPaid += paid;
+                        fanDue += due;
+                        }
+                    </apex:repeat>
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Category', 'Amount', { role: 'style' }, { role: 'tooltip' }],
+                        ['Athlete Paid', athletePaid, '#FFD700', 'Athlete Paid: $' + athletePaid.toFixed(2)],
+                        ['Athlete Due', athleteDue, '#FF8C00', 'Athlete Due: $' + athleteDue.toFixed(2)],
+                        ['Fan Paid', fanPaid, '#FFA500', 'Fan Paid: $' + fanPaid.toFixed(2)],
+                        ['Fan Due', fanDue, '#e31837', 'Fan Due: $' + fanDue.toFixed(2)]
+                    ]);
+
+                    var options = {
+                        title: 'Payment Breakdown',
+                        backgroundColor: 'transparent',
+                        legend: { position: 'none' },
+                        titleTextStyle: { color: '#ffffff' },
+                        chartArea: { width: '80%', height: '70%' },
+                        hAxis: {
+                            textStyle: { color: '#ffffff' }
+                        },
+                        vAxis: {
+                            textStyle: { color: '#ffffff' },
+                            format: 'currency'
+                        },
+                        tooltip: {
+                            textStyle: { color: '#000000' }
+                        }
+                    };
+
+                    var chart = new google.visualization.ColumnChart(document.getElementById('registrationProgressChart'));
+                    chart.draw(data, options);
+                }
+
+                function drawRegistrationTypeChart() {
+                    var athleteRegisteredCount = 0;
+                    var athleteNotRegisteredCount = 0;
+                    var fanRegisteredCount = 0;
+                    var fanNotRegisteredCount = 0;
+
+                            // Count registered
+                            <apex:repeat value="{!registeredList}" var="reg">
+                                if ('{!reg.travelerType}' === 'Athlete') {
+                                    athleteRegisteredCount++;
+                                } else {
+                                    fanRegisteredCount++;
+                                }
+                            </apex:repeat>
+                            
+                            // Count not registered
+                            <apex:repeat value="{!notRegisteredList}" var="opp">
+                                if ('{!IF(opp.RecordTypeId == "012f4000000aRkUAAU", "Athlete", "Fan")}' === 'Athlete') {
+                                    athleteNotRegisteredCount++;
+                                } else {
+                                    fanNotRegisteredCount++;
+                                }
+                            </apex:repeat>
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Category', 'Count', { role: 'style' }, { role: 'tooltip' }],
+                        ['Athlete Reg', athleteRegisteredCount, '#FFD700', 'Athletes Registered: ' + athleteRegisteredCount],
+                        ['Athlete Not', athleteNotRegisteredCount, '#FF8C00', 'Athletes Not Registered: ' + athleteNotRegisteredCount],
+                        ['Fan Reg', fanRegisteredCount, '#FFA500', 'Fans Registered: ' + fanRegisteredCount],
+                        ['Fan Not', fanNotRegisteredCount, '#e31837', 'Fans Not Registered: ' + fanNotRegisteredCount]
+                    ]);
+
+                    var options = {
+                        title: 'Registration Status by Type',
+                        backgroundColor: 'transparent',
+                        legend: { position: 'none' },
+                        titleTextStyle: { color: '#ffffff' },
+                        chartArea: { width: '80%', height: '70%' },
+                        hAxis: {
+                            textStyle: { color: '#ffffff' }
+                        },
+                        vAxis: {
+                            textStyle: { color: '#ffffff' },
+                            format: '#'
+                        },
+                        tooltip: {
+                            textStyle: { color: '#000000' }
+                        }
+                    };
+
+                    var chart = new google.visualization.ColumnChart(document.getElementById('registrationTypeChart'));
+                    chart.draw(data, options);
+                }
+
+                // Handle responsive menu
+                function toggleMenu() {
+                    const nav = document.querySelector('nav');
+                    const overlay = document.querySelector('.menu-overlay');
+                    const main = document.querySelector('main');
+                    const isOpen = nav.style.transform === 'translateX(0px)';
+
+                    if (isOpen) {
+                        nav.style.transform = 'translateX(-100%)';
+                        overlay.classList.remove('active');
+                        main.classList.remove('menu-open');
+                    } else {
+                        nav.style.transform = 'translateX(0px)';
+                        overlay.classList.add('active');
+                        main.classList.add('menu-open');
+                    }
+                }
+
+                // Handle window resize
+                window.addEventListener('resize', function () {
+                    drawCharts();
+                });
+
+                // Handle section switching
+                function showSection(sectionId, event) {
+                    // Hide all sections
+                    document.querySelectorAll('.content-section').forEach(function (section) {
+                        section.style.display = 'none';
+                    });
+
+                    // Show selected section
+                    document.getElementById(sectionId).style.display = 'block';
+
+                    // Update nav active state
+                    document.querySelectorAll('nav a').forEach(function (link) {
+                        link.classList.remove('active');
+                    });
+                    if (event && event.target) {
+                        event.target.classList.add('active');
+                    }
+
+                    // Close mobile menu when section is selected
+                    if (window.innerWidth <= 480) {
+                        const nav = document.querySelector('nav');
+                        const overlay = document.querySelector('.menu-overlay');
+                        const main = document.querySelector('main');
+                        
+                        nav.style.transform = 'translateX(-100%)';
+                        overlay.classList.remove('active');
+                        main.classList.remove('menu-open');
+                    }
+
+                    // Redraw charts if showing home
+                    if (sectionId === 'home') {
+                        setTimeout(function() {
+                            drawCharts();
+                        }, 100);
+                    }
+                }
+
+                // Initialize sections on load
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.querySelectorAll('.content-section').forEach(function(section) {
+                        section.style.display = section.id === 'home' ? 'block' : 'none';
+                    });
+                    drawCharts();
+                });
+            </script>
+        </body>
+        </html>
+    </apex:outputPanel>
+</apex:page>

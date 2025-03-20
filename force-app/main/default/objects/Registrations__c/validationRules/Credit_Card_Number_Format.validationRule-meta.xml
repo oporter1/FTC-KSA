@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Card_Number_Format</fullName>
+    <active>false</active>
+    <errorConditionFormula>( Not(REGEX(Credit_Card_Number__c, &quot;(\\d{4}-){3}\\d{3}|\\d{15}&quot; )) 
+&amp;&amp; NOT( REGEX( Credit_Card_Number__c ,&quot;(\\d{4}-){3}\\d{4}|\\d{16}&quot;)) 
+) 
+&amp;&amp; not(isblank(Credit_Card_Number__c))</errorConditionFormula>
+    <errorMessage>Credit Card Number Is Blank or in not in the correct format</errorMessage>
+</ValidationRule>

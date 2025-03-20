@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_WR_HOL_Quincy</fullName>
+    <columns>NAME</columns>
+    <columns>Full_Name_Waiver__c</columns>
+    <columns>School_Name_Waiver__c</columns>
+    <columns>Sport_Event_Activity_Waiver__c</columns>
+    <columns>Participant_Type_Waiver__c</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Web_Code__c</columns>
+    <columns>Signature_Date_Waiver__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>School_Name_Waiver__c</field>
+        <operation>contains</operation>
+        <value>Quincy</value>
+    </filters>
+    <label>2022 WR HOL Quincy</label>
+</ListView>

@@ -1,0 +1,174 @@
+<apex:page controller="TripWebcodeController" docType="html-5.0" standardStylesheets="false" showHeader="false" sidebar="false"
+    applyHtmlTag="false" applyBodyTag="false" cache="false">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'"/>
+        <title>KSA Trip Search</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+        <style>
+            :root {
+                --ksa-black: #000000;
+                --ksa-dark-grey: #1a1a1a;
+                --ksa-red: #e31837;
+                --ksa-blue: #004b8d;
+                --ksa-white: #ffffff;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: var(--ksa-black);
+                color: var(--ksa-white);
+                font-family: 'Poppins', sans-serif;
+                min-height: 100vh;
+            }
+            
+            .ksa-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+            }
+            
+            .ksa-header {
+                width: 100%;
+                background-color: var(--ksa-dark-grey);
+                padding: 2vh;
+                border-bottom: 0.3vh solid var(--ksa-red);
+                text-align: center;
+                box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.5);
+            }
+
+            .ksa-header img {
+                height: 8vh;
+                width: auto;
+            }
+            
+            .search-container {
+                margin-top: 10vh;
+                text-align: center;
+                padding: 4vh 4vw;
+                background-color: var(--ksa-dark-grey);
+                border-radius: 1vh;
+                box-shadow: 0 0 2vh rgba(0,0,0,0.5);
+                width: clamp(280px, 90%, 500px);
+            }
+            
+            .search-container h1 {
+                color: var(--ksa-white);
+                margin-bottom: 3vh;
+                font-weight: 500;
+                font-size: clamp(1.5rem, 3vw, 2.2rem);
+            }
+
+            .search-container p {
+                font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+                margin-bottom: 3vh;
+            }
+            
+            .input-group {
+                margin: 3vh 0;
+                display: flex;
+                flex-direction: column;
+                gap: 2vh;
+                align-items: center;
+            }
+            
+            .ksa-input {
+                padding: 1.5vh 2vw;
+                font-size: clamp(0.9rem, 1.5vw, 1rem);
+                border: none;
+                border-radius: 0.5vh;
+                width: clamp(200px, 80%, 300px);
+                font-family: 'Poppins', sans-serif;
+            }
+            
+            .ksa-button {
+                padding: 1.5vh 3vw;
+                background-color: var(--ksa-blue);
+                color: var(--ksa-white);
+                border: none;
+                border-radius: 0.5vh;
+                cursor: pointer;
+                font-size: clamp(0.9rem, 1.5vw, 1rem);
+                transition: background-color 0.3s;
+                font-family: 'Poppins', sans-serif;
+                width: clamp(120px, 50%, 200px);
+            }
+            
+            .ksa-button:hover {
+                background-color: var(--ksa-red);
+            }
+            
+            .error-message {
+                color: var(--ksa-red);
+                margin-top: 2vh;
+                font-weight: 400;
+                font-size: clamp(0.8rem, 1.2vw, 1rem);
+            }
+
+            /* Media Queries */
+            @media screen and (max-width: 768px) {
+                .search-container {
+                    margin-top: 8vh;
+                    padding: 3vh 3vw;
+                }
+
+                .ksa-header img {
+                    height: 6vh;
+                }
+            }
+
+            @media screen and (max-width: 480px) {
+                .search-container {
+                    margin-top: 5vh;
+                    padding: 2vh 4vw;
+                    width: 85%;
+                }
+
+                .ksa-header {
+                    padding: 1.5vh;
+                }
+
+                .ksa-header img {
+                    height: 5vh;
+                }
+
+                .input-group {
+                    gap: 1.5vh;d5
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="ksa-container">
+            <div class="ksa-header">
+                <img src="https://ksaevents.my.salesforce.com/servlet/servlet.ImageServer?id=015PQ0000046IUc&oid=00Df4000003AdqV&lastMod=1731267083000" alt="KSA Events Logo"/>
+            </div>
+
+            <apex:form >
+                <apex:pageMessages />
+                <div class="search-container">
+                    <h1>KSA Coaches App</h1>
+                    <p>Enter your trip's Webcode and your personal PIN to access trip details</p>
+
+                    <div class="input-group">
+                        <apex:inputText value="{!webcode}" styleClass="ksa-input" id="webcode" html-placeholder="Enter Webcode"/>
+                        <apex:inputText value="{!pin}" styleClass="ksa-input" id="pin" html-placeholder="Enter PIN"/>
+                        <apex:commandButton value="Search" action="{!searchWebcode}" styleClass="ksa-button" reRender="errorPanel"/>
+                    </div>
+
+                    <apex:outputPanel id="errorPanel">
+                        <div class="error-message">
+                            <apex:outputText value="{!errorMessage}" rendered="{!NOT(ISNULL(errorMessage))}"/>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+            </apex:form>
+        </div>
+    </body>
+    </html>
+</apex:page>

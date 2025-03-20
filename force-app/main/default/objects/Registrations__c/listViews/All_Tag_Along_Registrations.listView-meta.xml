@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Tag_Along_Registrations</fullName>
+    <columns>Opportunity__c</columns>
+    <columns>RGP__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>Amount__c</columns>
+    <columns>Mobile__c</columns>
+    <columns>Number_of_Passengers__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>X1_Birth_Date__c</columns>
+    <columns>Credit_Card_Number__c</columns>
+    <columns>Exp_Date__c</columns>
+    <columns>CVV__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Registrations__c.TAG</value>
+    </filters>
+    <label>All Tag-Along Registrations</label>
+</ListView>

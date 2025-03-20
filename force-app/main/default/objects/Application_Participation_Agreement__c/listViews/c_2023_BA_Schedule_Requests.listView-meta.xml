@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>c_2023_BA_Schedule_Requests</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>Related_Opportunity__c</columns>
+    <columns>NAME</columns>
+    <columns>Date_of_Event__c</columns>
+    <columns>Event_Month__c</columns>
+    <columns>Event_Day__c</columns>
+    <columns>Event_Year__c</columns>
+    <columns>Sport_Event__c</columns>
+    <columns>Head_Coach__c</columns>
+    <columns>Coaches_Cell_Phone__c</columns>
+    <columns>Coaches_Email__c</columns>
+    <columns>Location__c</columns>
+    <columns>School_City__c</columns>
+    <columns>Title__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Related_Opportunity__c</field>
+        <operation>startsWith</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>Sport_Event__c</field>
+        <operation>equals</operation>
+        <value>Baseball</value>
+    </filters>
+    <label>2023 BA Schedule Requests - As of 10/10</label>
+</ListView>

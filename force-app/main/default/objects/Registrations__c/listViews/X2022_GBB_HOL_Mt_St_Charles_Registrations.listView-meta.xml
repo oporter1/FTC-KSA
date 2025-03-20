@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_GBB_HOL_Mt_St_Charles_Registrations</fullName>
+    <columns>NAME</columns>
+    <columns>Opportunity__c</columns>
+    <columns>X1_Remove_Theme_Park__c</columns>
+    <columns>X2_Remove_Theme_Park__c</columns>
+    <columns>What_Would_You_Like_To_Share__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Number_of_Passengers__c</columns>
+    <columns>Sport__c</columns>
+    <columns>Amount__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>RGP__c</columns>
+    <columns>Airfare__c</columns>
+    <columns>X1_Shirt_Size_25_00__c</columns>
+    <columns>Shirt_Size_25__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>10/1/2021 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Opportunity__c</field>
+        <operation>contains</operation>
+        <value>2022 GBB HOL Mount Saint Charles</value>
+    </filters>
+    <label>2022 GBB HOL Mt St Charles Registrations</label>
+</ListView>

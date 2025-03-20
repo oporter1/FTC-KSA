@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Team_Opportunity__c</fullName>
+    <description>The team opportunity associated with this event team package. A team opportunity could have a number of packages available for selection by associated passengers.</description>
+    <inlineHelpText>The team opportunity associated with this event team package. A team opportunity could have a number of packages available for selection by associated passengers.</inlineHelpText>
+    <label>Team Opportunity</label>
+    <referenceTo>Opportunity</referenceTo>
+    <relationshipName>Event_Team_Packages</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+</CustomField>

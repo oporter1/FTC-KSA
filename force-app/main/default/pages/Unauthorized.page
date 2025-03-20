@@ -1,0 +1,8 @@
+<apex:page standardController="Application_Participation_Agreement__c" showHeader="false"><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<center><font color="black">
+            <apex:outputText style="font-weight: bold;font-size: 16px;" 
+            value="THANK YOU FOR YOUR SUBMISSION, PLEASE CONTACT KSA EVENTS AT (800) 813-7193 IF YOU HAVE ANY QUESTIONS"/>
+        </font></center>
+<center><apex:image id="theImage" value="https://c.na59.content.force.com/servlet/servlet.ImageServer?id=015f4000002Bq2D&oid=00DU9000004ZHdB&lastMod=1546287434000" width="426" height="130"/></center>
+<center><apex:outputLink value="http://ksaevents.com" id="theLink"><font size="9">KSA EVENTS WEBSITE</font></apex:outputLink></center>
+</apex:page>

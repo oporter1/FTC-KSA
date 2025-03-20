@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_BBB_Team_Apps</fullName>
+    <columns>NAME</columns>
+    <columns>Related_Opportunity__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>Date_of_Event__c</columns>
+    <columns>Sport_Event__c</columns>
+    <columns>Head_Coach__c</columns>
+    <columns>Coaches_Cell_Phone__c</columns>
+    <columns>Coaches_Email__c</columns>
+    <columns>Location__c</columns>
+    <columns>School_City__c</columns>
+    <columns>Title__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Related_Opportunity__c</field>
+        <operation>startsWith</operation>
+        <value>2019 BBB</value>
+    </filters>
+    <label>2019 BBB Team Apps</label>
+</ListView>

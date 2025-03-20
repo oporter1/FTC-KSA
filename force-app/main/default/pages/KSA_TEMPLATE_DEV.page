@@ -1,0 +1,189 @@
+<apex:page standardController="KSA_Waivers__c" extensions="KSA_WAIVERS" 
+           showHeader="false" standardStylesheets="false" docType="html-5.0">
+    
+    <style>
+        .dateFormat{display:none;}
+        label{margin:0 5px 5px 15px;}
+        .pbBottomButtons table {width:100%;text-align:center;}
+        .errorMsg {color:red;}
+        .assistiveText {color:red;}
+        /* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+ 
+}
+
+/* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        
+        padding-left: 0px;
+
+}
+    </style>
+    <apex:stylesheet value="https://fonts.googleapis.com/css?family=Oswald"/>
+    <apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/bootstrap.min.css"/>
+    <apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/style.css"/>
+    <nav id="header" class="navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="logo">
+                    <a href="https://ksaevents.net/"><img src="https://ksaevents.net/wp-content/themes/ksa/images/logo.png"/></a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="header-collapse" style="min-width: 840px;">
+                <div class="menu-main-navigation-container"><ul id="menu-main-navigation" class="nav navbar-nav navbar-left main_nav sf-js-enabled sf-arrows"><li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-4 menu-item-10"><a href="http://ksaevents.net/">HOME</a></li>
+                    
+                    </ul></div>
+                <div class="menu-top-navigation-container" style="display:none;"><ul id="menu-top-navigation" class="nav navbar-nav navbar-right"><li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/contact/">REQUEST INFO</a></li>
+                    </ul></div>        </div>
+        </div>
+    </nav>
+    <div class="slide" style="margin:auto;">
+        <div class="innerwrap contactwrap">    
+            <div class="row">
+                <apex:form >
+                    <apex:pageBlock title="KSA WAIVER {!wav.Name}"><br/>
+                        <apex:outputPanel rendered="{!isWaiverSuccess}"> 
+                            <span style="color: green;font-size: 20px;font-weight: bold;">
+                            <apex:pageMessages />  
+          Waiver Submitted Successfully  
+                            </span>
+                        </apex:outputPanel>
+
+                        <div style="width:100%; height:10px; background:red;"></div>
+                        <apex:pageBlockSection title="" >
+                        <apex:pageBlockSection title="" showheader="true" columns="3">
+                            <apex:inputField value="{!wav.Web_Code__c}" styleClass="form-control" required="true"/>
+
+                        </apex:pageBlockSection>
+                        
+                        <br/><br/>
+                        <apex:pageBlockSection title="" showheader="true" columns="3">
+                            <apex:inputField value="{!wav.School_Name_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Date_of_Event_Waiver__c}" styleClass="form-control" showDatePicker="true" type="date" required="true"/>
+                            <apex:inputField value="{!wav.Full_Name_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Date_of_Birth_Waiver__c}" styleClass="form-control" showDatePicker="true" type="date" required="true"/>
+                            <apex:inputField value="{!wav.Participant_Type_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Sport_Event_Activity_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Emergency_Contact_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Emergency_Phone_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Email_Waiver__c}" styleClass="form-control" required="true"/>
+                        </apex:pageBlockSection>
+                        
+                         <br/>
+                         <br/>
+                         
+                         </apex:pageBlockSection><br/><br/>
+                 
+                         <div id="box" class="timeline container" style="overflow:scroll; width:900px; height:300px;">
+          <center><strong>Terms and Conditions of Participation - Read Carefully before Signing</strong></center> <br/>
+In consideration of myself or my minor child or ward being permitted to participate in the Events/Activities referenced above, you hereby attest that, after reading this Sports Waiver and Permission Form completely and carefully, including the notice above your signature, as required by Florida Statutes 744.301, you acknowledge that participation in the Event/Activity by myself or my child or ward is entirely voluntary, and that you understand and agree as follows:<br/><br/><strong>RELEASE OF LIABILITY:</strong> I agree, on behalf of myself or my child or ward, to waive and release all liabilities, claims, actions, damages, costs or expenses of any nature (“Claims”) associated with all risks that are inherent to my or his or her participation in the event and/or the activities specified above or other activities conducted in conjunction therewith (the “Event/Activity”) (which risks may include, among other things, exposure to Naegliria Fowlerii and coliform bacteria, muscle injuries, heat and stress related issues, cuts, lacerations and broken bones), whether such risks are open and obvious or otherwise. Further on behalf of myself, I hereby release, covenant not to sue, and forever discharge the Released Parties (as defined under "INDEMNITY/INSURANCE" below) of and from all Claims arising in any manner out of or in any way connected with myself or my child's or ward's participation in the Event/Activity. <br/><br/>
+<strong>INDEMNITY/INSURANCE:</strong> I agree to indemnify and hold each of KSA Events, Inc., subsidiary and other affiliated or related companies (the “Kaylee Enterprises”); the Event host, all Event sponsors and charities having a presence at the Event/Activity, the sponsors of KSA Events, Event contractors, subsidiary and other affiliated or related companies; and the officers, directors, employees, agents, contractors, sub-contractors, representatives, successors, assigns, and volunteers of each of the foregoing entities (collectively, the “Released Parties”) harmless from and against any and all Claims arising out of or in any way connected with myself or my child's or ward's participation in the Event/Activity, wherever the Event/Activity may occur, including, but not limited to, all attorneys' fees and disbursements through and including any appeal. I understand and agree that this indemnity includes any Claims based on the negligence, action or inaction of any of the Released Parties and covers bodily injury (including death), property damage, and loss by theft or otherwise, whether suffered by me or my child or ward either before, during or after participation in the Event/Activity. I agree that I am not relying on the Released Parties to have arranged for, or carry, any insurance of any kind for my benefit or that of myself or my child or ward relative to myself or my child's or ward's participation in the activities and the Event, and that I am solely responsible for obtaining any mandatory or desired life, travel, accident, property, or other insurance related to myself or my child's or ward's participation in the Event/Activity, at my own expense.
+<br/><br/>
+<strong>PHYSICAL CONDITION/MEDICAL AUTHORIZATION:</strong> I hereby certify that myself or my child or ward is physically fit for participation in the Event/Activity and has the skill level required in connection with the Event/Activity, and I have not been advised otherwise. I agree that before myself or my child or ward participates in any activity conducted in conjunction with the Event/Activity, I or my child or ward will inspect the related facilities and equipment. In connection with any injury sustained or illness or medical conditions experienced during myself or my child's or ward's attendance in connection with the Event/Activity, I authorize any emergency first aid, medication, medical treatment or surgery deemed necessary by the attending medical personnel if I am not able to act on myself or my child's or ward's behalf. Additionally, I authorize medical treatment for myself or my child or ward, at my cost, if the need arises; however, I acknowledge that the Released Parties will have no duty, obligation or liability arising out of the provision of, or failure to provide, medical treatment. 
+<br/><br/>
+
+<strong>EQUIPMENT AND FACILITIES INSPECTION:</strong> I, or my child or ward if I am not in attendance at the Event/Activity, will immediately advise the Event manager of any unsafe condition that I, or my child or ward if I am not in attendance at the Event/Activity, observe. Myself or my child or ward will refuse to participate, and I will refuse to let myself or my child or ward to participate, in the Event/Activity until all unsafe conditions observed by me, or my child or ward, have been remedied. Please note that any public location where people are present provides an inherent risk of exposure to COVID-19, KSA Events and Game Pointe Event Center cannot guarantee that you will not be exposed during your visit.  You acknowledge and agree that you assume these inherent risks associated with attendance. 
+<br/><br/>
+
+<strong>PUBLICITY RIGHTS:</strong> I further grant the Released Parties the right to photograph, record and/or videotape me and my child or ward and further to display, edit, use and/or otherwise exploit my or myself or my child's or ward's name, face, likeness, Event/Activity results (as more fully described below), voice, and appearance in all media, whether now known or hereafter devised, (including, without limitation, in computer or other device applications, online webcasts, television programming in motion pictures, films, newspapers, and magazines) and in all forms including, without limitation, digitized images or video, throughout the universe in perpetuity, whether for advertising, publicity, or promotional purposes, including, without limitation, publication and use of Event/Activity results and standings (including but not limited to name, bib number, if applicable, age, times, if applicable, gender, “hometown”, or other standard Event/Activity results), without compensation, residual obligations, reservation or limitation, or further approval, and I agree to indemnify and hold harmless the Released Parties for any Claims associated with such grant and right to use. The Released Parties are, however, under no obligation to exercise any rights granted herein. 
+<br/><br/>
+
+<strong>GOVERNING LAW:</strong> This Waiver and Permission Form will be governed by the laws of the State of Florida, and any legal action relating to or arising out of this Waiver and Permission Form will be commenced exclusively in the Circuit Court of the Ninth Judicial Circuit in and for Orange County, Florida (or if such Circuit Court does not have jurisdiction over the subject matter thereof, then to such other court sitting in such county and having subject matter jurisdiction), <strong>AND I SPECIFICALLY WAIVE THE RIGHT TO TRIAL BY JURY.</strong>
+<br/><br/>
+<span style="color: #ff0000"><i><stong>Note On Universal Admissions:</stong></i></span>
+Note On Universal Admissions: In connection with your purchase of Universal Orlando products and your visit to Universal Orlando, including Universal Studios Florida, Universal’s Islands of Adventure, Universal’s Volcano Bay, Universal CityWalk, and the Universal Orlando Resort hotels, please be advised that you must follow Universal Orlando’s policies, CDC guidelines and the recommendations of health officials.  Please note that any public location where people are present provides an inherent risk of exposure to COVID-19 and Universal Orlando cannot guarantee that you will not be exposed during your visit.  By visiting Universal Orlando, you acknowledge and agree that you assume these inherent risks associated with attendance.  When you enter Universal Orlando, you understand that you are subject to the Universal Orlando terms of service (including arbitration, class action waiver, assumption of risk, and infectious disease release of liability) located at <strong><a href="https://www.universalorlando.com/web/en/us/terms-of-service/reopening-safety-info">https://www.universalorlando.com/web/en/us/terms-of-service/reopening-safety-info.</a></strong>
+<br/><br/>
+
+<center><strong>NOTICE TO THE MINOR CHILD'S NATURAL GUARDIAN(S)</strong></center>
+<br/>
+READ THIS FORM COMPLETELY AND CAREFULLY. YOU ARE AGREEING TO LET YOUR MINOR CHILD ENGAGE IN A POTENTIALLY DANGEROUS ACTIVITY. YOU ARE AGREEING THAT, EVEN IF EACH OF THE RELEASED PARTIES THAT IS, KSA EVENTS, AND THE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, CONTRACTORS, SUBCONTRACTORS, REPRESENTATIVES, SUCCESSORS, ASSIGNS, AND VOLUNTEERS OF EACH OF THE FOREGOING ENTITIES USE REASONABLE CARE IN PROVIDING THIS ACTIVITY, THERE IS A CHANCE YOUR CHILD MAY BE SERIOUSLY INJURED OR KILLED BY PARTICIPATING IN THIS ACTIVITY BECAUSE THERE ARE CERTAIN DANGERS INHERENT IN THE ACTIVITY THAT CANNOT BE AVOIDED OR ELIMINATED. BY SIGNING THIS FORM YOU ARE GIVING UP YOUR CHILD'S RIGHT AND YOUR RIGHT TO RECOVER FROM THE RELEASED PARTIES (THAT IS, KSA EVENTS, AND THE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, CONTRACTORS, SUBCONTRACTORS, REPRESENTATIVES, SUCCESSORS, ASSIGNS, AND VOLUNTEERS OF EACH OF THE FOREGOING ENTITIES) IN A LAWSUIT FOR ANY PERSONAL INJURY, INCLUDING DEATH, TO YOUR CHILD OR ANY PROPERTY DAMAGE THAT RESULTS FROM THE RISKS THAT ARE A NATURAL PART OF THE ACTIVITY. YOU HAVE THE RIGHT TO REFUSE TO SIGN THIS FORM, AND THE RELEASED PARTIES (THAT IS, KSA EVENTS, AND THE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, CONTRACTORS, SUBCONTRACTORS, REPRESENTATIVES, SUCCESSORS, ASSIGNS, AND VOLUNTEERS OF EACH OF THE FOREGOING ENTITIES) HAVE THE RIGHT TO REFUSE TO LET YOUR CHILD PARTICIPATE IF YOU DO NOT SIGN THIS FORM.
+
+THE NOTICE IN THE PRECEDING PARAGRAPH IS ALSO GIVEN AND APPLICABLE IF YOU ARE THE LEGAL GUARDIAN OF A MINOR WARD, IN WHICH CASE BY SIGNING THIS FORM YOU ARE AGREEING TO LET YOUR MINOR WARD ENGAGE IN POTENTIALLY DANGEROUS ACTIVITIES AND GIVING UP YOUR MINOR CHILD’S RIGHT AND YOUR RIGHT TO RECOVER FROM THE RELEASED PARTIES (THAT IS, KSA EVENTS; THE EVENT HOST/SPONSORS/CHARITIES; AND THE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, CONTRACTORS, SUBCONTRACTORS, REPRESENTATIVES, SUCCESSORS, ASSIGNS AND VOLUNTEERS OF EACH OF THE FOREGOING ENTITIES), ALL AS MORE FULLY EXPLAINED IN THE PRECEDING PARAGRAPH; IT BEING UNDERSTOOD AND AGREED THAT, AS USED IN THE PRECEDING PARAGRAPH, THE TERM “CHILD” INCLUDES YOUR MINOR WARD FOR ALL PURPOSES THEREOF. <br/><br/>
+
+<strong>WAIVER/RELEASE FOR COMMUNICABLE DISEASES INCLUDING COVID-19</strong><br/>
+<br/>
+<strong>ASSUMPTION OF RISK / WAIVER OF LIABILITY / INDEMNIFICATION AGREEMENT</strong><br/><br/>
+In consideration of being allowed to participate on behalf of above listed School, Club or Team Athletic Program and related events and activities, the undersigned acknowledges, appreciates, and agrees that:<br/><br/>
+Participation includes possible exposure to and illness from infectious diseases including but not limited to MRSA, influenza, and COVID-19. While particular rules and personal discipline may reduce this risk, the risk of serious illness and death does exist; and,<br/><br/>
+I KNOWINGLY AND FREELY ASSUME ALL SUCH RISKS, both known and unknown, EVEN IF ARISING FROM THE NEGLIGENCE OF THE RELEASEES or others, and assume full responsibility for my participation; and,<br/><br/>
+I willingly agree to comply with the stated and customary terms and conditions for participation as regards protection against infectious diseases. If, however, I observe and any unusual or significant hazard during my presence or participation, I will remove myself from participation and bring such to the attention of the nearest official immediately; and,<br/><br/>
+I, for myself and on behalf of my heirs, assigns, personal representatives and next of kin, HEREBY RELEASE AND HOLD HARMLESS (insert name of sports organization) their officers, officials, agents, and/or employees, other participants, sponsoring agencies, sponsors, advertisers, and if applicable, owners and lessors of premises used to conduct the event (“RELEASEES”), WITH RESPECT TO ANY AND ALL ILLNESS, DISABILITY, DEATH, or loss or damage to person or property, WHETHER ARISING FROM THE NEGLIGENCE OF RELEASEES OR OTHERWISE, to the fullest extent permitted by law.<br/><br/>
+By signing below, I certify that: (1) I have fully and completely read and understand this Waiver and Permission Form; (2) I am 18 years of age or older; (3) I am the legal guardian of the minor child identified above or a participate myself; (4) the information set forth above pertaining to myself or my child or ward is true and complete; and (5) I consent and agree to the all of the foregoing on behalf of myself and my minor child or ward identified above. <br/><br/>
+          </div>
+          <br/>
+          <apex:pageBlockSection title="" showheader="true" columns="3">
+                            <apex:inputField value="{!wav.Participant_Signature_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Parent_Guardian_Signature_Waiver__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!wav.Signature_Date_Waiver__c}" styleClass="form-control" showDatePicker="true" type="date" required="true"/>
+                        </apex:pageBlockSection>
+                        <br/><br/>
+                        <div style="width:100%; height:10px; background:red;"></div><br/><br/>
+                        <center><apex:outputLink style="text-align:center;width:100%;font-size:20px;font-weight:bold;color:#RRGGBB" 
+                                         value="https://ksaevents.my.salesforce.com/sfc/p/f4000003AdqV/a/5G00000158gi/iVOUacDjQmsCS0LW6egxET1oswTHmfS41oqGxXuoK74" id="theLink"> 
+                            TERMS AND CONDITIONS    
+                        </apex:outputLink>
+                        <apex:outputText style="font-weight: normal;font-size: 20px;color:red;" 
+                                         value="  (By Clicking the Register Button I hereby acknowledge and accept all Terms and Conditons.)"/></center>
+                        <apex:pageBlockButtons >
+                            <apex:commandButton action="{!submitWaiver}" value="SUBMIT WAIVER" oncomplete="redirect();"/>
+                        </apex:pageBlockButtons>
+                        <br/>
+                        
+                        
+                    </apex:pageBlock>
+                    
+                </apex:form>
+            </div>
+        </div>
+    </div>
+        <script>
+    function redirect() {
+        window.location = '{!urlfor($Page.KSA_Waiver_Submitted)}';
+    }
+    </script>
+    <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(window).on('load', function() {
+// global level variables.
+var isPaused = false;
+var direction = 1;
+var element = $('#box');
+
+// interval for scroll.
+setInterval(function () {
+    if (!isPaused) {
+        var pos = element.scrollTop();
+        var offset = 1 * direction;
+        element.scrollTop(pos + offset);
+
+        // Change the scroll direction when hit an end.
+        if ((element[0].scrollHeight - element.scrollTop() == element.outerHeight()) || (element.scrollTop() <= 0)) {
+            direction *= -1;
+        }
+    }
+
+}, 100);
+
+$('#box').hover(
+
+function () {
+    isPaused = true;
+}, function () {
+    isPaused = false;
+});
+});//]]> 
+
+</script>
+</apex:page>

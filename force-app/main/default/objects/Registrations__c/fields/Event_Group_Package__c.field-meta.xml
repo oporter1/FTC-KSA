@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Group_Package__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The event group package selected by the customer during registration.</description>
+    <inlineHelpText>The event group package selected by the customer during registration.</inlineHelpText>
+    <label>Event Group Package</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>This event group package is not available for this event. Please select a different package.</errorMessage>
+        <filterItems>
+            <field>Event_Group_Package__c.Team_Opportunity__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Opportunity__c</valueField>
+        </filterItems>
+        <infoMessage>Select desired package.</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Event_Group_Package__c</referenceTo>
+    <relationshipLabel>Registrations</relationshipLabel>
+    <relationshipName>Registrations</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

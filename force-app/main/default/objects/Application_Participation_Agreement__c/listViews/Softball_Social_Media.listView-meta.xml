@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Softball_Social_Media</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>Related_Opportunity__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>Sport_Event__c</columns>
+    <columns>School_City__c</columns>
+    <columns>Team_Instagram__c</columns>
+    <columns>Team_Twitter_Handle__c</columns>
+    <columns>Team_Facebook_Page__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sport_Event__c</field>
+        <operation>equals</operation>
+        <value>Softball</value>
+    </filters>
+    <label>Softball Social Media</label>
+</ListView>

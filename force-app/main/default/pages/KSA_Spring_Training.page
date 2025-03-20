@@ -1,0 +1,156 @@
+<apex:page standardController="Application_Participation_Agreement__c" showHeader="false" standardStylesheets="false"> 
+<style>
+        .dateFormat{display:MM/dd/yyyy;}
+        label{margin:0 5px 5px 15px;}
+        .pbBottomButtons table {width:100%;text-align:center;}
+</style>
+<apex:stylesheet value="https://fonts.googleapis.com/css?family=Oswald"/>
+<apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/bootstrap.min.css"/>
+<apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/style.css"/>
+<nav id="header" class="navbar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div id="logo">
+                        <a href="https://ksaevents.net/"><img src="https://ksaevents.net/wp-content/themes/ksa/images/logo.png"/></a>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="header-collapse" style="min-width: 840px;">
+                    <div class="menu-main-navigation-container"><ul id="menu-main-navigation" class="nav navbar-nav navbar-left main_nav sf-js-enabled sf-arrows"><li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-4 menu-item-10"><a href="http://ksaevents.net/">HOME</a></li>
+  
+                      </ul></div>
+                    <div class="menu-top-navigation-container" style="display:none;"><ul id="menu-top-navigation" class="nav navbar-nav navbar-right"><li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/contact/">REQUEST INFO</a></li>
+                        </ul></div>        </div>
+            </div>
+        </nav>
+
+<apex:stylesheet value="{!$Resource.KSAWebFormCSS}" />
+<apex:image id="theImage" value="https://c.na59.content.force.com/servlet/servlet.ImageServer?id=015f4000002Bq2D&oid=00Df4000003AdqV&lastMod=1546287434000" width="426" height="130" style="display:none;"/>
+    <div class="slide" style="margin:auto;">
+    <div class="innerwrap contactwrap">    
+    <div class="row">
+    <apex:form >
+        <apex:pageBlock title="Spring Training Team Application & Schedule Request Form
+ {!Application_Participation_Agreement__c.Name}">
+ <div style="width:100%; height:10px; background:red;"></div>
+            <br>
+            </br>
+            <apex:pageBlockSection title="School / Head Coach Contact Information" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Name__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Head_Coach__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Coaches_Email__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Coaches_Cell_Phone__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Sport_Event__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Returning_Starters__c}" styleClass="form-control" required="true"/>               
+                <apex:inputField value="{!Application_Participation_Agreement__c.Are_you_a_Boys_or_Girls_Team__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Are_you_a_State_Member_School__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Current_Season_Record__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Last_Season_Record__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Spring_Training_Arrival_Date__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Spring_Training_Departure_Date__c}" styleClass="form-control" required="true"/>               
+            </apex:pageBlockSection>
+            <br>
+             </br>
+              <div style="width:100%; height:10px; background:red;"></div>
+            <br>
+            </br>
+            <apex:pageBlockSection title="School Address" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Mailing_Address__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_City__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Country__c}" styleClass="form-control" required="true"/>  
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_State__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Zip__c}" styleClass="form-control" required="true"/>            
+            </apex:pageBlockSection>
+            <br>
+             </br>
+             <div style="width:100%; height:10px; background:red;"></div>
+             <br>
+             </br>
+             <center><apex:pageBlockSection title="Team Schedule Request" columns="3"> </apex:pageBlockSection></center>
+<apex:panelGrid columns="1" width="720px">
+
+   <apex:panelGrid columns="1" width="100%">
+
+
+           <p style="font-size:20px;">You may request <font color="red"><strong>2 on field experiences per day</strong></font> <apex:outputText value="- More than 2 requests will be filled as field availability permits" style="font-size:20px;"/></p>
+
+   </apex:panelGrid>
+   <apex:panelGrid columns="1" width="100%">         
+           <p style="font-size:20px;">Please <font color="red"><strong>specify Official vs Non-Official Game Requests</strong></font><apex:outputText value="- All matchups will have Umpires/Officials" style="font-size:20px;"/><apex:outputText value="- Non-Official Games and JV Games will have a 2 Hour Time Limit on them" style="font-size:20px;"/></p>
+   </apex:panelGrid>
+   <apex:panelGrid columns="1" width="150%">
+           <p style="font-size:20px;">KSA Events will make every effort to accommodate all requests as received. <strong>Requests are dependent upon all schedule requests, travel schedules, appropriate competition level opponent, and field availability</strong></p>     
+           
+   </apex:panelGrid>
+   <apex:panelGrid columns="1" width="150%">
+           <p style="font-size:20px;">Please <font color="red"><strong>mark N/A for days not part of your travel dates, or if you want a “free day”</strong></font></p>     
+           
+   </apex:panelGrid>
+</apex:panelGrid>  
+        <br>
+            </br>
+            <apex:pageBlockSection title="" columns="1">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Number_of_Official_Games_Requested__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Number_of_Non_Official_Games_Requested__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Number_of_Field_Practices_Requested__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Number_of_Batting_Cage_Practices_Request__c}" styleClass="form-control" required="true"/>
+                <tr><td width="30%"><apex:inputField value="{!Application_Participation_Agreement__c.Spring_Additional_Notes__c}" styleClass="form-control" required="true"/></td></tr>
+                <apex:inputField value="{!Application_Participation_Agreement__c.JV_Requested_Spring_Games__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Number_of_Official_JV_Games_Requested__c}" styleClass="form-control" required="true"/> 
+                <apex:inputField value="{!Application_Participation_Agreement__c.Number_of_Non_Official_JV_Games__c}" styleClass="form-control" required="true"/>                               
+            </apex:pageBlockSection>
+            <br>
+             </br>  
+             <div style="width:100%; height:10px; background:red;"></div> 
+             <br>
+             </br>
+ <apex:pageBlockSection title="Competition Itinerary Request – Please indicate which days you would prefer to play your requested official games, non-official, and/or practices below:
+" columns="1"><br/>
+
+<apex:panelGrid columns="1" width="720px">
+
+   <apex:panelGrid columns="1" width="100%">
+
+           <p style="font-size:20px;"><font color="red"><strong>Example</strong></font> <apex:outputText value="- Arrival Day: Two-hour team practice" style="font-size:20px;"/>
+           <apex:outputText value="- Day 2: Official Game followed by an unofficial game" style="font-size:20px;"/>
+           <apex:outputText value="- Day 3: Two-hour team practice followed by an unofficial game" style="font-size:20px;"/>
+           <apex:outputText value="- Day 4: Official game followed by an official game" style="font-size:20px;"/>
+           <apex:outputText value="- Day 5: Official Game" style="font-size:20px;"/>
+           <apex:outputText value="- Day 6: N/A" style="font-size:20px;"/></p>
+
+   </apex:panelGrid>
+
+</apex:panelGrid>  
+                <apex:inputField value="{!Application_Participation_Agreement__c.Arrival_Day__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Day_2__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Day_3__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Day_4__c}" styleClass="form-control" required="true"/>
+                <tr><td width="30%"><apex:inputField value="{!Application_Participation_Agreement__c.Day_5__c}" styleClass="form-control" required="true"/></td></tr>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Day_6__c}" styleClass="form-control" required="true"/>                              
+            </apex:pageBlockSection>
+            <br>
+            </br>
+            <div style="width:100%; height:10px; background:red;"></div>
+            <br>
+            </br>
+            <apex:pageBlockSection title="Referral Program – If A Coach Referred You To Our Program please put their information below, if you were not referred please put “N/A” in each box" columns="1"><br/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Referral_School__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Referral_Coach__c}" styleClass="form-control"/>
+                <tr><td width="30%"><apex:inputField value="{!Application_Participation_Agreement__c.Referral_Coach_Email__c}" styleClass="form-control"/></td></tr>
+
+            </apex:pageBlockSection>
+            <br>
+             </br>
+
+            <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Submit Application"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    </div></div></div>
+</apex:page>

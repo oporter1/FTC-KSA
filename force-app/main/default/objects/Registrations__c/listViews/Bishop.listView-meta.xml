@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bishop</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>NAME</columns>
+    <columns>Email__c</columns>
+    <columns>Number_of_Passengers__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>X2_First_Name__c</columns>
+    <columns>X2_Last_Name__c</columns>
+    <columns>X3_First_Name__c</columns>
+    <columns>X3_Last_Name__c</columns>
+    <columns>X4_First_Name__c</columns>
+    <columns>X4_Last_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>School_Name__c</field>
+        <operation>contains</operation>
+        <value>Bishop</value>
+    </filters>
+    <label>Bishop</label>
+</ListView>

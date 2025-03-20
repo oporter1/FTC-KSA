@@ -1,0 +1,142 @@
+<apex:page standardController="Application_Participation_Agreement__c" showHeader="false" standardStylesheets="false"> 
+<style>
+        .dateFormat{display:MM/dd/yyyy;}
+        label{margin:0 5px 5px 15px;}
+        .pbBottomButtons table {width:100%;text-align:center;}
+</style>
+<apex:stylesheet value="https://fonts.googleapis.com/css?family=Oswald"/>
+<apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/bootstrap.min.css"/>
+<apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/style.css"/>
+<nav id="header" class="navbar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div id="logo">
+                        <a href="https://ksaevents.net/"><img src="https://ksaevents.net/wp-content/themes/ksa/images/logo.png"/></a>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="header-collapse" style="min-width: 840px;">
+                    <div class="menu-main-navigation-container"><ul id="menu-main-navigation" class="nav navbar-nav navbar-left main_nav sf-js-enabled sf-arrows"><li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-4 menu-item-10"><a href="http://ksaevents.net/">HOME</a></li>
+  
+                      </ul></div>
+                    <div class="menu-top-navigation-container" style="display:none;"><ul id="menu-top-navigation" class="nav navbar-nav navbar-right"><li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/contact/">REQUEST INFO</a></li>
+                        </ul></div>        </div>
+            </div>
+        </nav>
+<center style="padding-top:100px;text-align:center;margin:auto;max-width:1160px;"><font color="red">
+            <apex:outputText style="font-weight: bold;font-size: 16px;" 
+            value="This application is a contract confirming your intent to participate in a KSA Event. But does not guarantee acceptance into any KSA Events or other associated
+event until a written confirmation has been sent by KSA. As some applications are time sensitive and provide for a first applied selection process, please note that
+completion of this form and delivery to KSA via any method does not insure receipt. Only a return letter of receipt from KSA is a guarantee of receipt."/><br/>
+        </font></center>
+<apex:stylesheet value="{!$Resource.KSAWebFormCSS}" />
+<apex:image id="theImage" value="https://c.na59.content.force.com/servlet/servlet.ImageServer?id=015f4000002Bq2D&oid=00Df4000003AdqV&lastMod=1546287434000" width="426" height="130" style="display:none;"/>
+    <div class="slide" style="margin:auto;">
+    <div class="innerwrap contactwrap">    
+    <div class="row">
+    <apex:form >
+        <apex:pageBlock title="KSA Application / Participation Agreement: {!Application_Participation_Agreement__c.Name}">
+            <apex:pageBlockSection title="Submitter Information" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Printed_Name__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Title__c}" 
+                   label="Title" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="School / Head Coach Contact Information" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Name__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Head_Coach__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Phone__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Coaches_Email__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Fax__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Coaches_Cell_Phone__c}" styleClass="form-control" required="true"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="School Address" columns="1">
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Mailing_Address__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_City__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Country__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_State__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Zip__c}" styleClass="form-control" required="true"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="School Administration / Principal" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Athletic_Director__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Principal__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Athletic_Director_Phone__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Principal_Phone__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Athletic_Director_Email__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Principal_Email__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Enrollment / Mascot / Colors" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Current_Total_School_Enrollment_9_12__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Mascot__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Approx_Male_Enrollment_9_12__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.School_Colors__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Approx_Female_Enrollment_9_12__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Booster / Parent Coordinator" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Booster_Contact_s__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Parent_Coordinator__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Booster_Contact_Phone__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Parent_Coordinator_Phone__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Booster_Contact_Email__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Parent_Coordinator_Email__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Classification" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Country__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.State__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Conference__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Region__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Class_A_Level__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.District__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Team Social Media Information" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Team_Facebook_Page__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Team_Twitter_Handle__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Team_Instagram__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Event Date" columns="1">
+                <apex:inputfield value="{!Application_Participation_Agreement__c.Event_Month__c}" styleClass="form-control" required="true"/>
+                <apex:inputfield value="{!Application_Participation_Agreement__c.Event_Day__c}" styleClass="form-control" required="true"/>
+                <apex:inputfield value="{!Application_Participation_Agreement__c.Event_Year__c}" styleClass="form-control" required="true" />
+                 </apex:pageBlockSection>
+                <apex:pageBlockSection title="Event Information" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Sport_Event__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Location__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Bringing_your_Junior_Varsity_Team__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Are_you_a_State_Member_School__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Are_you_a_Boys_or_Girls_Team__c}" styleClass="form-control" required="true"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Has_your_team_traveled_before__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.If_so_where__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Participant Counts" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Returning_Starters__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Freshman__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Sophomores__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Juniors__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Seniors__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="School Win / Loss Record" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Current_Season_Record__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Last_Season_Record__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.X2_Years_Prior_Season_Record__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Championships / Honors" columns="1">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Championships_Notable_Honors__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Referral Program" columns="2">
+                <apex:inputField value="{!Application_Participation_Agreement__c.Referral_School__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Referral_Coach__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Referral_Coach_Phone__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Referral_Coach_Email__c}" styleClass="form-control"/>
+                <apex:inputField value="{!Application_Participation_Agreement__c.Sport__c}" styleClass="form-control"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Submit Application"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    </div></div></div>
+</apex:page>

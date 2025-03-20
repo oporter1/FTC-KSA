@@ -1,0 +1,370 @@
+<apex:page standardController="Registrations__c" extensions="KSA_REGISTRATIONS" showHeader="false" 
+           standardStylesheets="false" docType="html-5.0">
+    <style>
+        .dateFormat{display:none;}
+        label{margin:0 5px 5px 15px;}
+        .pbBottomButtons table {width:150%;text-align:center;}
+        .assistiveText{color:red;}
+    </style>
+    <apex:stylesheet value="https://fonts.googleapis.com/css?family=Oswald"/>
+    <apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/bootstrap.min.css"/>
+    <apex:stylesheet value="https://ksaevents.net/wp-content/themes/ksa/css/style.css"/>
+    <nav id="header" class="navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="logo">
+                    <a href="https://ksaevents.net/"><img src="https://ksaevents.net/wp-content/themes/ksa/images/logo.png"/></a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="header-collapse" style="min-width: 1000px;">
+                <div class="menu-main-navigation-container"><ul id="menu-main-navigation" class="nav navbar-nav navbar-left main_nav sf-js-enabled sf-arrows"><li id="menu-item-10" 
+                                                                                                                                                                  class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-4 menu-item-10"><a href="http://ksaevents.net/">HOME</a></li>
+                    
+                    </ul></div>
+                <div class="menu-top-navigation-container" style="display:none;"><ul id="menu-top-navigation" class="nav navbar-nav navbar-right"><li id="menu-item-26" 
+                                                                                                                                                      class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/contact/">REQUEST INFO</a></li>
+                    </ul></div>        </div>
+        </div>
+    </nav>
+    <div class="slide" style="margin:auto;">
+        <div class="innerwrap contactwrap">    
+            <div class="row">
+                <apex:form >
+                    <apex:pageBlock title="Passenger Information / Registration: {!reg.Name}"><br/>
+                        <apex:outputPanel rendered="{!isRegistrationSuccess}"> 
+                            <span style="color: green;font-size: 20px;font-weight: bold;">
+                                {!$Label.KSA_ATHLETE_REGISTRATION_SUCCESS}
+                            </span>
+                        </apex:outputPanel>
+                        
+                        <apex:pageBlockSection title="SCHOOL NAME / WEBCODE / SPORT" columns="3">
+                            <apex:inputField value="{!reg.School_Name__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Webcode__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Sport__c}" styleClass="form-control" Required="true"/>
+                        </apex:pageBlockSection><br/>
+                        <apex:pageBlockSection title="ENTER PASSENGER'S NAME EXACTLY AS IT APPEARS ON THE ID YOU ARE TRAVELING WITH (DRIVER'S LICENSE, PASSPORT OR 
+                                                      GOVERNMENT ISSUED PHOTO ID)" columns="0">
+                        </apex:pageBlockSection>
+                        <left style="padding-top:100px;text-align:left;margin:auto;max-width:1160px;"><font color="black">
+                            <apex:outputText style="font-weight: normal;font-size: 16px;" 
+                                             value="If your ID only shows your middle, please enter it below.  If passenger has no middle name enter a hyphen (-) in the middle name field.  
+                                                    Passengers under the age of 18 do not require photo ID for domestic travel.  Adults 18 years and older must enter name exactly as it appears on the ID you are traveling with.  
+                                                    Children under 3 years old at the time of travel do not need a package but we do need to know the name of the child and birthdate.  
+                                                    Children under 2 years old at time of travel do not need to purchase an airline seat but we do need to know their name and birthdate."/><br/>
+                            </font></left><br/>
+                        <apex:pageBlockSection title="POINT OF CONTACT" columns="4">
+                            <apex:inputField value="{!reg.First_Name__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Last_Name__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Email__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Mobile__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Street__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.City__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.State_Providence__c}" styleClass="form-control" Required="true"/>
+                            <apex:inputField value="{!reg.Postal_Code__c}" styleClass="form-control" Required="true"/>
+                             <apex:inputField value="{!reg.Passenger_Count_Under_Age_9__c}" label="# Pass. Under 9" styleClass="form-control" Required="true"/>
+                        </apex:pageBlockSection><br/>
+                        <apex:actionRegion >
+                            <apex:pageBlockSection title="NUMBER OF PASSENGERS" columns="0">
+                                <apex:inputField value="{!reg.Number_of_Passengers__c}" styleClass="form-control">
+                                    <apex:actionSupport event="onchange" action="{!null}" rerender="passengerInfo"/>  
+                                </apex:inputField>
+                            </apex:pageBlockSection>
+                        </apex:actionRegion>
+                        <apex:outputPanel id="passengerInfo" >
+                            <apex:pageBlockSection title="PASSENGER INFORMATION" columns="4" 
+                                                   rendered="{!IF(reg.Number_of_Passengers__c == '6',true,false)}"> 
+                                <apex:inputField value="{!reg.X1_First_Name__c}" label="Passenger #1 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Middle_Name__c}" label="Middle" styleClass="form-control" />
+                                <apex:inputField value="{!reg.X1_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X1_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_First_Name__c}" label="Passenger #2 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X2_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_First_Name__c}" label="Passenger #3 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X3_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_First_Name__c}" label="Passenger #4 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X4_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                              <apex:inputField value="{!reg.X5_First_Name__c}" label="Passenger #5 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X5_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X5_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X5_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X5_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X6_First_Name__c}" label="Passenger #6 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X6_Middle_Name__c}" label="Middle" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X6_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X6_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X6_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X6_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X6_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X6_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                            </apex:pageBlockSection>
+                        
+                        
+                            <apex:pageBlockSection title="PASSENGER INFORMATION" columns="4" 
+                                                   rendered="{!IF(reg.Number_of_Passengers__c == '5',true,false)}">
+                                <apex:inputField value="{!reg.X1_First_Name__c}" label="Passenger #1 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Middle_Name__c}" label="Middle" styleClass="form-control" />
+                                <apex:inputField value="{!reg.X1_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X1_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_First_Name__c}" label="Passenger #2 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X2_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_First_Name__c}" label="Passenger #3 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X3_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_First_Name__c}" label="Passenger #4 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X4_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_First_Name__c}" label="Passenger #5 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X5_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X5_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X5_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X5_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X5_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                            </apex:pageBlockSection>
+                        
+                            <apex:pageBlockSection title="PASSENGER INFORMATION" columns="4" 
+                                                   rendered="{!IF(reg.Number_of_Passengers__c == '4',true,false)}">
+                                <apex:inputField value="{!reg.X1_First_Name__c}" label="Passenger #1 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Middle_Name__c}" label="Middle" styleClass="form-control" />
+                                <apex:inputField value="{!reg.X1_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Birth_Date__c}" label="DOB" styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X1_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_First_Name__c}" label="Passenger #2 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X2_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_First_Name__c}" label="Passenger #3 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X3_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_First_Name__c}" label="Passenger #4 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X4_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X4_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X4_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                            </apex:pageBlockSection>
+                         
+                            <apex:pageBlockSection title="PASSENGER INFORMATION" columns="4" 
+                                                   rendered="{!IF(reg.Number_of_Passengers__c == '3',true,false)}">
+                                <apex:inputField value="{!reg.X1_First_Name__c}" label="Passenger #1 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Middle_Name__c}" label="Middle" styleClass="form-control" />
+                                <apex:inputField value="{!reg.X1_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X1_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_First_Name__c}" label="Passenger #2 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X2_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_First_Name__c}" label="Passenger #3 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X3_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X3_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X3_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                
+                            </apex:pageBlockSection>
+                         
+                             <apex:pageBlockSection title="PASSENGER INFORMATION" columns="4" 
+                                                   rendered="{!IF(reg.Number_of_Passengers__c == '2',true,false)}">
+                                <apex:inputField value="{!reg.X1_First_Name__c}" label="Passenger #1 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Middle_Name__c}" label="Middle" styleClass="form-control" />
+                                <apex:inputField value="{!reg.X1_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X1_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_First_Name__c}" label="Passenger #2 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Middle_Name__c}" label="Middle" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X2_Gender__c}" label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X2_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X2_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                                
+                            </apex:pageBlockSection>
+                         
+                            <apex:pageBlockSection title="PASSENGER INFORMATION" columns="4" 
+                                                   rendered="{!IF(reg.Number_of_Passengers__c == '1',true,false)}">
+                                <apex:inputField value="{!reg.X1_First_Name__c}" label="Passenger #1 First" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Middle_Name__c}" label="Middle" styleClass="form-control" />
+                                <apex:inputField value="{!reg.X1_Last_Name__c}" label="Last" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Birth_Date__c}" label="DOB" 
+                                                 styleClass="date form-control" 
+                                                 showDatePicker="true"  type="date" required="true"/>
+                                <apex:inputField value="{!reg.X1_Gender__c}" 
+                                                 label="Gender" styleClass="form-control" required="true"/>
+                                <apex:inputField value="{!reg.X1_Shirt_Size_25_00__c}" label="Shirt Size ($25.00)" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Banquet__c}" label="Remove Banquet" styleClass="form-control"/>
+                                <apex:inputField value="{!reg.X1_Remove_Theme_Park__c}" label="Remove Theme Park" styleClass="form-control"/>
+                            </apex:pageBlockSection>
+                         
+                            
+                        </apex:outputPanel>
+                        <br/>
+                        <apex:pageBlockSection title="NOTES">
+                            <apex:inputField value="{!reg.What_Would_You_Like_To_Share__c}" styleClass="form-control"/>
+                        </apex:pageBlockSection>
+                        <br></br>
+                        <apex:pageBlockSection title="TRANSPORTATION INFORMATION">
+                            <apex:inputField value="{!reg.Airfare__c}" styleClass="form-control"/>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection title="REFUND GUARANTEE PROTECTION (RGP)" columns="0">
+                        </apex:pageBlockSection>
+                        
+                            <apex:outputText style="font-weight: normal;font-size: 16px;color:black;" 
+                                             value="Refund Guarantee Protection (RGP) is an additional cost per person of 10% of you Land Package. Should a passenger need to cancel their reservation for any reason up to 120 hours prior to your scheduled departure, 
+                                                    RGP ensures a full refund of all monies paid less the cost of this option, airfare, and any NSF/Late Fees. The cost of RGP will be reduced from your payment prior to a refund being issued. 
+                                                    RGP must be accepted or declined at the time of booking and must be a unanimous decision by each passenger occupying the room. 
+                                                    Should you choose to not accept RGP the above stated cancellation policy is rendered inapplicable with no exceptions given. To reiterate, RGP does not cover refunds towards airfare."/>
+                            
+                        <br/>
+                        <br/>
+                        <left style="padding-top:100px;text-align:left;margin:auto;max-width:1160px;"><font color="black">
+                            <apex:outputText style="font-weight: normal;font-size: 16px;" 
+                                             value="If you choose to Decline the Refund Guarantee Protection (RGP), please change the selection below: "/>
+                            </font></left><br/>
+                        
+                        <apex:inputField value="{!reg.RGP__c}" styleClass="form-control" required="true"/><br/>
+                        <apex:pageBlockSection title="PAYMENT INFORMATION" columns="4">
+                        </apex:pageBlockSection>
+                        <left style="padding-top:100px;text-align:left;margin:auto;max-width:1160px;"><font color="black">
+                            <apex:outputText style="font-weight: normal;font-size: 16px;" 
+                                             value="Minimum of $400.00 per person due at the time of booking. Non-refundable at time of booking if RGP is declined. Payments will be automatically processed on the Scheduled Due Date"/><br/>
+                            </font></left><br/>
+                        <apex:pageBlockSection title="" showheader="true" columns="5">
+                            <apex:inputField value="{!reg.Card_Type__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!reg.Credit_Card_Number__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!reg.Exp_Date__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!reg.CVV__c}" styleClass="form-control" required="true"/>
+                            <apex:inputField value="{!reg.Amount__c}" styleClass="form-control" required="true"/><br/>
+                        </apex:pageBlockSection>
+                        <apex:outputLink style="text-align:center; width : 100%;font-size: 30px; font-weight: bold ;  color : #RRGGBB" value="https://ksaevents.net/terms-and-conditions/" id="theLink"> TERMS AND CONDITIONS 
+                        </apex:outputLink>
+                        <apex:outputText style="font-weight: normal;font-size: 15px;color:red;" 
+                                         value="(By Checking the Box below I hereby acknowledge and accept all Terms and Conditons.)"/>
+                                         <apex:inputField value="{!reg.Terms_Conditions__c}" label="Acknowledge Terms & Conditions" styleClass="form-control" required="true"/>
+                        <br/>
+                        <apex:pageBlockButtons >
+                            <!--<input id="thePage:theForm:theButton" type="submit" name="thePage:theForm:theButton" value="Save"/> -->
+                            <apex:commandButton action="{!registerTag}" value="Register" id="thePage" />
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:form>
+            </div></div></div>
+</apex:page>

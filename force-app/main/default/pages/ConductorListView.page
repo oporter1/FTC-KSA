@@ -1,0 +1,8 @@
+<apex:page standardController="Opportunity" extensions="OpportunityConductorController" recordSetVar="opportunities" action="{!prepareConductorUrl}">
+    <apex:outputPanel id="script">
+        <script type="text/javascript">
+            window.open("{!conductorUrl}","_blank","width=640,height=480");
+            window.history.back();
+        </script>
+    </apex:outputPanel>   
+</apex:page>

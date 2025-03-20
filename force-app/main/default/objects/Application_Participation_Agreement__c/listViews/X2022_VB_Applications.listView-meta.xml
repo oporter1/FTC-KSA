@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_VB_Applications</fullName>
+    <columns>NAME</columns>
+    <columns>Related_Opportunity__c</columns>
+    <columns>School_Name__c</columns>
+    <columns>School_State__c</columns>
+    <columns>Head_Coach__c</columns>
+    <columns>Coaches_Cell_Phone__c</columns>
+    <columns>Coaches_Email__c</columns>
+    <columns>School_City__c</columns>
+    <columns>Seniors__c</columns>
+    <columns>Juniors__c</columns>
+    <columns>Returning_Starters__c</columns>
+    <columns>Current_Season_Record__c</columns>
+    <columns>Last_Season_Record__c</columns>
+    <columns>Bringing_your_Junior_Varsity_Team__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Related_Opportunity__c</field>
+        <operation>contains</operation>
+        <value>2022 VB</value>
+    </filters>
+    <label>2022 VB Applications</label>
+</ListView>
