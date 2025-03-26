@@ -940,8 +940,7 @@
                         $Lightning.createComponent(
                             "c:roomBuilder",
                             { 
-                                ksaCode: 
-                                "{!webcode}" 
+                                webcode: "{!foundTrip.KSA_Webcode__c}" 
                             },
                             "room-builder",
                             function(cmp, status, errorMessage) {
