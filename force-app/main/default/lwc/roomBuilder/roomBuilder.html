@@ -1,3 +1,55 @@
 <template>
     Room Builder LWC
+    <div class="container" style="background-color: white;">
+        <div class="columns">
+            <!-- Left Column: Students -->
+            <div class="column students-column">
+                <h2>Students</h2>
+                <ul class="student-list">
+                    <template for:each={studentsWithRoomInfo} for:item="student">
+                        <li key={student.id} 
+                            class="student-item" 
+                            draggable="true" 
+                            data-id={student.id}
+                            ondragstart={handleDragStart}
+                            ondragend={handleDragEnd}
+                            >
+                            
+                            {student.name}
+                            <template if:true={student.roomName}>
+                                (Assigned to: {student.roomName})
+                            </template>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            
+            <!-- Right Column: Rooms -->
+            <div class="column rooms-column">
+                <h2>Rooms</h2>
+                <ul class="room-list">
+                    <template for:each={roomsWithStudentNames} for:item="room">
+                        <li key={room.id} 
+                            class="room-item"
+                            data-id={room.id}
+                            ondragover={handleDragOver}
+                            ondragleave={handleDragLeave}
+                            ondrop={handleDrop}>
+                            <div class="room-header">
+                                {room.name} - Capacity: {room.capacity}
+                            </div>
+                            <div class="assigned-students">
+                                <h3>Assigned Students:</h3>
+                                <ul>
+                                    <template for:each={room.assignedStudentNames} for:item="student">
+                                        <li key={student.id}>{student.name}</li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
 </template>
