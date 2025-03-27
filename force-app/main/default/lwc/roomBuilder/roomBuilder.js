@@ -1,5 +1,6 @@
 import { api, LightningElement } from 'lwc';
 import getAthletesAndRooms from '@salesforce/apex/roomBuilder.getAthletesAndRooms';
+import updateAthletes from '@salesforce/apex/roomBuilder.updateAthletes';
 
 export default class RoomBuilder extends LightningElement {
     @api
@@ -15,16 +16,24 @@ export default class RoomBuilder extends LightningElement {
             const members = JSON.parse(JSON.stringify(resp.athletes)) || []
             const rooms = JSON.parse(JSON.stringify(resp.rooms)) || []
 
+            const roomObj = {}
             this.members = members.map(member => {
                 const roomType = athleteRoomNumberType(member)
                 const roomNumPicklistType = athleteRoomType2Number(roomType)
                 const roomPreference = roomPicklistType2Number(roomNumPicklistType)
-                return { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType, inRoom: !!member.Room__c }
+                const key = member.Room__c
+                if (key) {
+                    if (!roomObj[key]) {
+                        roomObj[key] = []
+                    }
+                    roomObj[key].push(member)
+                }
+                return { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType, inRoom: !!key }
             })
             this.rooms = rooms.map(room => {
                 const capacity = roomPicklistType2Number(roomTypeInteger2String(room.Type__c))
                 // const type = roomTypeInteger2String()
-                return { ...room, assignedMembers: [], capacity: capacity }
+                return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity }
             })
         })
     }
@@ -122,8 +131,9 @@ export default class RoomBuilder extends LightningElement {
                     }
                 })
                 console.log('membersArea - currROom - ')
-                member.inRoom = false
+                member.Room__c = ''
                 this.members = [...this.members]
+                this.saveAthleteRoomInfo()
                 return
             }
 
@@ -161,13 +171,13 @@ export default class RoomBuilder extends LightningElement {
 
                 // Add member to room's assigned members if not already there
                 if (!room.assignedMembers.find((mem) => mem.Id === draggedMemberId)) {
-                    member.inRoom = true
                     room.assignedMembers.push(member);
                 }
 
                 // Force refresh of UI
                 this.members = [...this.members]
                 this.rooms = [...this.rooms];
+                this.saveAthleteRoomInfo()
             } else {
                 // Room is at capacity
                 // eslint-disable-next-line no-alert
@@ -176,6 +186,15 @@ export default class RoomBuilder extends LightningElement {
         } catch (err) {
             console.log("err - ", err)
         }
+    }
+
+
+    // Call apex
+    saveAthleteRoomInfo() {
+        console.log('combined - ', this.members)
+        updateAthletes({ athletes: this.members }).then((resp) => {
+            console.log('updateAthlets resp - ', resp)
+        })
     }
 }
 

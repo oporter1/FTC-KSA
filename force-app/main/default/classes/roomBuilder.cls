@@ -155,6 +155,15 @@ public with sharing class roomBuilder {
     return aar;
   }
 
+  @AuraEnabled(cacheable=false)
+  public static void updateAthletes(List<Opportunity> athletes){
+    try {
+      update athletes;
+    } catch (Exception e) {
+      throw new AuraHandledException(e.getMessage());
+    }
+  }
+
   // Helper methods
   public static Decimal athleteRoomNumberType(Opportunity athlete) {
     if (athlete.Single_Room__c != null) {
