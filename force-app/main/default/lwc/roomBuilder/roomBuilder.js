@@ -10,7 +10,6 @@ export default class RoomBuilder extends LightningElement {
         if (!value) return
 
         this._webcode = value
-        console.log('webCode - ', value)
         getAthletesAndRooms({ webcode: value }).then(resp => {
             console.log('Athletes and Rooms data - ', resp);
             const members = JSON.parse(JSON.stringify(resp.athletes)) || []
@@ -20,7 +19,7 @@ export default class RoomBuilder extends LightningElement {
                 const roomType = athleteRoomNumberType(member)
                 const roomNumPicklistType = athleteRoomType2Number(roomType)
                 const roomPreference = roomPicklistType2Number(roomNumPicklistType)
-                return { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType }
+                return { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType, inRoom: !!member.Room__c }
             })
             this.rooms = rooms.map(room => {
                 const capacity = roomPicklistType2Number(roomTypeInteger2String(room.Type__c))
@@ -28,14 +27,6 @@ export default class RoomBuilder extends LightningElement {
                 return { ...room, assignedMembers: [], capacity: capacity }
             })
         })
-    }
-
-    connectedCallback() {
-        console.log('lwc room builder connected - ', this.webcode);
-    }
-
-    renderedCallback() {
-        console.log('lwc room builder rendered - ', this.webcode);
     }
 
     members = []
@@ -53,23 +44,14 @@ export default class RoomBuilder extends LightningElement {
                 ...member,
                 roomName: room ? room.Name : null
             };
-        });
+        }).filter(mem => !mem.inRoom);
     }
 
     // Computed property for rooms with member names
     get roomsWithMemberNames() {
         return this.rooms.map(room => {
-            const assignedMemberNames = room.assignedMembers?.map(studentId => {
-                const member = this.members.find(st => st.Id === studentId);
-                return {
-                    Id: studentId,
-                    Name: member ? member.Name : 'Unknown Member'
-                };
-            }) || [];
-
             return {
-                ...room,
-                assignedMemberNames
+                ...room
             };
         });
     }
@@ -116,9 +98,9 @@ export default class RoomBuilder extends LightningElement {
             event.currentTarget.classList.remove('drag-over');
             // Get the room ID where the member was dropped
             const roomId = event.currentTarget.dataset.id;
+
             // Find the room
-            const room = this.rooms.find(rm => rm.Id === roomId);
-            console.log('handleDrop 2 - ', room)
+            console.log('handleDrop 2 - ', roomId)
             // Find the member
             const studentIndex = this.members.findIndex(st => st.Id === this.draggedMemberId);
             console.log('handleDrop 3 - ', studentIndex)
@@ -126,12 +108,29 @@ export default class RoomBuilder extends LightningElement {
             // Reset the dragged member ID
             const draggedMemberId = this.draggedMemberId
             this.draggedMemberId = null
-            if (!(room && studentIndex !== -1)) {
+            if (!(studentIndex !== -1)) {
+                return
+            }
+            const member = this.members[studentIndex]
+
+            // Remove member from current room and set inRoom to false
+            if (roomId === 'membersArea') {
+                this.rooms = this.rooms.map(room => {
+                    return {
+                        ...room,
+                        assignedMembers: room.assignedMembers.filter((mem) => mem.Id !== draggedMemberId)
+                    }
+                })
+                console.log('membersArea - currROom - ')
+                member.inRoom = false
+                this.members = [...this.members]
                 return
             }
 
+            const room = this.rooms.find(rm => rm.Id === roomId);
+            if (!room) return
+
             // Check if the member is already assigned to a room
-            const member = this.members[studentIndex]
             const currentRoomId = member.Room__c;
             console.log('inner if 1 - ', currentRoomId)
             // If member is already assigned, remove from current room
@@ -141,7 +140,7 @@ export default class RoomBuilder extends LightningElement {
 
                 if (currentRoom) {
                     currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
-                        Id => Id !== draggedMemberId
+                        memberLoop => memberLoop.Id !== draggedMemberId
                     );
                 }
             }
@@ -156,17 +155,18 @@ export default class RoomBuilder extends LightningElement {
 
             // Check if the room has capacity
             if (room.assignedMembers.length < room.capacity) {
-            // Assign member to new room
+                // Assign member to new room
                 member.Room__c = roomId;
                 console.log('inner if 3 - ', member, ' - ', member.Room__c)
 
                 // Add member to room's assigned members if not already there
-                if (!room.assignedMembers.includes(draggedMemberId)) {
-                    room.assignedMembers.push(draggedMemberId);
+                if (!room.assignedMembers.find((mem) => mem.Id === draggedMemberId)) {
+                    member.inRoom = true
+                    room.assignedMembers.push(member);
                 }
 
                 // Force refresh of UI
-                this.members = [...this.members];
+                this.members = [...this.members]
                 this.rooms = [...this.rooms];
             } else {
                 // Room is at capacity

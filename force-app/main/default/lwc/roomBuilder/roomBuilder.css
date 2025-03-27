@@ -76,6 +76,11 @@
 }
 
 /* Drag and drop visual feedback */
+.members-column.drag-over {
+    background-color: #f0f8ff;
+    border: 1px dashed #4070cc;
+}
+
 .member-item.dragging {
     opacity: 0.6;
 }

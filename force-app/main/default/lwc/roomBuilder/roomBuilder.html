@@ -1,56 +1,85 @@
 <template>
-    Room Builder LWC
-    <div class="container" style="background-color: white;">
-        <div class="columns">
-            <!-- Left Column: Members -->
-            <div class="column members-column">
-                <h2>Members</h2>
-                <ul class="member-list">
-                    <template for:each={membersWithRoomInfo} for:item="member">
-                        <li key={member.Id} 
-                            class="member-item" 
-                            style="display: flex; flex-direction: column; gap: 0.25rem;"
-                            draggable="true" 
-                            data-id={member.Id}
-                            ondragstart={handleDragStart}
-                            ondragend={handleDragEnd}
-                            >
-                            
-                            <div style="font-weight: bold;">
-                                {member.Name}
-                            </div>
-                            <div>Room Requirements: {member.roomPreference} of {member.roomPreferenceName}</div>
-                        </li>
-                    </template>
+  Room Builder LWC
+  <div class="container" style="background-color: white">
+    <div class="columns">
+      <!-- Left Column: Members -->
+      <div
+        class="column members-column"
+        data-id="membersArea"
+        ondragover={handleDragOver}
+        ondragleave={handleDragLeave}
+        ondrop={handleDrop}
+      >
+        <h2>Members</h2>
+        <ul class="member-list">
+          <template for:each={membersWithRoomInfo} for:item="member">
+            <!-- Member component -->
+            <li
+              key={member.Id}
+              class="member-item"
+              style="display: flex; flex-direction: column; gap: 0.25rem"
+              draggable="true"
+              data-id={member.Id}
+              ondragstart={handleDragStart}
+              ondragend={handleDragEnd}
+            >
+              <div style="font-weight: bold">{member.Name}</div>
+              <div>
+                Room Requirements: {member.roomPreference} of
+                {member.roomPreferenceName}
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+
+      <!-- Right Column: Rooms -->
+      <div class="column rooms-column">
+        <h2>Rooms</h2>
+        <ul class="room-list">
+          <template for:each={roomsWithMemberNames} for:item="room">
+            <li
+              key={room.Id}
+              class="room-item"
+              data-id={room.Id}
+              ondragover={handleDragOver}
+              ondragleave={handleDragLeave}
+              ondrop={handleDrop}
+            >
+              <div class="room-header">
+                {room.Name} - Capacity: {room.capacity}
+              </div>
+              <div class="assigned-members">
+                <h3>Assigned Members:</h3>
+                <ul>
+                  <template for:each={room.assignedMembers} for:item="member">
+                    <!-- Member component -->
+                    <li
+                      key={member.Id}
+                      class="member-item"
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.25rem;
+                      "
+                      draggable="true"
+                      data-id={member.Id}
+                      ondragstart={handleDragStart}
+                      ondragend={handleDragEnd}
+                    >
+                      <div style="font-weight: bold">{member.Name}</div>
+                      <div>
+                        Room Requirements: {member.roomPreference} of
+                        {member.roomPreferenceName}
+                      </div>
+                    </li>
+                  </template>
                 </ul>
-            </div>
-            
-            <!-- Right Column: Rooms -->
-            <div class="column rooms-column">
-                <h2>Rooms</h2>
-                <ul class="room-list">
-                    <template for:each={roomsWithMemberNames} for:item="room">
-                        <li key={room.Id} 
-                            class="room-item"
-                            data-id={room.Id}
-                            ondragover={handleDragOver}
-                            ondragleave={handleDragLeave}
-                            ondrop={handleDrop}>
-                            <div class="room-header">
-                                {room.Name} - Capacity: {room.capacity}
-                            </div>
-                            <div class="assigned-members">
-                                <h3>Assigned Members:</h3>
-                                <ul>
-                                    <template for:each={room.assignedMemberNames} for:item="member">
-                                        <li key={member.Id}>{member.Name}</li>
-                                    </template>
-                                </ul>
-                            </div>
-                        </li>
-                    </template>
-                </ul>
-            </div>
-        </div>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
     </div>
+  </div>
 </template>
