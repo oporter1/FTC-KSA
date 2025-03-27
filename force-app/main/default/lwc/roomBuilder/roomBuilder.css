@@ -16,13 +16,13 @@
     background-color: #f3f2f2;
 }
 
-.student-list,
+.member-list,
 .room-list {
     list-style-type: none;
     padding: 0;
 }
 
-.student-item {
+.member-item {
     margin: 8px 0;
     padding: 10px;
     background-color: #ffffff;
@@ -32,7 +32,7 @@
     transition: background-color 0.2s;
 }
 
-.student-item:hover {
+.member-item:hover {
     background-color: #f8f8f8;
 }
 
@@ -51,24 +51,24 @@
     border-bottom: 1px solid #d8dde6;
 }
 
-.assigned-students {
+.assigned-members {
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 3px;
 }
 
-.assigned-students h3 {
+.assigned-members h3 {
     font-size: 14px;
     margin-top: 0;
     margin-bottom: 8px;
 }
 
-.assigned-students ul {
+.assigned-members ul {
     list-style-type: none;
     padding-left: 10px;
 }
 
-.assigned-students li {
+.assigned-members li {
     margin: 5px 0;
     padding: 5px;
     background-color: #eef4ff;
@@ -76,7 +76,7 @@
 }
 
 /* Drag and drop visual feedback */
-.student-item.dragging {
+.member-item.dragging {
     opacity: 0.6;
 }
 

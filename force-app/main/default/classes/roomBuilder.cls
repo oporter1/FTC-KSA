@@ -4,7 +4,12 @@ public with sharing class roomBuilder {
 
   @AuraEnabled(cacheable=false)
   public static AthletesAndRooms getAthletesAndRooms(String webcode) {
-    String teamOppId = [SELECT Id FROM Opportunity WHERE KSA_Webcode__c = :webcode].Id;
+    String teamOppId = [
+      SELECT Id
+      FROM Opportunity
+      WHERE KSA_Webcode__c = :webcode
+    ]
+    .Id;
     System.debug('teamOppId - ' + teamOppId);
     List<Opportunity> athletes = [
       SELECT
@@ -23,23 +28,19 @@ public with sharing class roomBuilder {
       WHERE Team_Opportunity__c = :teamOppId AND Id != :teamOppId
     ];
     System.debug('athletes - ' + athletes.size());
-    List<Id> roomIds = new List<Id>();
-    // Get list of room ids
-    for (Opportunity athlete : athletes) {
-      if (athlete.Room__c != null) {
-        roomIds.add(athlete.Room__c);
-      }
-    }
+ 
     List<Rooms__c> rooms = [
       SELECT Id, Opportunity__c, Name, Room_No__c, Type__c, CreatedDate
       FROM Rooms__c
-      WHERE Id IN :roomIds
+      WHERE Opportunity__c = :teamOppId
     ];
 
     // Initialize helper variables
     Map<String, List<RoomObj>> roomType2RoomsMap = new Map<String, List<RoomObj>>();
     Map<Id, RoomObj> roomObjMap = new Map<Id, RoomObj>();
     for (Rooms__c room : rooms) {
+      // Converting '4' -> 'Quad' so the mapping works
+      room.Type__c = roomTypeInteger2String(room.Type__c); 
       String key = room.Type__c;
       if (!roomType2RoomsMap.containsKey(key)) {
         roomType2RoomsMap.put(key, new List<RoomObj>());
@@ -71,11 +72,21 @@ public with sharing class roomBuilder {
       Decimal roomTypeNum = athleteRoomNumberType(athlete);
       String roomType = oppRoomType2RoomPicklist(roomTypeNum);
       if (roomType == 'None') {
-        System.debug('error athlete opportunity doesnt have any room field set - ' + athlete.Id);
+        System.debug(
+          'error athlete opportunity doesnt have any room field set - ' +
+          athlete.Id
+        );
         continue;
       }
 
-      System.debug('Athlete loop - ' + athlete.Name + ' : ' + roomTypeNum + ' , ' + roomType);
+      System.debug(
+        'Athlete loop - ' +
+          athlete.Name +
+          ' : ' +
+          roomTypeNum +
+          ' , ' +
+          roomType
+      );
 
       List<RoomObj> roomObjs = roomType2RoomsMap.get(roomType);
 
@@ -87,7 +98,10 @@ public with sharing class roomBuilder {
           Type__c = roomType,
           Opportunity__c = athlete.Team_Opportunity__c
         );
-        RoomObj newRoomObj = new RoomObj(newRoom, roomType2Integer(roomType) - 1);
+        RoomObj newRoomObj = new RoomObj(
+          newRoom,
+          roomType2Integer(roomType) - 1
+        );
         roomType2RoomsMap.get(roomType).add(newRoomObj);
         continue;
       }
@@ -110,18 +124,31 @@ public with sharing class roomBuilder {
           Type__c = roomType,
           Opportunity__c = athlete.Team_Opportunity__c
         );
-        RoomObj newRoomObj = new RoomObj(newRoom, roomType2Integer(roomType) - 1);
+        RoomObj newRoomObj = new RoomObj(
+          newRoom,
+          roomType2Integer(roomType) - 1
+        );
         roomType2RoomsMap.get(roomType).add(newRoomObj);
         continue;
       }
     }
 
     List<Rooms__c> everyRoom = new List<Rooms__c>();
+    List<Rooms__c> newRooms = new List<Rooms__c>();
+
     for (List<RoomObj> roomObjs : roomType2RoomsMap.values()) {
-        for (RoomObj roomObj : roomObjs) {
-            everyRoom.add(roomObj.room);
+      for (RoomObj roomObj : roomObjs) {
+        Rooms__c room = roomObj.room;
+        room.Type__c = String.valueOf(roomType2Integer(room.Type__c));
+        everyRoom.add(room);
+        System.debug('Every room - ' + room);
+        if (room.Id == null) {
+          newRooms.add(room);
         }
+      }
     }
+    System.debug('NewRooms - ' + newRooms.size());
+    insert newRooms;
 
     // Combine new rooms and old rooms together
     AthletesAndRooms aar = new AthletesAndRooms(athletes, everyRoom);
@@ -172,6 +199,20 @@ public with sharing class roomBuilder {
     }
   }
 
+  public static String roomTypeInteger2String(String roomType) {
+    if (roomType == '4') {
+      return 'Quad';
+    } else if (roomType == '3') {
+      return 'Triple';
+    } else if (roomType == '2') {
+      return 'Double';
+    } else if (roomType == '1') {
+      return 'Single';
+    } else {
+      return 'None';
+    }
+  }
+
   public class RoomObj {
     public Rooms__c room { get; set; }
     public Integer spacesLeft { get; set; }
@@ -185,7 +226,7 @@ public with sharing class roomBuilder {
   public class AthletesAndRooms {
     @AuraEnabled
     public List<Opportunity> athletes { get; set; }
-    
+
     @AuraEnabled
     public List<Rooms__c> rooms { get; set; }
 

@@ -2,23 +2,24 @@
     Room Builder LWC
     <div class="container" style="background-color: white;">
         <div class="columns">
-            <!-- Left Column: Students -->
-            <div class="column students-column">
-                <h2>Students</h2>
-                <ul class="student-list">
-                    <template for:each={studentsWithRoomInfo} for:item="student">
-                        <li key={student.id} 
-                            class="student-item" 
+            <!-- Left Column: Members -->
+            <div class="column members-column">
+                <h2>Members</h2>
+                <ul class="member-list">
+                    <template for:each={membersWithRoomInfo} for:item="member">
+                        <li key={member.Id} 
+                            class="member-item" 
+                            style="display: flex; flex-direction: column; gap: 0.25rem;"
                             draggable="true" 
-                            data-id={student.id}
+                            data-id={member.Id}
                             ondragstart={handleDragStart}
                             ondragend={handleDragEnd}
                             >
                             
-                            {student.name}
-                            <template if:true={student.roomName}>
-                                (Assigned to: {student.roomName})
-                            </template>
+                            <div style="font-weight: bold;">
+                                {member.Name}
+                            </div>
+                            <div>Room Requirements: {member.roomPreference} of {member.roomPreferenceName}</div>
                         </li>
                     </template>
                 </ul>
@@ -28,21 +29,21 @@
             <div class="column rooms-column">
                 <h2>Rooms</h2>
                 <ul class="room-list">
-                    <template for:each={roomsWithStudentNames} for:item="room">
-                        <li key={room.id} 
+                    <template for:each={roomsWithMemberNames} for:item="room">
+                        <li key={room.Id} 
                             class="room-item"
-                            data-id={room.id}
+                            data-id={room.Id}
                             ondragover={handleDragOver}
                             ondragleave={handleDragLeave}
                             ondrop={handleDrop}>
                             <div class="room-header">
-                                {room.name} - Capacity: {room.capacity}
+                                {room.Name} - Capacity: {room.capacity}
                             </div>
-                            <div class="assigned-students">
-                                <h3>Assigned Students:</h3>
+                            <div class="assigned-members">
+                                <h3>Assigned Members:</h3>
                                 <ul>
-                                    <template for:each={room.assignedStudentNames} for:item="student">
-                                        <li key={student.id}>{student.name}</li>
+                                    <template for:each={room.assignedMemberNames} for:item="member">
+                                        <li key={member.Id}>{member.Name}</li>
                                     </template>
                                 </ul>
                             </div>

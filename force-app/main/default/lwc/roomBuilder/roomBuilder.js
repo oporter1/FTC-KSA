@@ -1,4 +1,4 @@
-import { api, LightningElement, track } from 'lwc';
+import { api, LightningElement } from 'lwc';
 import getAthletesAndRooms from '@salesforce/apex/roomBuilder.getAthletesAndRooms';
 
 export default class RoomBuilder extends LightningElement {
@@ -13,9 +13,22 @@ export default class RoomBuilder extends LightningElement {
         console.log('webCode - ', value)
         getAthletesAndRooms({ webcode: value }).then(resp => {
             console.log('Athletes and Rooms data - ', resp);
+            const members = JSON.parse(JSON.stringify(resp.athletes)) || []
+            const rooms = JSON.parse(JSON.stringify(resp.rooms)) || []
+
+            this.members = members.map(member => {
+                const roomType = athleteRoomNumberType(member)
+                const roomNumPicklistType = athleteRoomType2Number(roomType)
+                const roomPreference = roomPicklistType2Number(roomNumPicklistType)
+                return { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType }
+            })
+            this.rooms = rooms.map(room => {
+                const capacity = roomPicklistType2Number(roomTypeInteger2String(room.Type__c))
+                // const type = roomTypeInteger2String()
+                return { ...room, assignedMembers: [], capacity: capacity }
+            })
         })
     }
-    athletesAndRooms;
 
     connectedCallback() {
         console.log('lwc room builder connected - ', this.webcode);
@@ -25,62 +38,49 @@ export default class RoomBuilder extends LightningElement {
         console.log('lwc room builder rendered - ', this.webcode);
     }
 
-    @track students = [
-        { id: 's1', name: 'John Doe', roomId: null },
-        { id: 's2', name: 'Jane Smith', roomId: null },
-        { id: 's3', name: 'Mike Johnson', roomId: null },
-        { id: 's4', name: 'Sara Williams', roomId: null },
-        { id: 's5', name: 'Robert Brown', roomId: null },
-        { id: 's6', name: 'Emily Davis', roomId: null }
-    ];
+    members = []
+    rooms = []
 
-    @track rooms = [
-        { id: 'r1', name: 'Room 101', capacity: 3, assignedStudents: [] },
-        { id: 'r2', name: 'Room 102', capacity: 2, assignedStudents: [] },
-        { id: 'r3', name: 'Room 103', capacity: 4, assignedStudents: [] }
-    ];
+    // Current member being dragged
+    draggedMemberId = null;
 
-    // Current student being dragged
-    draggedStudentId = null;
-
-    // Computed property for students with room names
-    get studentsWithRoomInfo() {
-        return this.students.map(student => {
-            const roomId = student.roomId;
-            const room = roomId ? this.rooms.find(rm => rm.id === roomId) : null;
+    // Computed property for members with room names
+    get membersWithRoomInfo() {
+        return this.members.map(member => {
+            const roomId = member.Room__c;
+            const room = roomId ? this.rooms.find(rm => rm.Id === roomId) : null;
             return {
-                ...student,
-                roomName: room ? room.name : null
+                ...member,
+                roomName: room ? room.Name : null
             };
         });
     }
 
-    // Computed property for rooms with student names
-    get roomsWithStudentNames() {
+    // Computed property for rooms with member names
+    get roomsWithMemberNames() {
         return this.rooms.map(room => {
-            const assignedStudentNames = room.assignedStudents.map(studentId => {
-                const student = this.students.find(st => st.id === studentId);
+            const assignedMemberNames = room.assignedMembers?.map(studentId => {
+                const member = this.members.find(st => st.Id === studentId);
                 return {
-                    id: studentId,
-                    name: student ? student.name : 'Unknown Student'
+                    Id: studentId,
+                    Name: member ? member.Name : 'Unknown Member'
                 };
-            });
+            }) || [];
 
             return {
                 ...room,
-                assignedStudentNames
+                assignedMemberNames
             };
         });
     }
 
     handleDragStart(event) {
-        // Store the student ID being dragged
+        // Store the member ID being dragged
         event.currentTarget.classList.add('dragging');
-
-        this.draggedStudentId = event.currentTarget.dataset.id;
+        this.draggedMemberId = event.currentTarget.dataset.id;
 
         // Set transfer data (optional but recommended for cross-browser compatibility)
-        event.dataTransfer.setData('text/plain', this.draggedStudentId);
+        event.dataTransfer.setData('text/plain', this.draggedMemberId);
 
         // Set the drag effect
         event.dataTransfer.effectAllowed = 'move';
@@ -110,54 +110,110 @@ export default class RoomBuilder extends LightningElement {
     }
 
     handleDrop(event) {
-        // Prevent default action
-        event.preventDefault();
-        event.currentTarget.classList.remove('drag-over');
+        try {
+            // Prevent default action
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+            // Get the room ID where the member was dropped
+            const roomId = event.currentTarget.dataset.id;
+            // Find the room
+            const room = this.rooms.find(rm => rm.Id === roomId);
+            console.log('handleDrop 2 - ', room)
+            // Find the member
+            const studentIndex = this.members.findIndex(st => st.Id === this.draggedMemberId);
+            console.log('handleDrop 3 - ', studentIndex)
 
-        // Get the room ID where the student was dropped
-        const roomId = event.currentTarget.dataset.id;
+            if (room && studentIndex !== -1) {
+                // Check if the member is already assigned to a room
+                const currentRoomId = this.members[studentIndex].Room__c;
+                console.log('inner if 1 - ', currentRoomId)
+                // If member is already assigned, remove from current room
+                if (currentRoomId) {
+                    const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
+                    console.log('inner if currentRoom 1 - ', currentRoom)
 
-        // Find the room
-        const room = this.rooms.find(rm => rm.id === roomId);
+                    if (currentRoom) {
+                        currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
+                            Id => Id !== this.draggedMemberId
+                        );
+                    }
+                }
+                console.log('inner if 2 - ')
 
-        // Find the student
-        const studentIndex = this.students.findIndex(st => st.id === this.draggedStudentId);
+                // Check if the room has capacity
+                if (room.assignedMembers.length < room.capacity) {
+                    // Assign member to new room
+                    this.members[studentIndex].Room__c = roomId;
+                    console.log('inner if 3 - ', this.members[studentIndex], ' - ', this.members[studentIndex].Room__c)
 
-        if (room && studentIndex !== -1) {
-            // Check if the student is already assigned to a room
-            const currentRoomId = this.students[studentIndex].roomId;
+                    // Add member to room's assigned members if not already there
+                    if (!room.assignedMembers.includes(this.draggedMemberId)) {
+                        room.assignedMembers.push(this.draggedMemberId);
+                    }
 
-            // If student is already assigned, remove from current room
-            if (currentRoomId) {
-                const currentRoom = this.rooms.find(rm => rm.id === currentRoomId);
-                if (currentRoom) {
-                    currentRoom.assignedStudents = currentRoom.assignedStudents.filter(
-                        id => id !== this.draggedStudentId
-                    );
+                    // Force refresh of UI
+                    this.members = [...this.members];
+                    this.rooms = [...this.rooms];
+                } else {
+                    // Room is at capacity
+                    // eslint-disable-next-line no-alert
+                    alert(`Room ${room.Name} is already at capacity!`);
                 }
             }
 
-            // Check if the room has capacity
-            if (room.assignedStudents.length < room.capacity) {
-                // Assign student to new room
-                this.students[studentIndex].roomId = roomId;
-
-                // Add student to room's assigned students if not already there
-                if (!room.assignedStudents.includes(this.draggedStudentId)) {
-                    room.assignedStudents.push(this.draggedStudentId);
-                }
-
-                // Force refresh of UI
-                this.students = [...this.students];
-                this.rooms = [...this.rooms];
-            } else {
-                // Room is at capacity
-                // eslint-disable-next-line no-alert
-                alert(`Room ${room.name} is already at capacity!`);
-            }
+            // Reset the dragged member ID
+            this.draggedMemberId = null;
+        } catch (err) {
+            console.log("err - ", err)
         }
-
-        // Reset the dragged student ID
-        this.draggedStudentId = null;
     }
+}
+
+function athleteRoomNumberType(athlete) {
+    const keys = ['Single_Room__c', 'Double_Room__c', 'Triple_Room__c', 'Quad_Rooms__c']
+    for (const key of keys) {
+        if (!!athlete[key]) {
+            return athlete[key]
+        }
+    }
+    return 0
+}
+
+function athleteRoomType2Number(roomTypeNum) {
+    if (roomTypeNum === 0.25) {
+        return 'Quad';
+    } else if (roomTypeNum >= 0.3 && roomTypeNum <= 0.34) {
+        return 'Triple';
+    } else if (roomTypeNum === 0.5) {
+        return 'Double';
+    } else if (roomTypeNum === 1) {
+        return 'Single';
+    }
+    return 'None';
+}
+
+function roomPicklistType2Number(roomType) {
+    if (roomType === 'Quad') {
+        return 4;
+    } else if (roomType === 'Triple') {
+        return 3;
+    } else if (roomType === 'Double') {
+        return 2;
+    } else if (roomType === 'Single') {
+        return 1;
+    }
+    return 0;
+}
+
+function roomTypeInteger2String(roomTypeNumberAsString) {
+    if (roomTypeNumberAsString === '4') {
+        return 'Quad';
+    } else if (roomTypeNumberAsString === '3') {
+        return 'Triple';
+    } else if (roomTypeNumberAsString === '2') {
+        return 'Double';
+    } else if (roomTypeNumberAsString === '1') {
+        return 'Single';
+    }
+    return 0;
 }
