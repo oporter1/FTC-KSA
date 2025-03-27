@@ -123,46 +123,56 @@ export default class RoomBuilder extends LightningElement {
             const studentIndex = this.members.findIndex(st => st.Id === this.draggedMemberId);
             console.log('handleDrop 3 - ', studentIndex)
 
-            if (room && studentIndex !== -1) {
-                // Check if the member is already assigned to a room
-                const currentRoomId = this.members[studentIndex].Room__c;
-                console.log('inner if 1 - ', currentRoomId)
-                // If member is already assigned, remove from current room
-                if (currentRoomId) {
-                    const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
-                    console.log('inner if currentRoom 1 - ', currentRoom)
-
-                    if (currentRoom) {
-                        currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
-                            Id => Id !== this.draggedMemberId
-                        );
-                    }
-                }
-                console.log('inner if 2 - ')
-
-                // Check if the room has capacity
-                if (room.assignedMembers.length < room.capacity) {
-                    // Assign member to new room
-                    this.members[studentIndex].Room__c = roomId;
-                    console.log('inner if 3 - ', this.members[studentIndex], ' - ', this.members[studentIndex].Room__c)
-
-                    // Add member to room's assigned members if not already there
-                    if (!room.assignedMembers.includes(this.draggedMemberId)) {
-                        room.assignedMembers.push(this.draggedMemberId);
-                    }
-
-                    // Force refresh of UI
-                    this.members = [...this.members];
-                    this.rooms = [...this.rooms];
-                } else {
-                    // Room is at capacity
-                    // eslint-disable-next-line no-alert
-                    alert(`Room ${room.Name} is already at capacity!`);
-                }
+            // Reset the dragged member ID
+            const draggedMemberId = this.draggedMemberId
+            this.draggedMemberId = null
+            if (!(room && studentIndex !== -1)) {
+                return
             }
 
-            // Reset the dragged member ID
-            this.draggedMemberId = null;
+            // Check if the member is already assigned to a room
+            const member = this.members[studentIndex]
+            const currentRoomId = member.Room__c;
+            console.log('inner if 1 - ', currentRoomId)
+            // If member is already assigned, remove from current room
+            if (currentRoomId) {
+                const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
+                console.log('inner if currentRoom 1 - ', currentRoom)
+
+                if (currentRoom) {
+                    currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
+                        Id => Id !== draggedMemberId
+                    );
+                }
+            }
+            console.log('inner if 2 - ')
+
+            // Check if member preference matches room capacity
+            if (member.roomPreference !== room.capacity) {
+                // eslint-disable-next-line no-alert
+                alert(`User ${member.Name} can only go in rooms of size ${member.roomPreference}`)
+                return
+            }
+
+            // Check if the room has capacity
+            if (room.assignedMembers.length < room.capacity) {
+            // Assign member to new room
+                member.Room__c = roomId;
+                console.log('inner if 3 - ', member, ' - ', member.Room__c)
+
+                // Add member to room's assigned members if not already there
+                if (!room.assignedMembers.includes(draggedMemberId)) {
+                    room.assignedMembers.push(draggedMemberId);
+                }
+
+                // Force refresh of UI
+                this.members = [...this.members];
+                this.rooms = [...this.rooms];
+            } else {
+                // Room is at capacity
+                // eslint-disable-next-line no-alert
+                alert(`Room ${room.Name} is already at capacity!`);
+            }
         } catch (err) {
             console.log("err - ", err)
         }
