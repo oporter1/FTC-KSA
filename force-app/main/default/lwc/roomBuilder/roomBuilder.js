@@ -33,15 +33,22 @@ export default class RoomBuilder extends LightningElement {
             this.rooms = rooms.map(room => {
                 const capacity = roomPicklistType2Number(roomTypeInteger2String(room.Type__c))
                 // const type = roomTypeInteger2String()
-                return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity, availableSpots: capacity }
+                const numMembers = roomObj[room.Id]?.length || 0
+                const availableSpots = capacity - numMembers
+                const spotsLeftText = numMembers === 0 ? 'No occupants' : numMembers === capacity ? 'Full Room' : `${availableSpots} Spot${availableSpots === 1 ? '' : 's'} left`
+                return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity, availableSpots, spotsLeftText, isFull: numMembers === capacity }
             })
-
-            console.log('apex getAthletesAndRooms()')
+            this.updateRings = true
         })
     }
 
+    updateRings = true
     renderedCallback() {
-        console.log('renderedCallback()')
+        // re-generate the ring 
+        if (this.updateRings) {
+            const triggerGetter = this.roomsWithMemberNames
+            this.updateRings = false
+        }
     }
 
     members = []
@@ -54,10 +61,10 @@ export default class RoomBuilder extends LightningElement {
     get membersWithRoomInfo() {
         return this.members.map(member => {
             const roomId = member.Room__c;
-            const room = roomId ? this.rooms.find(rm => rm.Id === roomId) : null;
+            // const room = roomId ? this.rooms.find(rm => rm.Id === roomId) : null;
             return {
                 ...member,
-                roomName: room ? room.Name : null
+                inRoom: !!roomId
             };
         }).filter(mem => !mem.inRoom);
     }
@@ -66,14 +73,28 @@ export default class RoomBuilder extends LightningElement {
     get roomsWithMemberNames() {
         return this.rooms.map(room => {
             // todo - for each of the rooms we need to update the ring indicator
-            const availableSpots = room.capacity - (room.assignedMembers?.length || 0)
+            const numMembers = room.assignedMembers?.length || 0
+            const availableSpots = room.capacity - numMembers
+            const spotsLeftText = numMembers === 0 ? 'No occupants' : numMembers === room.capacity ? 'Full Room' : `${availableSpots} Spot${availableSpots === 1 ? '' : 's'} left`
             const ringContainer = this.template.querySelector(`.ring-container[data-id="${room.Id}"]`)
             if (ringContainer) {
-                this.updateProgressRing(ringContainer, room.assignedMembers?.length || 0, room.capacity)
+                if (numMembers === room.capacity) {
+                    ringContainer.classList.add('green-background');
+                } else {
+                    ringContainer.classList.remove('green-background');
+                }
+                try {
+                    this.updateProgressRing(ringContainer, numMembers, room.capacity)
+                } catch (err) {
+                    console.log('ringUpdate error - ', room.Name)
+                }
+                this.updateRings = true
             }
             return {
                 ...room,
-                availableSpots
+                availableSpots,
+                spotsLeftText,
+                isFull: numMembers === room.capacity
             };
         });
     }
@@ -83,8 +104,8 @@ export default class RoomBuilder extends LightningElement {
     progressColor = '#4a90e2';
 
     // Function to convert degrees to coordinates on a circle
-    degToCoord(deg, radius, center) {
-        const rad = (deg - 90) * Math.PI / 180; // -90 to start from the top
+    degToCoord(deg, radius, center, startDeg = -90) {
+        const rad = (deg + startDeg) * Math.PI / 180; // -90 to start from the top
         return {
             x: center.x + radius * Math.cos(rad),
             y: center.y + radius * Math.sin(rad)
@@ -98,7 +119,7 @@ export default class RoomBuilder extends LightningElement {
         if (total <= 0) total = 1;
         if (current < 0) current = 0;
         if (current > total) current = total;
-
+        if (current === total) return
         // Calculate progress percentage
         const progressPercentage = current / total;
 
@@ -108,7 +129,7 @@ export default class RoomBuilder extends LightningElement {
         // Calculate SVG path
         const center = { x: 50, y: 50 };
         const radius = 40;
-        const startPoint = this.degToCoord(0, radius, center);
+        const startPoint = progressPercentage === 1 ? this.degToCoord(0, radius, center, -90) : this.degToCoord(0, radius, center, 0);
 
         console.log('updateProgressRing() ', ringContainer.getAttribute('data-name'), current, total, progressPercentage);
 
@@ -129,7 +150,7 @@ export default class RoomBuilder extends LightningElement {
         }
 
         // For other percentages, draw an arc
-        const endPoint = this.degToCoord(degrees, radius, center);
+        const endPoint = progressPercentage === 1 ? this.degToCoord(degrees, radius, center, -90) : this.degToCoord(degrees, radius, center, 0);
         const largeArcFlag = degrees > 180 ? 1 : 0;
 
         progressArc.setAttribute(
@@ -188,10 +209,8 @@ export default class RoomBuilder extends LightningElement {
             const roomId = event.currentTarget.dataset.id;
 
             // Find the room
-            console.log('handleDrop 2 - ', roomId)
             // Find the member
             const studentIndex = this.members.findIndex(st => st.Id === this.draggedMemberId);
-            console.log('handleDrop 3 - ', studentIndex)
 
             // Reset the dragged member ID
             const draggedMemberId = this.draggedMemberId
@@ -209,7 +228,6 @@ export default class RoomBuilder extends LightningElement {
                         assignedMembers: room.assignedMembers.filter((mem) => mem.Id !== draggedMemberId)
                     }
                 })
-                console.log('membersArea - currROom - ')
                 member.Room__c = ''
                 this.members = [...this.members]
                 this.saveAthleteRoomInfo()
@@ -221,11 +239,9 @@ export default class RoomBuilder extends LightningElement {
 
             // Check if the member is already assigned to a room
             const currentRoomId = member.Room__c;
-            console.log('inner if 1 - ', currentRoomId)
             // If member is already assigned, remove from current room
             if (currentRoomId) {
                 const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
-                console.log('inner if currentRoom 1 - ', currentRoom)
 
                 if (currentRoom) {
                     currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
@@ -233,7 +249,6 @@ export default class RoomBuilder extends LightningElement {
                     );
                 }
             }
-            console.log('inner if 2 - ')
 
             // Check if member preference matches room capacity
             if (member.roomPreference !== room.capacity) {
@@ -246,7 +261,6 @@ export default class RoomBuilder extends LightningElement {
             if (room.assignedMembers.length < room.capacity) {
                 // Assign member to new room
                 member.Room__c = roomId;
-                console.log('inner if 3 - ', member, ' - ', member.Room__c)
 
                 // Add member to room's assigned members if not already there
                 if (!room.assignedMembers.find((mem) => mem.Id === draggedMemberId)) {
