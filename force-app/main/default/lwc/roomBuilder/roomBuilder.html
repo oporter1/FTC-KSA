@@ -1,29 +1,51 @@
 <template>
-  Room Builder LWC
-  <div class="container" style="background-color: white">
+  <div
+    class="container"
+    style="display: flex; flex-direction: column; gap: 2rem"
+  >
+    <div style="font-size: 1rem; color: white">
+      Drag and drop a student name into a Hotel Room to complete booking.
+    </div>
     <div class="columns">
       <!-- Left Column: Members -->
-      <div
-        class="column members-column"
-        data-id="membersArea"
-        ondragover={handleDragOver}
-        ondragleave={handleDragLeave}
-        ondrop={handleDrop}
-      >
-        <h2>Members</h2>
-        <ul class="member-list">
+      <div class="column members-column">
+        <div class="column-title" style="">
+          <h2 style="line-height: 0">Student Name</h2>
+          <div>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2.44608 7.38439C2.26146 7.56901 2.26146 7.82285 2.44608 8.00747L5.90762 11.3998C6.09223 11.5844 6.36916 11.5844 6.55377 11.3998L10.0384 8.00747C10.223 7.82285 10.223 7.56901 10.0384 7.38439L9.39223 6.76131C9.20762 6.5767 8.93069 6.5767 8.74608 6.76131L7.66146 7.82285C7.47685 8.00747 7.15377 7.89208 7.15377 7.61516V1.38439C7.15377 1.15362 6.94608 0.922852 6.69223 0.922852H5.76916C5.51531 0.922852 5.30762 1.1767 5.30762 1.38439V7.61516C5.30762 7.89208 4.98454 8.00747 4.79992 7.82285L3.71531 6.76131C3.53069 6.5767 3.25377 6.5767 3.06916 6.76131L2.44608 7.38439Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+        </div>
+        <ul
+          class="member-list"
+          data-id="membersArea"
+          ondragover={handleDragOver}
+          ondragleave={handleDragLeave}
+          ondrop={handleDrop}
+        >
           <template for:each={membersWithRoomInfo} for:item="member">
             <!-- Member component -->
             <li
               key={member.Id}
               class="member-item"
-              style="display: flex; flex-direction: column; gap: 0.25rem"
               draggable="true"
               data-id={member.Id}
               ondragstart={handleDragStart}
               ondragend={handleDragEnd}
             >
-              <div style="font-weight: bold">{member.Name}</div>
+              <div class="card-title">{member.Name}</div>
               <div>
                 Room Requirements: {member.roomPreference} of
                 {member.roomPreferenceName}
@@ -35,7 +57,25 @@
 
       <!-- Right Column: Rooms -->
       <div class="column rooms-column">
-        <h2>Rooms</h2>
+        <div class="column-title">
+          <h2 style="line-height: 0">Rooms</h2>
+          <div>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2.44608 7.38439C2.26146 7.56901 2.26146 7.82285 2.44608 8.00747L5.90762 11.3998C6.09223 11.5844 6.36916 11.5844 6.55377 11.3998L10.0384 8.00747C10.223 7.82285 10.223 7.56901 10.0384 7.38439L9.39223 6.76131C9.20762 6.5767 8.93069 6.5767 8.74608 6.76131L7.66146 7.82285C7.47685 8.00747 7.15377 7.89208 7.15377 7.61516V1.38439C7.15377 1.15362 6.94608 0.922852 6.69223 0.922852H5.76916C5.51531 0.922852 5.30762 1.1767 5.30762 1.38439V7.61516C5.30762 7.89208 4.98454 8.00747 4.79992 7.82285L3.71531 6.76131C3.53069 6.5767 3.25377 6.5767 3.06916 6.76131L2.44608 7.38439Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+        </div>
         <ul class="room-list">
           <template for:each={roomsWithMemberNames} for:item="room">
             <li
@@ -47,21 +87,32 @@
               ondrop={handleDrop}
             >
               <div class="room-header">
-                {room.Name} - Capacity: {room.capacity}
+                <div class="">
+                  <div style="font-weight: bold">Room {room.Name}</div>
+                  <div>Room Size: {room.capacity}</div>
+                </div>
+                <div style="display: flex; gap: 0.5rem">
+                  <div>{room.availableSpots} Spots Left</div>
+                  <div>Icon</div>
+                </div>
               </div>
-              <div class="assigned-members">
-                <h3>Assigned Members:</h3>
-                <ul>
+              <div class="">
+                <ul
+                  class="member-list"
+                  style="
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    background-color: transparent;
+                  "
+                >
                   <template for:each={room.assignedMembers} for:item="member">
                     <!-- Member component -->
                     <li
                       key={member.Id}
                       class="member-item"
-                      style="
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.25rem;
-                      "
+                      style="margin: 0"
                       draggable="true"
                       data-id={member.Id}
                       ondragstart={handleDragStart}

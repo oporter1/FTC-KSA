@@ -33,7 +33,7 @@ export default class RoomBuilder extends LightningElement {
             this.rooms = rooms.map(room => {
                 const capacity = roomPicklistType2Number(roomTypeInteger2String(room.Type__c))
                 // const type = roomTypeInteger2String()
-                return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity }
+                return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity, availableSpots: capacity }
             })
         })
     }
@@ -60,7 +60,8 @@ export default class RoomBuilder extends LightningElement {
     get roomsWithMemberNames() {
         return this.rooms.map(room => {
             return {
-                ...room
+                ...room,
+                availableSpots: room.capacity - (room.assignedMembers?.length || 0)
             };
         });
     }
