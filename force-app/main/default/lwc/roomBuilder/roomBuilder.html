@@ -93,7 +93,28 @@
                 </div>
                 <div style="display: flex; gap: 0.5rem">
                   <div>{room.availableSpots} Spots Left</div>
-                  <div>Icon</div>
+
+                  <div class="ring-container" data-id={room.Id} data-name={room.Name}>
+                    <svg class="background-ring" viewBox="0 0 100 100">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="10"
+                      />
+                    </svg>
+                    <svg class="progress-ring" viewBox="0 0 100 100">
+                      <path
+                        data-id="progress-arc"
+                        fill="none"
+                        stroke="#4a90e2"
+                        stroke-width="10"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
               <div class="">

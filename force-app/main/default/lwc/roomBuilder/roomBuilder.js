@@ -35,7 +35,13 @@ export default class RoomBuilder extends LightningElement {
                 // const type = roomTypeInteger2String()
                 return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity, availableSpots: capacity }
             })
+
+            console.log('apex getAthletesAndRooms()')
         })
+    }
+
+    renderedCallback() {
+        console.log('renderedCallback()')
     }
 
     members = []
@@ -59,12 +65,84 @@ export default class RoomBuilder extends LightningElement {
     // Computed property for rooms with member names
     get roomsWithMemberNames() {
         return this.rooms.map(room => {
+            // todo - for each of the rooms we need to update the ring indicator
+            const availableSpots = room.capacity - (room.assignedMembers?.length || 0)
+            const ringContainer = this.template.querySelector(`.ring-container[data-id="${room.Id}"]`)
+            if (ringContainer) {
+                this.updateProgressRing(ringContainer, room.assignedMembers?.length || 0, room.capacity)
+            }
             return {
                 ...room,
-                availableSpots: room.capacity - (room.assignedMembers?.length || 0)
+                availableSpots
             };
         });
     }
+
+    /* RING START */
+    // Initial ring color
+    progressColor = '#4a90e2';
+
+    // Function to convert degrees to coordinates on a circle
+    degToCoord(deg, radius, center) {
+        const rad = (deg - 90) * Math.PI / 180; // -90 to start from the top
+        return {
+            x: center.x + radius * Math.cos(rad),
+            y: center.y + radius * Math.sin(rad)
+        };
+    }
+
+    // Function to update the progress ring
+    updateProgressRing(ringContainer, current, total) {
+        const progressArc = ringContainer.querySelector('[data-id="progress-arc"]')
+        // Validate inputs
+        if (total <= 0) total = 1;
+        if (current < 0) current = 0;
+        if (current > total) current = total;
+
+        // Calculate progress percentage
+        const progressPercentage = current / total;
+
+        // Convert to degrees (full circle is 360 degrees)
+        const degrees = progressPercentage * 360;
+
+        // Calculate SVG path
+        const center = { x: 50, y: 50 };
+        const radius = 40;
+        const startPoint = this.degToCoord(0, radius, center);
+
+        console.log('updateProgressRing() ', ringContainer.getAttribute('data-name'), current, total, progressPercentage);
+
+        // If progress is 0, don't show arc
+        if (progressPercentage === 0) {
+            progressArc.setAttribute('d', '');
+            return;
+        }
+
+        // If progress is 100%, draw a full circle
+        if (progressPercentage === 1) {
+            progressArc.setAttribute(
+                'd',
+                `M ${startPoint.x} ${startPoint.y} ` +
+                `A ${radius} ${radius} 0 1 1 ${startPoint.x - 0.001} ${startPoint.y}`
+            );
+            return;
+        }
+
+        // For other percentages, draw an arc
+        const endPoint = this.degToCoord(degrees, radius, center);
+        const largeArcFlag = degrees > 180 ? 1 : 0;
+
+        progressArc.setAttribute(
+            'd',
+            `M ${startPoint.x} ${startPoint.y} ` +
+            `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endPoint.x} ${endPoint.y}`
+        );
+
+        // Update progress color
+        progressArc.setAttribute('stroke', this.progressColor);
+    }
+
+    /* RING END */
 
     handleDragStart(event) {
         // Store the member ID being dragged
@@ -192,9 +270,7 @@ export default class RoomBuilder extends LightningElement {
 
     // Call apex
     saveAthleteRoomInfo() {
-        console.log('combined - ', this.members)
-        updateAthletes({ athletes: this.members }).then((resp) => {
-            console.log('updateAthlets resp - ', resp)
+        updateAthletes({ athletes: this.members }).then(() => {
         })
     }
 }
