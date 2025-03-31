@@ -46,7 +46,7 @@ export default class RoomBuilder extends LightningElement {
     renderedCallback() {
         // re-generate the ring 
         if (this.updateRings) {
-            const triggerGetter = this.roomsWithMemberNames
+            const triggerGetter = this.roomsWithMemberNames     // variable used to trigger the getter on the right side of =
             this.updateRings = false
         }
     }
@@ -57,6 +57,7 @@ export default class RoomBuilder extends LightningElement {
     // Current member being dragged
     draggedMemberId = null;
 
+    searchFilter = ''
     // Computed property for members with room names
     get membersWithRoomInfo() {
         return this.members.map(member => {
@@ -66,7 +67,13 @@ export default class RoomBuilder extends LightningElement {
                 ...member,
                 inRoom: !!roomId
             };
-        }).filter(mem => !mem.inRoom);
+        }).filter(mem => !mem.inRoom).filter((mem) => mem.Name.toLowerCase().includes(this.searchFilter.toLowerCase()));
+    }
+
+    // Filters out the athletes list based on the search input
+    handleSearchInput(event) {
+        this.searchFilter = event.target.value;
+        console.log('this.searchFilter - ', this.searchFilter)
     }
 
     // Computed property for rooms with member names
@@ -165,6 +172,7 @@ export default class RoomBuilder extends LightningElement {
 
     /* RING END */
 
+    /* DRAG DROP START */
     handleDragStart(event) {
         // Store the member ID being dragged
         event.currentTarget.classList.add('dragging');
@@ -280,7 +288,7 @@ export default class RoomBuilder extends LightningElement {
             console.log("err - ", err)
         }
     }
-
+    /* DRAG DROP END */
 
     // Call apex
     saveAthleteRoomInfo() {
