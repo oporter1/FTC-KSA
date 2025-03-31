@@ -12,7 +12,7 @@ export default class RoomBuilder extends LightningElement {
 
         this._webcode = value
         getAthletesAndRooms({ webcode: value }).then(resp => {
-            console.log('Athletes and Rooms data - ', resp);
+            console.log('Athletes and Rooms data 1- ', resp);
             const members = JSON.parse(JSON.stringify(resp.athletes)) || []
             const rooms = JSON.parse(JSON.stringify(resp.rooms)) || []
 
@@ -22,13 +22,14 @@ export default class RoomBuilder extends LightningElement {
                 const roomNumPicklistType = athleteRoomType2Number(roomType)
                 const roomPreference = roomPicklistType2Number(roomNumPicklistType)
                 const key = member.Room__c
+                const newObj = { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType, inRoom: !!key, schoolName: member?.School_Contact__r?.Name || 'No Contact Name' }
                 if (key) {
                     if (!roomObj[key]) {
                         roomObj[key] = []
                     }
-                    roomObj[key].push(member)
+                    roomObj[key].push(newObj)
                 }
-                return { ...member, roomPreference: roomPreference, roomPreferenceName: roomNumPicklistType, inRoom: !!key }
+                return newObj
             })
             this.rooms = rooms.map(room => {
                 const capacity = roomPicklistType2Number(roomTypeInteger2String(room.Type__c))
@@ -39,6 +40,7 @@ export default class RoomBuilder extends LightningElement {
                 return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity, availableSpots, spotsLeftText, isFull: numMembers === capacity }
             })
             this.updateRings = true
+            console.log('Athletes and Rooms data 2- ', { athletes: this.members, rooms: this.rooms });
         })
     }
 
@@ -52,9 +54,7 @@ export default class RoomBuilder extends LightningElement {
             this.updateRings = false
         }
 
-        console.log('renderedCallback b4 if')
         if (this.toastContainer) return
-        console.log('renderedCallback after if ', this.template.querySelector('.toastContainer'))
         this.toastContainer = this.template.querySelector('.toastContainer');
     }
 
@@ -75,14 +75,13 @@ export default class RoomBuilder extends LightningElement {
                 inRoom: !!roomId
             };
         }).filter(mem => !mem.inRoom)
-            .filter((mem) => mem.Name.toLowerCase().includes(this.searchFilter.toLowerCase()))
-            .sort((a, b) => a.Name.localeCompare(b.Name));
+            .filter((mem) => mem.schoolName.toLowerCase().includes(this.searchFilter.toLowerCase()))
+            .sort((a, b) => a.schoolName.localeCompare(b.schoolName));
     }
 
     // Filters out the athletes list based on the search input
     handleSearchInput(event) {
         this.searchFilter = event.target.value;
-        console.log('this.searchFilter - ', this.searchFilter)
     }
 
     // Computed property for rooms with member names
@@ -268,7 +267,7 @@ export default class RoomBuilder extends LightningElement {
             // Check if member preference matches room capacity
             if (member.roomPreference !== room.capacity) {
                 // Room is at capacity
-                this.errorMsg = `User ${member.Name} can only go in rooms of size ${member.roomPreference}`
+                this.errorMsg = `User ${member.schoolName} can only go in rooms of size ${member.roomPreference}`
                 this.errorAlert()
                 return
             }
@@ -298,11 +297,8 @@ export default class RoomBuilder extends LightningElement {
     }
     /* DRAG DROP END */
     errorAlert() {
-        console.log('toast 123 - ', this.toastContainer)
-
         if (this.toastContainer) {
             this.toastContainer.style.display = 'block';
-            console.log('inside toast if- ', this.toastContainer.style.display)
             // eslint-disable-next-line @lwc/lwc/no-async-operation
             setTimeout(() => {
                 this.toastContainer.style.display = 'none';
