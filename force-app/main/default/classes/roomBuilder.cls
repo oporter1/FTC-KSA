@@ -10,7 +10,7 @@ public with sharing class roomBuilder {
       WHERE KSA_Webcode__c = :webcode
     ]
     .Id;
-    System.debug('teamOppId - ' + teamOppId);
+
     List<Opportunity> athletes = [
       SELECT
         Id,
@@ -23,12 +23,17 @@ public with sharing class roomBuilder {
         Quad_Rooms__c,
         Team_Opportunity__c,
         KSA_Webcode__c,
-        Coaches_Pin__c
+        Coaches_Pin__c,
+        RecordType.Name
       FROM Opportunity
-      WHERE Team_Opportunity__c = :teamOppId AND Id != :teamOppId
+      WHERE
+        Team_Opportunity__c = :teamOppId
+        AND Id != :teamOppId
+        AND Billing_Type__c = 'Individual Billing'
+        AND RecordType.Name = 'Athlete Opportunity'
     ];
     System.debug('athletes - ' + athletes.size());
- 
+
     List<Rooms__c> rooms = [
       SELECT Id, Opportunity__c, Name, Room_No__c, Type__c, CreatedDate
       FROM Rooms__c
@@ -40,7 +45,7 @@ public with sharing class roomBuilder {
     Map<Id, RoomObj> roomObjMap = new Map<Id, RoomObj>();
     for (Rooms__c room : rooms) {
       // Converting '4' -> 'Quad' so the mapping works
-      room.Type__c = roomTypeInteger2String(room.Type__c); 
+      room.Type__c = roomTypeInteger2String(room.Type__c);
       String key = room.Type__c;
       if (!roomType2RoomsMap.containsKey(key)) {
         roomType2RoomsMap.put(key, new List<RoomObj>());
@@ -156,7 +161,7 @@ public with sharing class roomBuilder {
   }
 
   @AuraEnabled(cacheable=false)
-  public static void updateAthletes(List<Opportunity> athletes){
+  public static void updateAthletes(List<Opportunity> athletes) {
     try {
       update athletes;
     } catch (Exception e) {
