@@ -112,7 +112,7 @@ export default class RoomBuilder extends LightningElement {
                 spotsLeftText,
                 isFull: numMembers === room.capacity
             };
-        }).sort((a, b) => a?.Room_Number__c?.localeCompare(b?.Room_Number__c))
+        }).sort((a, b) => a?.Room_Number__c - b?.Room_Number__c)
     }
 
     /* RING START */
@@ -289,7 +289,7 @@ export default class RoomBuilder extends LightningElement {
                 this.saveAthleteRoomInfo()
             } else {
                 // Room is at capacity
-                this.errorMsg = `Room ${room.Name} is already at capacity!`
+                this.errorMsg = `Room ${room.Room_Number__c} is already at capacity!`
                 this.errorAlert()
             }
         } catch (err) {

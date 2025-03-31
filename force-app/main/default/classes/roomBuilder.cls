@@ -35,7 +35,7 @@ public with sharing class roomBuilder {
     System.debug('athletes - ' + athletes.size());
 
     List<Rooms__c> rooms = [
-      SELECT Id, Opportunity__c, Name, Room_No__c, Type__c, CreatedDate
+      SELECT Id, Opportunity__c, Name, Room_No__c, Room_Number__c, Type__c, CreatedDate
       FROM Rooms__c
       WHERE Opportunity__c = :teamOppId
     ];
@@ -141,6 +141,7 @@ public with sharing class roomBuilder {
     List<Rooms__c> everyRoom = new List<Rooms__c>();
     List<Rooms__c> newRooms = new List<Rooms__c>();
 
+    Decimal counter = 0;
     for (List<RoomObj> roomObjs : roomType2RoomsMap.values()) {
       for (RoomObj roomObj : roomObjs) {
         Rooms__c room = roomObj.room;
@@ -148,6 +149,8 @@ public with sharing class roomBuilder {
         everyRoom.add(room);
         System.debug('Every room - ' + room);
         if (room.Id == null) {
+          room.Room_Number__c = counter + 1;
+          counter += 1;
           newRooms.add(room);
         }
       }
