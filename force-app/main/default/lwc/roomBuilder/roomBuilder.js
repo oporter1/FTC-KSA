@@ -67,7 +67,9 @@ export default class RoomBuilder extends LightningElement {
                 ...member,
                 inRoom: !!roomId
             };
-        }).filter(mem => !mem.inRoom).filter((mem) => mem.Name.toLowerCase().includes(this.searchFilter.toLowerCase()));
+        }).filter(mem => !mem.inRoom)
+            .filter((mem) => mem.Name.toLowerCase().includes(this.searchFilter.toLowerCase()))
+            .sort((a, b) => a.Name.localeCompare(b.Name));
     }
 
     // Filters out the athletes list based on the search input
@@ -103,7 +105,7 @@ export default class RoomBuilder extends LightningElement {
                 spotsLeftText,
                 isFull: numMembers === room.capacity
             };
-        });
+        }).sort((a, b) => a?.Room_Number__c?.localeCompare(b?.Room_Number__c))
     }
 
     /* RING START */
@@ -137,8 +139,6 @@ export default class RoomBuilder extends LightningElement {
         const center = { x: 50, y: 50 };
         const radius = 40;
         const startPoint = progressPercentage === 1 ? this.degToCoord(0, radius, center, -90) : this.degToCoord(0, radius, center, 0);
-
-        console.log('updateProgressRing() ', ringContainer.getAttribute('data-name'), current, total, progressPercentage);
 
         // If progress is 0, don't show arc
         if (progressPercentage === 0) {
