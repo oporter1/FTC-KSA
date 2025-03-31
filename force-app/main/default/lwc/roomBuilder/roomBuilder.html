@@ -1,4 +1,43 @@
 <template>
+  <!-- Toast  Component -->
+  <div class="toastContainer slds-notify_container slds-is-relative" style="position: fixed; top: 10%; display: none;">
+    <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+      <span class="slds-assistive-text">error</span>
+      <span
+        class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
+        title="Description of icon when needed"
+      >
+        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+          <use
+            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+          ></use>
+        </svg>
+      </span>
+      <div class="slds-notify__content">
+        <h2 class="slds-text-heading_small">
+          {errorMsg}
+        </h2>
+      </div>
+      <div class="slds-notify__close">
+        <button
+          class="slds-button slds-button_icon slds-button_icon-inverse"
+          title="Close"
+        >
+          <svg
+            class="slds-button__icon slds-button__icon_large"
+            aria-hidden="true"
+          >
+            <use
+              xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            ></use>
+          </svg>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- roomBuilder -->
   <div
     class="container"
     style="display: flex; flex-direction: column; gap: 2rem"
@@ -49,12 +88,12 @@
                 width: 100%;
                 height: 2rem;
                 background-color: #252525;
-                border: 1px solid #D9D9D9;
+                border: 1px solid #d9d9d9;
                 border-radius: 0.25rem;
                 padding: 6px 12px;
                 padding-right: 2rem;
                 caret-color: white;
-                color: #D9D9D9;
+                color: #d9d9d9;
                 outline-color: white;
               "
             />
@@ -83,7 +122,7 @@
           <!-- List of athletes -->
           <ul
             class="member-list"
-            style="padding-top: 0;"
+            style="padding-top: 0"
             data-id="membersArea"
             ondragover={handleDragOver}
             ondragleave={handleDragLeave}

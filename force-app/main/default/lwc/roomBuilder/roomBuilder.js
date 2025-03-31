@@ -42,6 +42,8 @@ export default class RoomBuilder extends LightningElement {
         })
     }
 
+    errorMsg = ''
+    toastContainer
     updateRings = true
     renderedCallback() {
         // re-generate the ring 
@@ -49,6 +51,11 @@ export default class RoomBuilder extends LightningElement {
             const triggerGetter = this.roomsWithMemberNames     // variable used to trigger the getter on the right side of =
             this.updateRings = false
         }
+
+        console.log('renderedCallback b4 if')
+        if (this.toastContainer) return
+        console.log('renderedCallback after if ', this.template.querySelector('.toastContainer'))
+        this.toastContainer = this.template.querySelector('.toastContainer');
     }
 
     members = []
@@ -260,8 +267,9 @@ export default class RoomBuilder extends LightningElement {
 
             // Check if member preference matches room capacity
             if (member.roomPreference !== room.capacity) {
-                // eslint-disable-next-line no-alert
-                alert(`User ${member.Name} can only go in rooms of size ${member.roomPreference}`)
+                // Room is at capacity
+                this.errorMsg = `User ${member.Name} can only go in rooms of size ${member.roomPreference}`
+                this.errorAlert()
                 return
             }
 
@@ -281,14 +289,26 @@ export default class RoomBuilder extends LightningElement {
                 this.saveAthleteRoomInfo()
             } else {
                 // Room is at capacity
-                // eslint-disable-next-line no-alert
-                alert(`Room ${room.Name} is already at capacity!`);
+                this.errorMsg = `Room ${room.Name} is already at capacity!`
+                this.errorAlert()
             }
         } catch (err) {
             console.log("err - ", err)
         }
     }
     /* DRAG DROP END */
+    errorAlert() {
+        console.log('toast 123 - ', this.toastContainer)
+
+        if (this.toastContainer) {
+            this.toastContainer.style.display = 'block';
+            console.log('inside toast if- ', this.toastContainer.style.display)
+            // eslint-disable-next-line @lwc/lwc/no-async-operation
+            setTimeout(() => {
+                this.toastContainer.style.display = 'none';
+            }, 5000);
+        }
+    }
 
     // Call apex
     saveAthleteRoomInfo() {
