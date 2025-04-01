@@ -1,6 +1,9 @@
 <template>
   <!-- Toast  Component -->
-  <div class="toastContainer slds-notify_container slds-is-relative" style="position: fixed; top: 10%; display: none;">
+  <div
+    class="toastContainer slds-notify_container slds-is-relative"
+    style="position: fixed; top: 10%; display: none"
+  >
     <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
       <span class="slds-assistive-text">error</span>
       <span
@@ -14,9 +17,7 @@
         </svg>
       </span>
       <div class="slds-notify__content">
-        <h2 class="slds-text-heading_small">
-          {errorMsg}
-        </h2>
+        <h2 class="slds-text-heading_small">{errorMsg}</h2>
       </div>
       <div class="slds-notify__close">
         <button
@@ -38,10 +39,7 @@
   </div>
 
   <!-- roomBuilder -->
-  <div
-    class="container"
-    style="display: flex; flex-direction: column; gap: 2rem"
-  >
+  <div class="container">
     <div style="font-size: 1rem; color: white">
       Drag and drop a student name into a Hotel Room to complete booking.
     </div>
@@ -69,17 +67,7 @@
         </div>
         <div class="member-list">
           <!-- Search bar -->
-          <div
-            class="member-list"
-            style="
-              position: relative;
-              display: flex;
-              overflow: unset;
-              height: 100%;
-              padding: 0 1rem;
-              padding-right: calc(1rem + 17px);
-            "
-          >
+          <div class="member-list search-box">
             <input
               oninput={handleSearchInput}
               type="text"
@@ -98,12 +86,7 @@
               "
             />
             <svg
-              style="
-                position: absolute;
-                right: calc(1.5rem + 17px);
-                top: 50%;
-                transform: translate(0px, -50%);
-              "
+              class="search-icon"
               width="16"
               height="16"
               viewBox="0 0 16 16"
@@ -121,8 +104,7 @@
 
           <!-- List of athletes -->
           <ul
-            class="member-list"
-            style="padding-top: 0"
+            class="member-list member-list-ul"
             data-id="membersArea"
             ondragover={handleDragOver}
             ondragleave={handleDragLeave}
@@ -140,7 +122,7 @@
               >
                 <div class="card-title">{member.schoolName}</div>
                 <div>
-                  Room Requirements: {member.roomPreference} of
+                  <span class="room-reqs-text">Room Requirements:</span> {member.roomPreference} of
                   {member.roomPreferenceName}
                 </div>
               </li>
@@ -182,7 +164,9 @@
             >
               <div class="room-header">
                 <div class="">
-                  <div style="font-weight: bold">Room {room.Room_Number__c}</div>
+                  <div style="font-weight: bold">
+                    Room {room.Room_Number__c}
+                  </div>
                   <div>Room Size: {room.capacity}</div>
                 </div>
                 <div style="display: flex; gap: 0.5rem; align-items: center">
@@ -264,7 +248,7 @@
                     >
                       <div style="font-weight: bold">{member.schoolName}</div>
                       <div>
-                        Room Requirements: {member.roomPreference} of
+                        <span class="room-reqs-text">Room Requirements:</span> {member.roomPreference} of
                         {member.roomPreferenceName}
                       </div>
                     </li>

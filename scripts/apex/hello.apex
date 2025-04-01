@@ -1,6 +1,6 @@
 List<Opportunity> opportunities = [SELECT Id, Name, Account.Name, KSASport_or_Performing_Art__c,
                        Departure_Date__c, Arrival_Date__c, Resort_Option__c,
-                       KSA_Webcode__c, Coaches_Pin__c
+                       KSA_Webcode__c, Coaches_Pin__c, CreatedDate
                 FROM Opportunity];
 
 for (Opportunity opp : opportunities) {
@@ -12,17 +12,21 @@ update opportunities;
 // These opps should create (2, 4 sized rooms), (1, 2 sized room), (2, 3 sized rooms), 2, (2, 1 sized room)
 // Data creation
 List<Decimal> roomNums = new List<Decimal>{0.25, 0.25, 0.25, 0.25, 0.25, 0.5, 0.5, 1, 0.33, 0.3, 0.3, 0.3, 1};
+List<String> studentNames = new List<String>{'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Hannah', 'Ivy', 'Jack', 'Kara', 'Liam', 'Mona'};
+
 Integer i = 0;
 List<Opportunity> opps = new List<Opportunity>();
 for (Decimal num : roomNums) {
     Opportunity opp = new Opportunity(
-        Name = 'Room Builder Test - ' + i,
+        Name = studentNames[i],
         AccountId = '001O90000101KNZIA2',
         Arrival_Date__c = Date.today(),
         KSASport_or_Performing_Art__c = 'Volleyball',
         StageName = 'Inquiry',
         CloseDate = Date.today(),
-        Team_Opportunity__c = '006U900000JL5BRIA1'
+        Team_Opportunity__c = '006U900000JL5BRIA1',
+        Billing_Type__c = 'Individual Billing',
+        RecordTypeId = '012f4000000aRkUAAU'
     );
 
     if (num == 0.25) {
