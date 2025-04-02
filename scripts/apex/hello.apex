@@ -61,6 +61,9 @@ List<Rooms__c> rooms = [SELECT Id FROM Rooms__c];
 delete rooms;
 
 
+delete (new Opportunity(Id = '006U900000JZqTsIAL'));
+
+
  006U900000JKmghIAD Room Builder Test - 0                          null    null           null           null           0.25          006U900000JL5BRIA1  
  006U900000JKmgiIAD Room Builder Test - 1                          null    null           null           null           0.25          006U900000JL5BRIA1  
  006U900000JKmgjIAD Room Builder Test - 2                          null    null           null           null           0.25          006U900000JL5BRIA1  
@@ -79,3 +82,5 @@ delete rooms;
 
 
 update (new Opportunity(Id = '006U900000JL5BRIA1', Coaches_Pin__c = 123 ));
+
+

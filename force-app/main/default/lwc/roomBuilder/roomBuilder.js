@@ -378,8 +378,8 @@ export default class RoomBuilder extends LightningElement {
             }
 
             // Check if the room has capacity
+            const currentRoomId = member.Room__c;
             if (room.assignedMembers.length < room.capacity) {
-                const currentRoomId = member.Room__c;
 
                 // Assign member to new room
                 member.Room__c = roomId;
@@ -388,6 +388,7 @@ export default class RoomBuilder extends LightningElement {
                 if (currentRoomId) {
                     const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
 
+                    console.log('currentRoom if - ', currentRoom, room, currentRoom === room)
                     // If member already in same room do nothing
                     if (currentRoom === room) {
                         return
@@ -410,6 +411,17 @@ export default class RoomBuilder extends LightningElement {
                 this.rooms = [...this.rooms];
                 this.saveAthleteRoomInfo()
             } else {
+                // Check if the member is already assigned to a room and remove them from it
+                if (currentRoomId) {
+                    const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
+
+                    console.log('currentRoom else - ', currentRoom, room, currentRoom === room)
+                    // If member already in same room do nothing
+                    if (currentRoom === room) {
+                        return
+                    }
+                }
+
                 // Room is at capacity
                 this.errorMsg = `Room ${room.Room_Number__c} is already at capacity!`
                 this.errorAlert()

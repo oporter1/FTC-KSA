@@ -150,15 +150,27 @@ public with sharing class roomBuilder {
 
     List<Rooms__c> everyRoom = new List<Rooms__c>();
     List<Rooms__c> newRooms = new List<Rooms__c>();
-
+    List<Rooms__c> deleteRooms = new List<Rooms__c>();
     Decimal counter = 0;
     for (List<RoomObj> roomObjs : roomType2RoomsMap.values()) {
       for (RoomObj roomObj : roomObjs) {
         Rooms__c room = roomObj.room;
+        Integer roomCapacity = roomType2Integer(room.Type__c);
+        // Check if room should be deleted
+        System.debug('Loop room - ' + roomObj.spacesLeft + ' : ' + roomCapacity);
+        if (roomObj.spacesLeft == roomCapacity) {
+          if (room.Id != null) {
+            System.debug('DELETED ROOM - ' + room);
+            deleteRooms.add(room);
+          }
+          continue;
+        }
+
+        // Add room
         room.Room_Size__c = room.Type__c;
-        room.Type__c = String.valueOf(roomType2Integer(room.Type__c));
+        room.Type__c = String.valueOf(roomCapacity);
         everyRoom.add(room);
-        System.debug('Every room - ' + room);
+        // System.debug('Every room - ' + room);
         if (room.Id == null) {
           room.Room_Number__c = counter + 1;
           counter += 1;
@@ -166,8 +178,9 @@ public with sharing class roomBuilder {
         }
       }
     }
-    System.debug('NewRooms - ' + newRooms.size());
+    // System.debug('NewRooms - ' + newRooms.size());
     insert newRooms;
+    delete deleteRooms;
 
     // Combine new rooms and old rooms together
     AthletesAndRooms aar = new AthletesAndRooms(athletes, everyRoom);

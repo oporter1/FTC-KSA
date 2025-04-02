@@ -130,6 +130,51 @@ private class roomBuilderTest {
     System.assertEquals(2, room1Cnt);
   }
 
+  // Will delete one of the Quad preference opportunities and reduce our room cnt down to 1 for quad rooms
+  @isTest
+  static void testDeleteMemberAfterRoomsAreCreated() {
+    // TO DO: implement unit test
+    Opportunity parentOpp = [
+      SELECT Id, KSA_Webcode__c
+      FROM Opportunity
+      WHERE RecordTypeId != '012f4000000aRkUAAU'
+    ];
+    roomBuilder.getAthletesAndRooms(parentOpp.KSA_Webcode__c);
+    Opportunity deleteQuad = [SELECT Id FROM Opportunity WHERE Quad_Rooms__c = 0.25 LIMIT 1];
+    delete deleteQuad;
+
+    roomBuilder.AthletesAndRooms resp = roomBuilder.getAthletesAndRooms(
+      parentOpp.KSA_Webcode__c
+    );
+    List<Rooms__c> rooms = resp.rooms;
+    System.assertEquals(6, rooms.size());
+    List<Rooms__c> allRooms = [SELECT Id FROM Rooms__c];
+    System.assertEquals(6, allRooms.size());
+    Integer room4Cnt = 0;
+    Integer room3Cnt = 0;
+    Integer room2Cnt = 0;
+    Integer room1Cnt = 0;
+    for (Rooms__c room : rooms) {
+      String roomType = room.Type__c;
+      if (roomType == '4') {
+        room4Cnt++;
+      } else if (roomType == '3') {
+        room3Cnt++;
+      } else if (roomType == '2') {
+        room2Cnt++;
+      } else if (roomType == '1') {
+        room1Cnt++;
+      }
+    }
+    // These values come from the comment in the testSetup method
+    System.assertEquals(1, room4Cnt);
+    System.assertEquals(2, room3Cnt);
+    System.assertEquals(1, room2Cnt);
+    System.assertEquals(2, room1Cnt);
+  }
+
+
+  // Add an extra opp for Doubles. Will require +1 Double room
   @isTest
   static void testNewMemberAfterFirstRun() {
     Opportunity parentOpp = [
