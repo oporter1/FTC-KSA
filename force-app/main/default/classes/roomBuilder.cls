@@ -1,3 +1,13 @@
+/* ─────────────────────────────────────────────────────────────────────────────────────────────────
+* TITLE:          roomBuilder apex
+* DESCRIPTION:    Pulls/creates the least amount of rooms for all the athletes for a given a webcode
+* @created        03/24/2025
+* @updated
+* @testClass      roomBuilderTest.cls
+* @by             FTC       hey@freethinkersconsulting.com
+* ──────────────────────────────────────────────────────────────────────────────────────────────────
+* @notes: 
+*/
 public with sharing class roomBuilder {
   public roomBuilder() {
   }

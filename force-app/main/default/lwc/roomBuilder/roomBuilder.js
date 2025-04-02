@@ -1,3 +1,13 @@
+/* ─────────────────────────────────────────────────────────────────────────────────────────────────
+* TITLE:          roomBuilder  lwc
+* DESCRIPTION:    handles the UI + frontend logic for dragging and dropping athletes into rooms
+* @created        03/24/2025
+* @updated
+* @by             FTC       hey@freethinkersconsulting.com
+* ──────────────────────────────────────────────────────────────────────────────────────────────────
+* @notes: 
+*/
+
 import { api, LightningElement } from 'lwc';
 import getAthletesAndRooms from '@salesforce/apex/roomBuilder.getAthletesAndRooms';
 import updateAthletes from '@salesforce/apex/roomBuilder.updateAthletes';
