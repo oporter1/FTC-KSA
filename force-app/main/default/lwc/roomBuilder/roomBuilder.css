@@ -92,6 +92,11 @@
   border-color: #ff0000;
 }
 
+.member-item-hover {
+  background-color: #555454;
+  border-color: #ff0000;
+}
+
 .room-header {
   display: flex;
   justify-content: space-between;
@@ -173,8 +178,7 @@
 
   .member-list,
   .room-list {
-    overflow-y: unset;
-    max-height: none;
+    max-height: 650px;
   }
 
   .member-list {

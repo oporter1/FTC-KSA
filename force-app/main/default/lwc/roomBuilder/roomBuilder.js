@@ -191,6 +191,56 @@ export default class RoomBuilder extends LightningElement {
         event.dataTransfer.effectAllowed = 'move';
     }
 
+    draggedElement
+    isDragging = false
+    touchOffsetX = 0
+    touchOffsetY = 0
+    startX = 0
+    startY = 0
+    validElementList = []
+    memberArea
+    handleTouchStart(event) {
+        const touch = event.touches[0];
+
+        // event.currentTarget.classList.add('dragging');
+        this.draggedMemberId = event.currentTarget.dataset.id;
+
+        this.draggedElement = event.currentTarget
+        const rect = this.draggedElement.getBoundingClientRect();
+        this.startX = rect.clientX
+        this.startY = rect.clientY
+
+        this.touchOffsetX = touch.clientX - rect.left;
+        this.touchOffsetY = touch.clientY - rect.top;
+
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        setTimeout(() => {
+            if (this.draggedElement) {
+                this.isDragging = true;
+
+                // Create visual feedback (clone or styling)
+                this.draggedElement.classList.add('dragging');
+                this.draggedElement.classList.add('member-item-hover')
+
+            }
+        }, 200); // Adjust timeout as needed
+        event.preventDefault();
+
+        // Update list of x,ys for all drag over areas
+        this.memberArea = this.template.querySelector('.member-list-ul')
+        const member = this.members.find(mem => mem.Id === this.draggedMemberId)
+        const elements = Array.from(this.template.querySelectorAll('.room-item') || [])
+        this.validElementList = []
+        elements.forEach((elem) => {
+            if (elem.getAttribute('data-room-size') === `${member.roomPreference}`) {
+                elem.classList.add('drag-over')
+                this.validElementList.push(elem)
+            }
+        })
+        this.validElementList.push(this.memberArea)
+        this.memberArea.classList.add('drag-over')
+    }
+
     // Add this method to handle drag end
     handleDragEnd(event) {
         // Remove dragging class
@@ -201,6 +251,71 @@ export default class RoomBuilder extends LightningElement {
         roomElements.forEach(elem => {
             elem.classList.remove('drag-over');
         });
+    }
+
+    handleTouchEnd(event) {
+        event.currentTarget.classList.remove('dragging');
+        this.draggedElement.classList.remove('member-item-hover');
+        this.isDragging = false
+        // Reset any drag-over elements
+        const roomElements = this.template.querySelectorAll('.room-item');
+        roomElements.forEach(elem => {
+            elem.classList.remove('drag-over');
+        });
+
+        this.memberArea.classList.remove('drag-over')
+
+        // Check for overlapping elements and handle drop
+        this.validElementList.forEach((elem) => {
+            // Get bounding rectangles to check for overlap
+            const elemRect = elem.getBoundingClientRect();
+            const draggedRect = this.draggedElement.getBoundingClientRect();
+
+            // Check if elements are overlapping
+            const isOverlapping = !(
+                elemRect.right < draggedRect.left ||
+                elemRect.left > draggedRect.right ||
+                elemRect.bottom < draggedRect.top ||
+                elemRect.top > draggedRect.bottom
+            );
+
+            // If overlapping, handle the drop into the room
+            if (isOverlapping) {
+                // Create a synthetic event with the room's dataset
+                const syntheticEvent = {
+                    preventDefault: () => { },
+                    currentTarget: {
+                        dataset: { id: elem.dataset.id },
+                        classList: { remove: () => { } }
+                    }
+                };
+
+                // Call the drop handler with our synthetic event
+                this.handleDrop(syntheticEvent);
+            }
+        });
+
+        // Set back to original location
+        this.draggedElement.style.position = 'unset';
+    }
+
+    handleTouchMove(event) {
+        if (!this.isDragging || !this.draggedElement) return;
+        const touch = event.touches[0]
+        // Move element
+        this.draggedElement.style.position = 'fixed';
+
+        this.draggedElement.style.left = `${touch.clientX - this.touchOffsetX}px`;
+        this.draggedElement.style.top = `${touch.clientY - this.touchOffsetY}px`;
+
+        // Grab drop target zone
+        const elemBelow = document.elementFromPoint(
+            touch.clientX,
+            touch.clientY
+        );
+        const dropTarget = elemBelow ? elemBelow.closest('.room-item') : null;
+        console.log('dropTarget - ', dropTarget, elemBelow, touch.clientX, touch.clientY)
+        // set back to original startX and startY 
     }
 
     handleDragOver(event) {
@@ -251,19 +366,6 @@ export default class RoomBuilder extends LightningElement {
             const room = this.rooms.find(rm => rm.Id === roomId);
             if (!room) return
 
-            // Check if the member is already assigned to a room
-            const currentRoomId = member.Room__c;
-            // If member is already assigned, remove from current room
-            if (currentRoomId) {
-                const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
-
-                if (currentRoom) {
-                    currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
-                        memberLoop => memberLoop.Id !== draggedMemberId
-                    );
-                }
-            }
-
             // Check if member preference matches room capacity
             if (member.roomPreference !== room.capacity) {
                 // Room is at capacity
@@ -274,8 +376,27 @@ export default class RoomBuilder extends LightningElement {
 
             // Check if the room has capacity
             if (room.assignedMembers.length < room.capacity) {
+                const currentRoomId = member.Room__c;
+
                 // Assign member to new room
                 member.Room__c = roomId;
+
+                // Check if the member is already assigned to a room and remove them from it
+                if (currentRoomId) {
+                    const currentRoom = this.rooms.find(rm => rm.Id === currentRoomId);
+
+                    // If member already in same room do nothing
+                    if (currentRoom === room) {
+                        console.log('currentRoom is same as new room')
+                        return
+                    }
+
+                    if (currentRoom) {
+                        currentRoom.assignedMembers = currentRoom.assignedMembers.filter(
+                            memberLoop => memberLoop.Id !== draggedMemberId
+                        );
+                    }
+                }
 
                 // Add member to room's assigned members if not already there
                 if (!room.assignedMembers.find((mem) => mem.Id === draggedMemberId)) {

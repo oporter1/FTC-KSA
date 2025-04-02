@@ -119,6 +119,9 @@
                 data-id={member.Id}
                 ondragstart={handleDragStart}
                 ondragend={handleDragEnd}
+                ontouchstart={handleTouchStart}
+                ontouchmove={handleTouchMove}
+                ontouchend={handleTouchEnd}
               >
                 <div class="card-title">{member.schoolName}</div>
                 <div>
@@ -158,6 +161,7 @@
               key={room.Id}
               class="room-item"
               data-id={room.Id}
+              data-room-size={room.capacity}
               ondragover={handleDragOver}
               ondragleave={handleDragLeave}
               ondrop={handleDrop}
@@ -245,6 +249,9 @@
                       data-id={member.Id}
                       ondragstart={handleDragStart}
                       ondragend={handleDragEnd}
+                      ontouchstart={handleTouchStart}
+                      ontouchmove={handleTouchMove}
+                      ontouchend={handleTouchEnd}
                     >
                       <div style="font-weight: bold">{member.schoolName}</div>
                       <div>
