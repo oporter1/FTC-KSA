@@ -12,7 +12,6 @@ export default class RoomBuilder extends LightningElement {
 
         this._webcode = value
         getAthletesAndRooms({ webcode: value }).then(resp => {
-            console.log('Athletes and Rooms data 1- ', resp);
             const members = JSON.parse(JSON.stringify(resp.athletes)) || []
             const rooms = JSON.parse(JSON.stringify(resp.rooms)) || []
 
@@ -40,7 +39,6 @@ export default class RoomBuilder extends LightningElement {
                 return { ...room, assignedMembers: roomObj[room.Id] || [], capacity: capacity, availableSpots, spotsLeftText, isFull: numMembers === capacity }
             })
             this.updateRings = true
-            console.log('Athletes and Rooms data 2- ', { athletes: this.members, rooms: this.rooms });
         })
     }
 
@@ -223,8 +221,7 @@ export default class RoomBuilder extends LightningElement {
                 this.draggedElement.classList.add('member-item-hover')
 
             }
-        }, 200); // Adjust timeout as needed
-        event.preventDefault();
+        }, 100); // Adjust timeout as needed
 
         // Update list of x,ys for all drag over areas
         this.memberArea = this.template.querySelector('.member-list-ul')
@@ -239,6 +236,7 @@ export default class RoomBuilder extends LightningElement {
         })
         this.validElementList.push(this.memberArea)
         this.memberArea.classList.add('drag-over')
+        event.preventDefault();
     }
 
     // Add this method to handle drag end
@@ -262,6 +260,10 @@ export default class RoomBuilder extends LightningElement {
         roomElements.forEach(elem => {
             elem.classList.remove('drag-over');
         });
+
+        Array.from(this.template.querySelectorAll('.member-item') || []).forEach((elem) => {
+            elem?.classList?.remove('dragging')
+        })
 
         this.memberArea.classList.remove('drag-over')
 
@@ -297,6 +299,7 @@ export default class RoomBuilder extends LightningElement {
 
         // Set back to original location
         this.draggedElement.style.position = 'unset';
+        this.draggedElement = null
     }
 
     handleTouchMove(event) {
@@ -307,22 +310,13 @@ export default class RoomBuilder extends LightningElement {
 
         this.draggedElement.style.left = `${touch.clientX - this.touchOffsetX}px`;
         this.draggedElement.style.top = `${touch.clientY - this.touchOffsetY}px`;
-
-        // Grab drop target zone
-        const elemBelow = document.elementFromPoint(
-            touch.clientX,
-            touch.clientY
-        );
-        const dropTarget = elemBelow ? elemBelow.closest('.room-item') : null;
-        console.log('dropTarget - ', dropTarget, elemBelow, touch.clientX, touch.clientY)
-        // set back to original startX and startY 
     }
 
     handleDragOver(event) {
         // Prevent default to allow drop
-        event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
         event.currentTarget.classList.add('drag-over');
+        event.preventDefault();
     }
     handleDragLeave(event) {
         // Remove drag-over class when dragging leaves the element
@@ -332,7 +326,6 @@ export default class RoomBuilder extends LightningElement {
     handleDrop(event) {
         try {
             // Prevent default action
-            event.preventDefault();
             event.currentTarget.classList.remove('drag-over');
             // Get the room ID where the member was dropped
             const roomId = event.currentTarget.dataset.id;
@@ -387,7 +380,6 @@ export default class RoomBuilder extends LightningElement {
 
                     // If member already in same room do nothing
                     if (currentRoom === room) {
-                        console.log('currentRoom is same as new room')
                         return
                     }
 
@@ -415,6 +407,7 @@ export default class RoomBuilder extends LightningElement {
         } catch (err) {
             console.log("err - ", err)
         }
+        event.preventDefault();
     }
     /* DRAG DROP END */
     errorAlert() {
