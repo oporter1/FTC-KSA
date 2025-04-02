@@ -124,7 +124,7 @@ export default class RoomBuilder extends LightningElement {
 
     /* RING START */
     // Initial ring color
-    progressColor = '#4a90e2';
+    progressColor = '#EB5757';
 
     // Function to convert degrees to coordinates on a circle
     degToCoord(deg, radius, center, startDeg = -90) {

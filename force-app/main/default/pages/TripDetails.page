@@ -638,7 +638,7 @@
                 </div>
 
                 <apex:includeLightning/>
-                <div id="room-builder"/>
+                <div id="room-builder" class="content-section"/>
             </main>
 
             <footer>
