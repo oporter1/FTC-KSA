@@ -48,7 +48,11 @@
       <div class="column members-column">
         <div class="column-title" style="">
           <h2 style="line-height: 0">Student Name</h2>
-          <div>
+          <div
+            onclick={sortStudents}
+            data-name="members"
+            style="cursor: pointer"
+          >
             <svg
               width="12"
               height="12"
@@ -138,7 +142,7 @@
       <div class="column rooms-column">
         <div class="column-title">
           <h2 style="line-height: 0">Rooms</h2>
-          <div>
+          <div onclick={sortRoomsFn} data-name="rooms" style="cursor: pointer">
             <svg
               width="12"
               height="12"
@@ -255,8 +259,8 @@
                     >
                       <div style="font-weight: bold">{member.schoolName}</div>
                       <div>
-                        <span class="room-reqs-text">Room Requirements:</span> {member.roomPreference} of
-                        {member.roomPreferenceName}
+                        <span class="room-reqs-text">Room Requirements:</span>
+                        {member.roomPreference} of {member.roomPreferenceName}
                       </div>
                     </li>
                   </template>

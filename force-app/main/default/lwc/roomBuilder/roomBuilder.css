@@ -64,6 +64,10 @@
   transform: translate(0px, -50%);
 }
 
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
 .member-list-ul {
   padding-top: 0
 }

@@ -73,6 +73,8 @@ export default class RoomBuilder extends LightningElement {
     draggedMemberId = null;
 
     searchFilter = ''
+    sortMembers = true
+    sortRooms = true
     // Computed property for members with room names
     get membersWithRoomInfo() {
         return this.members.map(member => {
@@ -84,7 +86,32 @@ export default class RoomBuilder extends LightningElement {
             };
         }).filter(mem => !mem.inRoom)
             .filter((mem) => mem.schoolName.toLowerCase().includes(this.searchFilter.toLowerCase()))
-            .sort((a, b) => a.schoolName.localeCompare(b.schoolName));
+            .sort((a, b) => {
+                if (this.sortMembers) {
+                    return a.schoolName.localeCompare(b.schoolName)
+                }
+                return b.schoolName.localeCompare(a.schoolName)
+            });
+    }
+
+    sortStudents(e) {
+        this.sortMembers = !this.sortMembers
+        if (this.sortMembers) {
+            e.currentTarget.classList.remove('rotate-180')
+        } else {
+            e.currentTarget.classList.add('rotate-180')
+        }
+        console.log('sortStudents curr- ', this.sortMembers, e.target.classList)
+    }
+
+    sortRoomsFn(e) {
+        this.sortRooms = !this.sortRooms
+        if (this.sortRooms) {
+            e.currentTarget.classList.remove('rotate-180')
+        } else {
+            e.currentTarget.classList.add('rotate-180')
+        }
+        console.log('sortRooms curr- ', this.sortRooms, e.target.classList)
     }
 
     // Filters out the athletes list based on the search input
@@ -119,7 +146,12 @@ export default class RoomBuilder extends LightningElement {
                 spotsLeftText,
                 isFull: numMembers === room.capacity
             };
-        }).sort((a, b) => a?.Room_Number__c - b?.Room_Number__c)
+        }).sort((a, b) => {
+            if (this.sortRooms) {
+                return a?.Room_Number__c - b?.Room_Number__c
+            }
+            return b?.Room_Number__c - a?.Room_Number__c
+        })
     }
 
     /* RING START */
