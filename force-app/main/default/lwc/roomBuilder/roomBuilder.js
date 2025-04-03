@@ -465,11 +465,20 @@ export default class RoomBuilder extends LightningElement {
     }
     /* DRAG DROP END */
     errorAlert() {
-        if (this.toastContainer) {
-            this.toastContainer.style.display = 'block';
+        const toastEl = this.toastContainer
+        if (toastEl) {
+            toastEl.style.display = 'block';
+            toastEl.style.zIndex = '9999';
+            toastEl.style.position = 'fixed';
+            toastEl.style.top = '10%';
+            toastEl.style.left = '50%';
+            toastEl.style.transform = 'translateX(-50%)';
+            document.body.appendChild(toastEl)
+            console.log('toast - after doc body append')
             // eslint-disable-next-line @lwc/lwc/no-async-operation
             setTimeout(() => {
-                this.toastContainer.style.display = 'none';
+                toastEl.style.display = 'none';
+                this.template.appendChild(toastEl);
             }, 5000);
         }
     }

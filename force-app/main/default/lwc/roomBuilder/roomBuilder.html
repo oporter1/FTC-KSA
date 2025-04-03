@@ -1,28 +1,110 @@
 <template>
   <!-- Toast  Component -->
-  <div
-    class="toastContainer slds-notify_container slds-is-relative"
-    style="position: fixed; top: 10%; display: none"
-  >
-    <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
-      <span class="slds-assistive-text">error</span>
+  <!-- Gotta inline the class styles since we append this to the document body -->
+  <div class="toastContainer" style="width: 100%; text-align: center; display: none;">
+    <div
+      class="slds-notify slds-notify_toast slds-theme_error"
+      role="status"
+      style="
+        color: #ffffff;
+        background-color: #ba0517;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        border-radius: 0.25rem;
+        margin: 0.5rem;
+        padding: 0.75rem 3rem 0.75rem 1.5rem;
+        min-width: 30rem;
+        text-align: left;
+        justify-content: flex-start;
+      "
+    >
+      <span
+        class="slds-assistive-text"
+        style="
+          position: absolute !important;
+          margin: -1px !important;
+          border: 0 !important;
+          padding: 0 !important;
+          width: 1px !important;
+          height: 1px !important;
+          overflow: hidden !important;
+          clip: rect(0 0 0 0) !important;
+          text-transform: none !important;
+          white-space: nowrap !important;
+        "
+        >error</span
+      >
       <span
         class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
         title="Description of icon when needed"
+        style="
+          margin-right: 0.75rem;
+          vertical-align: top;
+          align-self: flex-start;
+          flex: none;
+          display: inline-block;
+          border-radius: 0.25rem;
+          line-height: 1;
+          background-color: transparent;
+        "
       >
-        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <svg
+          class="slds-icon slds-icon_small"
+          style="
+            overflow: hidden;
+            width: 1.5rem;
+            height: 1.5rem;
+            line-height: 1;
+            fill: #ffffff;
+            vertical-align: middle;
+          "
+          aria-hidden="true"
+        >
           <use
             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"
           ></use>
         </svg>
       </span>
-      <div class="slds-notify__content">
-        <h2 class="slds-text-heading_small">{errorMsg}</h2>
+      <div class="slds-notify__content" style="">
+        <h2
+          class="slds-text-heading_small"
+          style="font-size: 1rem; line-height: 1.25; margin: 0; padding: 0; font-weight: inherit;"
+        >
+          {errorMsg}
+        </h2>
       </div>
-      <div class="slds-notify__close">
+      <div
+        class="slds-notify__close"
+        style="
+          float: right;
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          margin-left: 0.25rem;
+          transform: translateY(0.125rem * -1);
+        "
+      >
         <button
           class="slds-button slds-button_icon slds-button_icon-inverse"
           title="Close"
+          style="
+            color: white;
+            line-height: 1;
+            vertical-align: middle;
+            justify-content: center;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            padding: 0;
+            background: none;
+            background-color: transparent;
+            background-clip: transparent;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 0.25rem;
+          "
         >
           <svg
             class="slds-button__icon slds-button__icon_large"
@@ -32,7 +114,22 @@
               xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             ></use>
           </svg>
-          <span class="slds-assistive-text">Close</span>
+          <span
+            class="slds-assistive-text"
+            style="
+              position: absolute !important;
+              margin: -1px !important;
+              border: 0 !important;
+              padding: 0 !important;
+              width: 1px !important;
+              height: 1px !important;
+              overflow: hidden !important;
+              clip: rect(0 0 0 0) !important;
+              text-transform: none !important;
+              white-space: nowrap !important;
+            "
+            >Close</span
+          >
         </button>
       </div>
     </div>
