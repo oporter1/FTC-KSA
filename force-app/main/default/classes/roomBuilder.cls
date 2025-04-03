@@ -49,6 +49,7 @@ public with sharing class roomBuilder {
       SELECT Id, Opportunity__c, Name, Room_No__c, Room_Number__c, Room_Size__c, Type__c, CreatedDate
       FROM Rooms__c
       WHERE Opportunity__c = :teamOppId
+      ORDER BY Room_Number__c
     ];
 
     // Initialize helper variables
@@ -152,7 +153,7 @@ public with sharing class roomBuilder {
     List<Rooms__c> everyRoom = new List<Rooms__c>();
     List<Rooms__c> newRooms = new List<Rooms__c>();
     List<Rooms__c> deleteRooms = new List<Rooms__c>();
-    Decimal counter = 0;
+    Map<Integer, Boolean> roomNumsMap = new Map<Integer, Boolean>();
     for (List<RoomObj> roomObjs : roomType2RoomsMap.values()) {
       for (RoomObj roomObj : roomObjs) {
         Rooms__c room = roomObj.room;
@@ -171,14 +172,27 @@ public with sharing class roomBuilder {
         room.Room_Size__c = room.Type__c;
         room.Type__c = String.valueOf(roomCapacity);
         everyRoom.add(room);
-        // System.debug('Every room - ' + room);
-        if (room.Id == null) {
-          room.Room_Number__c = counter + 1;
-          counter += 1;
-          newRooms.add(room);
-        }
+        if (room.Room_Number__c != null) roomNumsMap.put(Integer.valueOf(room.Room_Number__c), true);
       }
     }
+    Integer counter = 1;
+    for (Rooms__c room : everyRoom) {
+        // Add new room
+        if (room.Id == null) {
+          System.debug('new room - ' + room);
+          for (Integer i = counter; i < everyRoom.size() + 1; i++) {
+            System.debug('\t find room num ' + roomNumsMap.get(i));
+            if (roomNumsMap.get(i) == null) {
+              roomNumsMap.put(i, true);
+              room.Room_Number__c = i;
+              counter = i + 1;
+              break;
+            }
+          }
+          newRooms.add(room);
+        }
+    }
+    
     // System.debug('NewRooms - ' + newRooms.size());
     insert newRooms;
     delete deleteRooms;
