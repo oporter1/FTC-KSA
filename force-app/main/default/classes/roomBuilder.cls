@@ -34,7 +34,8 @@ public with sharing class roomBuilder {
         Team_Opportunity__c,
         KSA_Webcode__c,
         Coaches_Pin__c,
-        RecordType.Name
+        RecordType.Name,
+        Billing_Type__c
       FROM Opportunity
       WHERE
         Team_Opportunity__c = :teamOppId

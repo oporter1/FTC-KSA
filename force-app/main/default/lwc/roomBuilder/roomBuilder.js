@@ -24,7 +24,7 @@ export default class RoomBuilder extends LightningElement {
         getAthletesAndRooms({ webcode: value }).then(resp => {
             const members = JSON.parse(JSON.stringify(resp.athletes)) || []
             const rooms = JSON.parse(JSON.stringify(resp.rooms)) || []
-
+            console.log('resp - ', resp)
             const roomObj = {}
             this.members = members.map(member => {
                 const roomType = athleteRoomNumberType(member)
