@@ -273,8 +273,8 @@ export default class RoomBuilder extends LightningElement {
         elements.forEach((elem) => {
             if (elem.getAttribute('data-room-size') === `${member.roomPreference}`) {
                 elem.classList.add('drag-over')
-                this.validElementList.push(elem)
             }
+            this.validElementList.push(elem)
         })
         this.validElementList.push(this.memberArea)
         this.memberArea.classList.add('drag-over')
@@ -464,21 +464,26 @@ export default class RoomBuilder extends LightningElement {
         event.preventDefault();
     }
     /* DRAG DROP END */
+    firstToast = true
     errorAlert() {
         const toastEl = this.toastContainer
         if (toastEl) {
-            toastEl.style.display = 'block';
-            toastEl.style.zIndex = '9999';
-            toastEl.style.position = 'fixed';
-            toastEl.style.top = '10%';
-            toastEl.style.left = '50%';
-            toastEl.style.transform = 'translateX(-50%)';
-            document.body.appendChild(toastEl)
-            console.log('toast - after doc body append')
+
+            if (this.firstToast) {
+                toastEl.style.display = 'block';
+                toastEl.style.zIndex = '9999';
+                toastEl.style.position = 'fixed';
+                toastEl.style.top = '10%';
+                toastEl.style.left = '50%';
+                toastEl.style.transform = 'translateX(-50%)';
+                document.body.appendChild(toastEl)  // breaks out of the z-stack to appear over the nav bar
+                this.firstToast = false
+            } else {
+                toastEl.style.display = 'block'
+            }
             // eslint-disable-next-line @lwc/lwc/no-async-operation
             setTimeout(() => {
                 toastEl.style.display = 'none';
-                this.template.appendChild(toastEl);
             }, 5000);
         }
     }

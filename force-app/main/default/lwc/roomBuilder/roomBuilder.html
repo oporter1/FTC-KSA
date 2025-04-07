@@ -14,7 +14,7 @@
         border-radius: 0.25rem;
         margin: 0.5rem;
         padding: 0.75rem 3rem 0.75rem 1.5rem;
-        min-width: 30rem;
+        
         text-align: left;
         justify-content: flex-start;
       "
@@ -356,8 +356,8 @@
                     >
                       <div style="font-weight: bold">{member.schoolName}</div>
                       <div>
-                        <span class="room-reqs-text">Room Requirements:</span>
-                        {member.roomPreference} of {member.roomPreferenceName}
+                        <span class="room-reqs-text">Room Requirements: </span>
+                        <span>1 of {member.roomPreferenceName}</span>
                       </div>
                     </li>
                   </template>
