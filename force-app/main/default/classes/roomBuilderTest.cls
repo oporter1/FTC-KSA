@@ -234,4 +234,6 @@ private class roomBuilderTest {
     Opportunity opp = [SELECT Id, KSA_Webcode__c FROM Opportunity LIMIT 1];
     roomBuilder.updateAthletes(new List<Opportunity>{ opp });
   }
+
+  // Todo - Update above tests to check that room numbering stays ordered and no duplicates are re-created
 }

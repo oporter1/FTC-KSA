@@ -69,6 +69,7 @@
 }
 
 .member-list-ul {
+  height: 100vh;
   padding-top: 0
 }
 
