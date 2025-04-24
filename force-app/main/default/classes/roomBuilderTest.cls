@@ -18,7 +18,7 @@ private class roomBuilderTest {
     Opportunity parentOpp = new Opportunity(
       AccountId = acc.Id,
       Name = 'Parent Opp',
-      StageName = 'Inquiry',
+      StageName = 'Booked',
       CloseDate = Date.today()
     );
     insert parentOpp;
@@ -70,7 +70,7 @@ private class roomBuilderTest {
         AccountId = acc.Id,
         Arrival_Date__c = Date.today(),
         KSASport_or_Performing_Art__c = 'Volleyball',
-        StageName = 'Inquiry',
+        StageName = 'Booked',
         CloseDate = Date.today(),
         Team_Opportunity__c = parentOpp.Id,
         Billing_Type__c = 'Individual Billing',
@@ -193,7 +193,7 @@ private class roomBuilderTest {
       AccountId = acc.Id,
       Arrival_Date__c = Date.today(),
       KSASport_or_Performing_Art__c = 'Volleyball',
-      StageName = 'Inquiry',
+      StageName = 'Booked',
       CloseDate = Date.today(),
       Team_Opportunity__c = parentOpp.Id,
       Billing_Type__c = 'Individual Billing',
