@@ -86,3 +86,14 @@ delete (new Opportunity(Id = '006U900000JZqTpIAL'));
 update (new Opportunity(Id = '006U900000JL5BRIA1', Coaches_Pin__c = 123 ));
 
 
+// Query opportunities
+List<Opportunity> oppsToUpdate = [SELECT Id, Name, School_Contact__r.Name, StageName FROM Opportunity];
+
+// Update all opportunities to 'Booked' stage
+for(Opportunity opp : oppsToUpdate) {
+    opp.StageName = 'Booked';
+}
+
+// Perform the update
+update oppsToUpdate;
+System.debug('Updated ' + oppsToUpdate.size() + ' opportunities to Booked stage');

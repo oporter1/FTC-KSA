@@ -42,6 +42,9 @@ public with sharing class roomBuilder {
         AND Id != :teamOppId
         AND Billing_Type__c = 'Individual Billing'
         AND RecordType.Name = 'Athlete Opportunity'
+        AND (
+          StageName = 'Booked' OR StageName = 'Paid in Full'
+        )
     ];
     System.debug('athletes - ' + athletes.size());
 
