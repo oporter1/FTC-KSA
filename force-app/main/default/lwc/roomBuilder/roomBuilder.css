@@ -73,6 +73,10 @@
   padding-top: 0
 }
 
+.room-list-ul {
+  height: 100vh
+}
+
 .member-item,
 .room-item {
   padding: 0.375rem 0.75rem;
