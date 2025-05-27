@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2020_Spring_Training_Ordering_smart_list</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Individual_Registration__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Dinner_Coupon__c</columns>
+    <columns>Blue_Man_Group__c</columns>
+    <columns>Kobe_Steakhouse__c</columns>
+    <columns>Disney_Theme_Park_Admissions__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2020</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Lacrosse,Girls Lacrosse,Golf,Softball,Tennis,Track &amp; Field</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>notContain</operation>
+        <value>MUS</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>notContain</operation>
+        <value>wdw</value>
+    </filters>
+    <label>2020 Spring Training Ordering smart list</label>
+</ListView>

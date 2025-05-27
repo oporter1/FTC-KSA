@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ALL_2022_Spring_Open</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Email__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Individual_Registration__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Resort_Option__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Inquiry,Initial Intro</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Boys Lacrosse,Girls Lacrosse,Golf,Softball,Tennis</value>
+    </filters>
+    <label>ALL 2022 Spring Open</label>
+</ListView>

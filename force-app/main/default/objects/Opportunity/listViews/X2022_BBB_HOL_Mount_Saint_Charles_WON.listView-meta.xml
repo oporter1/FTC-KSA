@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_BBB_HOL_Mount_Saint_Charles_WON</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Booking_Notes__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Quad_Rooms__c</columns>
+    <columns>Resort_Welcome_Dinner__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Option__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 bbb hol mount saint</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <label>2022 BBB HOL Mount Saint Charles WON</label>
+</ListView>

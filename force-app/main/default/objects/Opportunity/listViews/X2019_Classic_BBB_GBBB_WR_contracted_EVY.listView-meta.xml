@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_Classic_BBB_GBBB_WR_contracted_EVY</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.AMOUNT</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Air_Arrival_Date__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Air_Departure_Date__c</columns>
+    <columns>Arrival_Airport_Code__c</columns>
+    <columns>Estimated_Air_Rate__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Air_Contract_Signed__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2019</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>notContain</operation>
+        <value>Baseball,Boys Lacrosse,Cheer and Dance,Choral,Cross Country,Field Hockey,Football,Golf,Girls Lacrosse,Girls Leadership,Instrumental,Softball,Tennis,Track &amp; Field,Volleyball</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>cl</value>
+    </filters>
+    <label>2019 CL BBB GBBB WR contracted EVY</label>
+</ListView>

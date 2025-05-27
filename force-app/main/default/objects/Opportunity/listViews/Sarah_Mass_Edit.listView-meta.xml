@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sarah_Mass_Edit</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Sales_Manager__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>AutoPay__c</columns>
+    <columns>SportName__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Stop_Pay_In_Full_Discount__c</columns>
+    <columns>Stop_Online_Registration__c</columns>
+    <columns>Stop_Installment__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024 bbb,2024 gbb</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>sarah</value>
+    </filters>
+    <label>Sarah Mass Edit</label>
+</ListView>

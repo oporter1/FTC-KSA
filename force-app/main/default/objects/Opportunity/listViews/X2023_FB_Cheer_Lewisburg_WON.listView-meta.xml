@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_FB_Cheer_Lewisburg_WON</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Invoice_Notes__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Specialty_Event_1_Date_Time__c</columns>
+    <columns>Specialty_Event_2_Date_Time__c</columns>
+    <columns>Specialty_Meal_Date_Time__c</columns>
+    <columns>Specialty_Meal_2_Date_Time__c</columns>
+    <columns>Specialty_Meals__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 FB Cheer LEWISBURG</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>equals</operation>
+        <value>KSA Events Air</value>
+    </filters>
+    <label>2023 FB Cheer Lewisburg WON</label>
+</ListView>

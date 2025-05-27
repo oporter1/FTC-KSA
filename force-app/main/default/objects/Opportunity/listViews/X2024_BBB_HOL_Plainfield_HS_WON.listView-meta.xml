@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2024_BBB_HOL_Plainfield_HS_WON</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Welcome_Dinner__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>equals</operation>
+        <value>plainfield high school</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Boys Basketball</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>equals</operation>
+        <value>KSA Events Air</value>
+    </filters>
+    <label>2024 BBB HOL Plainfield HS WON</label>
+</ListView>

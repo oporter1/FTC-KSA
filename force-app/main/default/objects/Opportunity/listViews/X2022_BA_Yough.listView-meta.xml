@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_BA_Yough</fullName>
+    <columns>RGP_Accepted__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>X5th_Deposit__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Final_Payment__c</columns>
+    <columns>Estimated_Air_Rate__c</columns>
+    <columns>Airline_Ticketing_Fee__c</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 BA yough</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2022 BA Yough</label>
+</ListView>

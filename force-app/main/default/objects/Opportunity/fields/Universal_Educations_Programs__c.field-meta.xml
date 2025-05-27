@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Universal_Educations_Programs__c</fullName>
+    <label>Universal Educational Programs</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Behind the Adventure</fullName>
+                <default>false</default>
+                <label>Behind the Adventure</label>
+            </value>
+            <value>
+                <fullName>Business Development</fullName>
+                <default>false</default>
+                <label>Business Development</label>
+            </value>
+            <value>
+                <fullName>Career Exploration</fullName>
+                <default>false</default>
+                <label>Career Exploration</label>
+            </value>
+            <value>
+                <fullName>Finance</fullName>
+                <default>false</default>
+                <label>Finance</label>
+            </value>
+            <value>
+                <fullName>Hollywood Rip Ride</fullName>
+                <default>false</default>
+                <label>Hollywood Rip Ride</label>
+            </value>
+            <value>
+                <fullName>Kongtrol Panel</fullName>
+                <default>false</default>
+                <label>Kongtrol Panel</label>
+            </value>
+            <value>
+                <fullName>Leadership Skills</fullName>
+                <default>false</default>
+                <label>Leadership Skills</label>
+            </value>
+            <value>
+                <fullName>Marketing is Universal</fullName>
+                <default>false</default>
+                <label>Marketing is Universal</label>
+            </value>
+            <value>
+                <fullName>Special FX</fullName>
+                <default>false</default>
+                <label>Special FX</label>
+            </value>
+            <value>
+                <fullName>Transformers Rollout</fullName>
+                <default>false</default>
+                <label>Transformers Rollout</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

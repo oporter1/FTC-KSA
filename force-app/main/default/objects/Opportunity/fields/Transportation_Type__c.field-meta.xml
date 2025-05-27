@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transportation_Type__c</fullName>
+    <description>Choose the type of transportation the teams are using to get to the Event Location</description>
+    <label>Transportation Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Booked Own Air</fullName>
+                <default>false</default>
+                <label>Booked Own Air</label>
+            </value>
+            <value>
+                <fullName>KSA Events Air</fullName>
+                <default>false</default>
+                <label>KSA Events Air</label>
+            </value>
+            <value>
+                <fullName>Land Only</fullName>
+                <default>false</default>
+                <label>Land Only</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_SB_St_Anthony_s_HS_WON</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Quad_Rooms__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Box_Lunch__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Resort_Booking_Notes__c</columns>
+    <columns>Air_Arrival_Date__c</columns>
+    <columns>Specialty_Meals__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2023 SB St. Anthony’s HS</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <label>2023 SB St. Anthony’s HS WON</label>
+</ListView>

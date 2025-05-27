@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Niki_2024_FB_Schools</fullName>
+    <columns>Arrival_Date__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Niki</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Football</value>
+    </filters>
+    <label>Niki 2024 FB Schools</label>
+</ListView>

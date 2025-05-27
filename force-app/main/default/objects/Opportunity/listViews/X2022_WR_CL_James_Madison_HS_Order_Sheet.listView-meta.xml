@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_WR_CL_James_Madison_HS_Order_Sheet</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Disney_Meal_Coupon__c</columns>
+    <columns>Disney_Theme_Park_Admissions__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Welcome_Dinner__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 wr cl james</value>
+    </filters>
+    <label>2022 WR CL James Madison HS Order Sheet</label>
+</ListView>

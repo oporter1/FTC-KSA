@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specialty_Meals__c</fullName>
+    <label>Specialty Meals</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Box Lunch At The Field</fullName>
+                <default>false</default>
+                <label>Box Lunch At The Field</label>
+            </value>
+            <value>
+                <fullName>Box Lunch At The Airport</fullName>
+                <default>false</default>
+                <label>Box Lunch At The Airport</label>
+            </value>
+            <value>
+                <fullName>Character Breakfast</fullName>
+                <default>false</default>
+                <label>Character Breakfast</label>
+            </value>
+            <value>
+                <fullName>Epcot Forever Specialty Meal</fullName>
+                <default>false</default>
+                <label>Epcot Forever Specialty Meal</label>
+            </value>
+            <value>
+                <fullName>Fogo de Chão</fullName>
+                <default>false</default>
+                <label>Fogo de Chão</label>
+            </value>
+            <value>
+                <fullName>Hard Rock Breakfast</fullName>
+                <default>false</default>
+                <label>Hard Rock Breakfast</label>
+            </value>
+            <value>
+                <fullName>Hard Rock Dinner</fullName>
+                <default>false</default>
+                <label>Hard Rock Dinner</label>
+            </value>
+            <value>
+                <fullName>Kobe Steakhouse</fullName>
+                <default>false</default>
+                <label>Kobe Steakhouse</label>
+            </value>
+            <value>
+                <fullName>Margaritaville Specialty Meal</fullName>
+                <default>false</default>
+                <label>Margaritaville Specialty Meal</label>
+            </value>
+            <value>
+                <fullName>NBC Grille Specialty Meal</fullName>
+                <default>false</default>
+                <label>NBC Grille Specialty Meal</label>
+            </value>
+            <value>
+                <fullName>Pizza at Resort</fullName>
+                <default>false</default>
+                <label>Pizza at Resort</label>
+            </value>
+            <value>
+                <fullName>Birthday Cake at Resort</fullName>
+                <default>false</default>
+                <label>Birthday Cake at Resort</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

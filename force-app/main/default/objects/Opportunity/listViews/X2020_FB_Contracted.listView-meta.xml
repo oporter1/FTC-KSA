@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2020_FB_Contracted</fullName>
+    <columns>Passenger_Count__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Destination__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Box_Lunch__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Pre_Game_Pasta_Meal__c</columns>
+    <columns>Pizza_Party__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Resort_Dinner_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2020 fb</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Closed Lost</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <label>2020 FB Contracted</label>
+</ListView>

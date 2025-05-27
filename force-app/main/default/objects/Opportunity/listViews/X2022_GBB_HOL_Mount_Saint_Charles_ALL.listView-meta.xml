@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_GBB_HOL_Mount_Saint_Charles_ALL</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>SportName__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 GBB HOL MOUNT SAINT</value>
+    </filters>
+    <label>2022 GBB HOL Mount Saint Charles ALL</label>
+</ListView>

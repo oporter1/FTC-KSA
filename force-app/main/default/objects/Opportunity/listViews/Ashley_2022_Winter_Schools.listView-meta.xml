@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ashley_2022_Winter_Schools</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Email__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Air_Status__c</columns>
+    <columns>Airline_Manifest_Complete__c</columns>
+    <columns>Disney_Theme_Park_Admissions__c</columns>
+    <columns>Departure_Documents_Sent__c</columns>
+    <columns>Airline_Documents_Sent_To_Client__c</columns>
+    <columns>Final_Billed__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Ashley</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Boys Basketball,Girls Basketball,Wrestling</value>
+    </filters>
+    <label>Ashley 2022 Winter Schools</label>
+</ListView>

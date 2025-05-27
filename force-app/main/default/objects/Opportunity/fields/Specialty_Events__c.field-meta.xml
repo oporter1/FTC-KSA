@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specialty_Events__c</fullName>
+    <label>Specialty Events</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Andretti</fullName>
+                <default>false</default>
+                <label>Andretti</label>
+            </value>
+            <value>
+                <fullName>Cabana Bay Galaxy Bowl</fullName>
+                <default>false</default>
+                <label>Cabana Bay Galaxy Bowl</label>
+            </value>
+            <value>
+                <fullName>Cocktail Hour</fullName>
+                <default>false</default>
+                <label>Cocktail Hour</label>
+            </value>
+            <value>
+                <fullName>CoCoa Beach Trip</fullName>
+                <default>false</default>
+                <label>CoCoa Beach Trip</label>
+            </value>
+            <value>
+                <fullName>Disney Springs</fullName>
+                <default>false</default>
+                <label>Disney Springs</label>
+            </value>
+            <value>
+                <fullName>Icon Park</fullName>
+                <default>false</default>
+                <label>Icon Park</label>
+            </value>
+            <value>
+                <fullName>Kennedy Space Center</fullName>
+                <default>false</default>
+                <label>Kennedy Space Center</label>
+            </value>
+            <value>
+                <fullName>MLB Spring Training Game</fullName>
+                <default>false</default>
+                <label>MLB Spring Training Game</label>
+            </value>
+            <value>
+                <fullName>Orlando Magic</fullName>
+                <default>false</default>
+                <label>Orlando Magic</label>
+            </value>
+            <value>
+                <fullName>Orlando Tree Trek</fullName>
+                <default>false</default>
+                <label>Orlando Tree Trek</label>
+            </value>
+            <value>
+                <fullName>Top Golf</fullName>
+                <default>false</default>
+                <label>Top Golf</label>
+            </value>
+            <value>
+                <fullName>UCF Athletic Event</fullName>
+                <default>false</default>
+                <label>UCF Athletic Event</label>
+            </value>
+            <value>
+                <fullName>Welcome Reception</fullName>
+                <default>false</default>
+                <label>Welcome Reception</label>
+            </value>
+            <value>
+                <fullName>Church</fullName>
+                <default>false</default>
+                <label>Church</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

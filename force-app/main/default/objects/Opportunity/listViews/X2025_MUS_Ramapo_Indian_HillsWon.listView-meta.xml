@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_MUS_Ramapo_Indian_HillsWon</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Quad_Rooms__c</columns>
+    <columns>Triple_Room__c</columns>
+    <columns>Double_Room__c</columns>
+    <columns>KSA_Webcode__c</columns>
+    <columns>RGP_Accepted__c</columns>
+    <columns>Seats_Sold__c</columns>
+    <columns>fw1__Total_Paid_Amount__c</columns>
+    <columns>Disney_Meal_Coupon__c</columns>
+    <columns>Disney_Performance__c</columns>
+    <columns>Disney_Theme_Park_Admissions__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2025 INS Ramapo Indian</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <label>2025 MUS Ramapo Indian HillsWon</label>
+</ListView>

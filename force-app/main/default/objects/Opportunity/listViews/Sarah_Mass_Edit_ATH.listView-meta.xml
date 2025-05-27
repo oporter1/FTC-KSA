@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sarah_Mass_Edit_ATH</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Sales_Manager__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>SportName__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025 ba clarkstown north</value>
+    </filters>
+    <label>Sarah Mass Edit ATH</label>
+</ListView>

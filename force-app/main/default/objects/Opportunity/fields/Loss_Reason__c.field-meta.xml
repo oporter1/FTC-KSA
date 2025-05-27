@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loss_Reason__c</fullName>
+    <label>Loss Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Booked Another Tournament</fullName>
+                <default>false</default>
+                <label>Booked Another Tournament</label>
+            </value>
+            <value>
+                <fullName>Coach Moved</fullName>
+                <default>false</default>
+                <label>Coach Moved</label>
+            </value>
+            <value>
+                <fullName>Competition Scheduling Conflict</fullName>
+                <default>false</default>
+                <label>Competition Scheduling Conflict</label>
+            </value>
+            <value>
+                <fullName>Economy</fullName>
+                <default>false</default>
+                <label>Economy</label>
+            </value>
+            <value>
+                <fullName>Information Only</fullName>
+                <default>false</default>
+                <label>Information Only</label>
+            </value>
+            <value>
+                <fullName>Looking for Following Year</fullName>
+                <default>false</default>
+                <label>Looking for Following Year</label>
+            </value>
+            <value>
+                <fullName>New Facility Being Built</fullName>
+                <default>false</default>
+                <label>New Facility Being Built</label>
+            </value>
+            <value>
+                <fullName>No Board Approval</fullName>
+                <default>false</default>
+                <label>No Board Approval</label>
+            </value>
+            <value>
+                <fullName>No Parent Buy In</fullName>
+                <default>false</default>
+                <label>No Parent Buy In</label>
+            </value>
+            <value>
+                <fullName>No Response</fullName>
+                <default>false</default>
+                <label>No Response</label>
+            </value>
+            <value>
+                <fullName>Not Enough Time To Fundraise</fullName>
+                <default>false</default>
+                <label>Not Enough Time To Fundraise</label>
+            </value>
+            <value>
+                <fullName>Not Interesting In Traveling To Florida</fullName>
+                <default>false</default>
+                <label>Not Interested In Traveling To Offered Destinations</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Price too High</fullName>
+                <default>false</default>
+                <label>Price too High</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

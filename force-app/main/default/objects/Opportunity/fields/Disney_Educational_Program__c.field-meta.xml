@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disney_Educational_Program__c</fullName>
+    <description>Disney Youth Educational Tours</description>
+    <label>Disney Educational Program</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Animation Academy</fullName>
+                <default>false</default>
+                <label>Animation Academy</label>
+            </value>
+            <value>
+                <fullName>Cell Animation</fullName>
+                <default>false</default>
+                <label>Cell Animation</label>
+            </value>
+            <value>
+                <fullName>Discovering American Spirit</fullName>
+                <default>false</default>
+                <label>Discovering American Spirit</label>
+            </value>
+            <value>
+                <fullName>Discovering Marine Life</fullName>
+                <default>false</default>
+                <label>Discovering Marine Life</label>
+            </value>
+            <value>
+                <fullName>Energy &amp; Waves Physics</fullName>
+                <default>false</default>
+                <label>Energy &amp; Waves Physics</label>
+            </value>
+            <value>
+                <fullName>Everyday Chemistry</fullName>
+                <default>false</default>
+                <label>Everyday Chemistry</label>
+            </value>
+            <value>
+                <fullName>Exploring Marine Sciences</fullName>
+                <default>false</default>
+                <label>Exploring Marine Sciences</label>
+            </value>
+            <value>
+                <fullName>Exploring Zoological</fullName>
+                <default>false</default>
+                <label>Exploring Zoological</label>
+            </value>
+            <value>
+                <fullName>Global Citizenship</fullName>
+                <default>false</default>
+                <label>Global Citizenship</label>
+            </value>
+            <value>
+                <fullName>Hospitality</fullName>
+                <default>false</default>
+                <label>Hospitality</label>
+            </value>
+            <value>
+                <fullName>Leadership Strategies</fullName>
+                <default>false</default>
+                <label>Leadership Strategies</label>
+            </value>
+            <value>
+                <fullName>Personal Brand</fullName>
+                <default>false</default>
+                <label>Personal Brand</label>
+            </value>
+            <value>
+                <fullName>Photography</fullName>
+                <default>false</default>
+                <label>Photography</label>
+            </value>
+            <value>
+                <fullName>Properties of Motion</fullName>
+                <default>false</default>
+                <label>Properties of Motion</label>
+            </value>
+            <value>
+                <fullName>Science Behind the Seeds</fullName>
+                <default>false</default>
+                <label>Science Behind the Seeds</label>
+            </value>
+            <value>
+                <fullName>Storytelling Drawings</fullName>
+                <default>false</default>
+                <label>Storytelling Drawings</label>
+            </value>
+            <value>
+                <fullName>Techniques of Teamwork</fullName>
+                <default>false</default>
+                <label>Techniques of Teamwork</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_All_Spring_Contracted_Individual</fullName>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Estimated_Air_Seats_Needed__c</columns>
+    <columns>Predicted_Athletes__c</columns>
+    <columns>Predicted_Coaches__c</columns>
+    <columns>Predicted_Fans__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Application_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Verbal Definite,Contracted</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Chorus,Girls Golf,Girls Lacrosse,Girls Tennis,Instrumental,Music,Softball,Track and Field</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Billing_Type__c</field>
+        <operation>equals</operation>
+        <value>Individual Billing</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>equals</operation>
+        <value>KSA Events Air</value>
+    </filters>
+    <label>2025 All Spring Contracted - Individual</label>
+</ListView>

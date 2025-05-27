@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AutoPay__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Check this box if  customer signed up for automatic payments, payments will be proceed automatically on dates.</description>
+    <label>AutoPay</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_VB_JJ_Pearce_Birthdate_Southwest</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Athletes_Date_of_Birth__c</columns>
+    <columns>Date_of_Birth_Pax1__c</columns>
+    <columns>Date_of_Birth_Pax2__c</columns>
+    <columns>Date_of_Birth_Pax4__c</columns>
+    <columns>Date_of_Birth_Pax3__c</columns>
+    <columns>Date_of_Birth_Pax6__c</columns>
+    <columns>Date_of_Birth_Pax5__c</columns>
+    <columns>PAX_1__c</columns>
+    <columns>PAX_2__c</columns>
+    <columns>PAX_3__c</columns>
+    <columns>PAX_4__c</columns>
+    <columns>Air_Arrival_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 vb jj pearce hs</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <label>2022 VB JJ Pearce Birthdate Southwest</label>
+</ListView>

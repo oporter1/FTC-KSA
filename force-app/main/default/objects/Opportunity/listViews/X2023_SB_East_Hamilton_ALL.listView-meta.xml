@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_SB_East_Hamilton_ALL</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Box_Lunch__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 SB East Hamilton</value>
+    </filters>
+    <label>2023 SB East Hamilton ALL</label>
+</ListView>

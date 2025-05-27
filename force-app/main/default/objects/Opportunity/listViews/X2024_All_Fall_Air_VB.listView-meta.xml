@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2024_All_Fall_Air_VB</fullName>
+    <columns>Air_Status__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Airline_Manifest_Due__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Air_Arrival_Date__c</columns>
+    <columns>Air_Departure_Date__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Arrival_Airport_Code__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <columns>Inbound_Flight__c</columns>
+    <columns>Inbound_Departure_Time__c</columns>
+    <columns>Inbound_Arrival_Time__c</columns>
+    <columns>Outbound_Flight__c</columns>
+    <columns>Outbound_Departure_Time__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Cross Country,Field Hockey,Volleyball</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>equals</operation>
+        <value>KSA Events Air</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>7/15/2023</value>
+    </filters>
+    <filters>
+        <field>Departure_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>10/30/2024</value>
+    </filters>
+    <label>2024 All Fall Air VB</label>
+</ListView>

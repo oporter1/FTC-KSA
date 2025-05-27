@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_GBB_HOL_Iowa_HS</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Top_Golf__c</columns>
+    <columns>Kennedy_Space_Center__c</columns>
+    <columns>Sea_World_Meal_Coupon__c</columns>
+    <columns>Resort_Welcome_Dinner__c</columns>
+    <columns>Kobe_Steakhouse__c</columns>
+    <columns>Hard_Rock_Meal__c</columns>
+    <columns>NBC_Grille_Specialty_Meal__c</columns>
+    <columns>Illuminations_Specialty_Meal__c</columns>
+    <columns>Pre_Game_Pasta_Meal__c</columns>
+    <columns>Sea_World_Performance__c</columns>
+    <columns>Pizza_Party__c</columns>
+    <columns>Pre_Game_Tailgate_Party__c</columns>
+    <columns>Margaritaville_Specialty_Meal__c</columns>
+    <columns>Rainforest_Cafe_Specialty_Meal__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2019 GBB HOL Iowa</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <label>2019 GBB HOL Iowa HS</label>
+</ListView>

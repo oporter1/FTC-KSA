@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_VB_Liberty_Christian_Order_Sheet</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Food_Beverage_Notes__c</columns>
+    <columns>Resort_Booking_Notes__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2023 VB Liberty Christian</value>
+    </filters>
+    <label>2023 VB Liberty Christian Order Sheet</label>
+</ListView>

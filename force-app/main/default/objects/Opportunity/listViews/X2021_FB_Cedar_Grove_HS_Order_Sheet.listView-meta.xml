@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2021_FB_Cedar_Grove_HS_Order_Sheet</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Kobe_Steakhouse__c</columns>
+    <columns>Pizza_Party__c</columns>
+    <columns>Pre_Game_Pasta_Meal__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2021 FB Cedar Grove HS</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <label>2021 FB Cedar Grove HS Order Sheet</label>
+</ListView>

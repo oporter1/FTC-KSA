@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_ALL_Convent_of_Sacred_Heart</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Webcode__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Invoice_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>Convent</value>
+    </filters>
+    <label>2023 ALL Convent of Sacred Heart</label>
+</ListView>

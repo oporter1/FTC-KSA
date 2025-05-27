@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_BA_Cheshire_Academy_WON</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Double_Room__c</columns>
+    <columns>Resort_Option__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2023 BA Cheshire Academy</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <label>2023 BA Cheshire Academy WON</label>
+</ListView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ashley_2023_Spring_Schools1</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Email__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Resort_Option__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Ashley</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Lacrosse,Cross Country,Field Hockey,Girls Lacrosse,Golf,Softball,Wrestling,Tennis,Track and Field</value>
+    </filters>
+    <label>Ashley 2023 Spring Schools</label>
+</ListView>

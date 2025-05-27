@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_Sarah_Arrival_Block_3</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Draft_Itinerary__c</columns>
+    <columns>Draft_Itinerary_Call__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <columns>Final_Billed__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Airline_Manifest_Complete__c</columns>
+    <columns>Billing_Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Girls Golf,Girls Lacrosse,Girls Tennis,Instrumental,Softball,Track &amp; Field</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>3/30/2023</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>sarah</value>
+    </filters>
+    <filters>
+        <field>Air_Arrival_Date__c</field>
+        <operation>lessThan</operation>
+        <value>4/21/2023</value>
+    </filters>
+    <label>2023 Sarah Arrival Block 3</label>
+</ListView>

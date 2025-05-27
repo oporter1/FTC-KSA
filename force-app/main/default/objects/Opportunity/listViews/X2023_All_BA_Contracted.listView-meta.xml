@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_All_BA_Contracted</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+    <columns>Final_Billed__c</columns>
+    <columns>Final_Itinerary__c</columns>
+    <columns>Draft_Itinerary__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Survey_Completed__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>KSA_Webcode__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Airline_Manifest_Complete__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Track &amp; Field</value>
+    </filters>
+    <label>2023 All BA Contracted</label>
+</ListView>

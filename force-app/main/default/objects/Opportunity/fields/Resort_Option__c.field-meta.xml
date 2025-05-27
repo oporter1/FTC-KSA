@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resort_Option__c</fullName>
+    <description>Choose which resort is associated with the Opportunity.</description>
+    <label>Resort Option</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>All Star Sports</fullName>
+                <default>false</default>
+                <label>All Star Sports</label>
+            </value>
+            <value>
+                <fullName>All Start Movies</fullName>
+                <default>false</default>
+                <label>All Start Movies</label>
+            </value>
+            <value>
+                <fullName>All Start Music</fullName>
+                <default>false</default>
+                <label>All Start Music</label>
+            </value>
+            <value>
+                <fullName>Aventura</fullName>
+                <default>false</default>
+                <label>Aventura</label>
+            </value>
+            <value>
+                <fullName>Cabana Bay</fullName>
+                <default>true</default>
+                <label>Cabana Bay</label>
+            </value>
+            <value>
+                <fullName>Caribbean Beach</fullName>
+                <default>false</default>
+                <label>Caribbean Beach</label>
+            </value>
+            <value>
+                <fullName>Coronado Springs</fullName>
+                <default>false</default>
+                <label>Coronado Springs</label>
+            </value>
+            <value>
+                <fullName>Endless Summer: Dockside Inn &amp; Suites</fullName>
+                <default>false</default>
+                <label>Endless Summer: Dockside Inn &amp; Suites</label>
+            </value>
+            <value>
+                <fullName>Endless Summer Surfside</fullName>
+                <default>false</default>
+                <label>Endless Summer Surfside</label>
+            </value>
+            <value>
+                <fullName>Gaylord Palms</fullName>
+                <default>false</default>
+                <label>Gaylord Palms</label>
+            </value>
+            <value>
+                <fullName>Hard Rock Hotel</fullName>
+                <default>false</default>
+                <label>Hard Rock Hotel</label>
+            </value>
+            <value>
+                <fullName>Hilton Hawaiian Village</fullName>
+                <default>false</default>
+                <label>Hilton Hawaiian Village</label>
+            </value>
+            <value>
+                <fullName>Hilton Tempo NYC</fullName>
+                <default>false</default>
+                <label>Hilton Tempo NYC</label>
+            </value>
+            <value>
+                <fullName>Holiday Inn</fullName>
+                <default>false</default>
+                <label>Holiday Inn</label>
+            </value>
+            <value>
+                <fullName>Pop Century</fullName>
+                <default>false</default>
+                <label>Pop Century</label>
+            </value>
+            <value>
+                <fullName>Port Orleans</fullName>
+                <default>false</default>
+                <label>Port Orleans</label>
+            </value>
+            <value>
+                <fullName>Sandcastle - Virginia Beach</fullName>
+                <default>false</default>
+                <label>Sandcastle - Virginia Beach</label>
+            </value>
+            <value>
+                <fullName>Sapphire Falls</fullName>
+                <default>false</default>
+                <label>Sapphire Falls</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

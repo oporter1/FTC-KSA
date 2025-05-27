@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_All_Winter_Gaylord_Team_Tags</fullName>
+    <columns>Transportation_Type__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Application_Received__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Disney_Meal_Coupon__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Boys Basketball,Girls Basketball,Wrestling</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>Resort_Option__c</field>
+        <operation>equals</operation>
+        <value>Gaylord Palms</value>
+    </filters>
+    <filters>
+        <field>Disney_Theme_Park_Admissions__c</field>
+        <operation>equals</operation>
+        <value>2 Day Base,2 Day Park Hopper,2 Day Premium,3 Day Base,3 Day Park Hopper,3 Day Premium,4 Day Base,4 Day Park Hopper,4 Day Premium</value>
+    </filters>
+    <label>2022 All Winter Gaylord - Team &amp; Tags</label>
+</ListView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2024_BLAX_Harvey_School_HS_ORDER_SHEET</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Seats_Sold__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Resort_Welcome_Dinner__c</columns>
+    <columns>Resort_Booking_Notes__c</columns>
+    <columns>Specialty_Meal_Date_Time__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024 bLAX harvey</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2024 BLAX Harvey School HS ORDER SHEET</label>
+</ListView>

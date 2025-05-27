@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sarah_Mass_Edit_TAGS_WON</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>SportName__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>Welcome_Drink_Vouchers__c</columns>
+    <columns>Fan_Swag_Bag__c</columns>
+    <columns>Resort_Dinner_Coupon__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>sarah</value>
+    </filters>
+    <label>Sarah Mass Edit TAGS WON</label>
+</ListView>
