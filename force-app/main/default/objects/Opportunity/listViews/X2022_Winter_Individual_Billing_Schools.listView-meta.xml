@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_Winter_Individual_Billing_Schools</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Predicted_Athletes__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Quad_Rate__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Individual_Registration__c</columns>
+    <columns>SportName__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 GBB,2022 BBB,2022 WR</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Billing_Type__c</field>
+        <operation>equals</operation>
+        <value>Individual Billing</value>
+    </filters>
+    <label>2022 Winter Individual Billing Schools</label>
+</ListView>

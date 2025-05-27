@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_Spring_Operation_Check_Lists_Sarah</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Final_Billed__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Email__c</columns>
+    <columns>Specialty_Meals__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <columns>Draft_Itinerary__c</columns>
+    <columns>Departure_Call_Complete__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Airline_Manifest_Complete__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Billing_Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>Sarah</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Girls Golf,Girls Lacrosse,Girls Tennis,Softball,Track &amp; Field</value>
+    </filters>
+    <label>2023 Spring Operation Check Lists Sarah</label>
+</ListView>

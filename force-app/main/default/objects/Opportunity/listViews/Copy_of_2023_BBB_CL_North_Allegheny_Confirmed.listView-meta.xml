@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_2023_BBB_CL_North_Allegheny_Confirmed</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 BBB CL north allegheny</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2023 BBB CL North Allegheny OPEN</label>
+</ListView>

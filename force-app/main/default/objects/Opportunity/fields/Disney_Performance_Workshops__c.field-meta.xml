@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disney_Performance_Workshops__c</fullName>
+    <label>Disney Performance Workshops</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Acting 101</fullName>
+                <default>false</default>
+                <label>Acting 101</label>
+            </value>
+            <value>
+                <fullName>Dance Technique</fullName>
+                <default>false</default>
+                <label>Dance Technique</label>
+            </value>
+            <value>
+                <fullName>Disney Auxiliration</fullName>
+                <default>false</default>
+                <label>Disney Auxiliration</label>
+            </value>
+            <value>
+                <fullName>Disney Broadway Magic</fullName>
+                <default>false</default>
+                <label>Disney Broadway Magic</label>
+            </value>
+            <value>
+                <fullName>Disney Dancin&apos;</fullName>
+                <default>false</default>
+                <label>Disney Dancin&apos;</label>
+            </value>
+            <value>
+                <fullName>Disney Fundamentals</fullName>
+                <default>false</default>
+                <label>Disney Fundamentals</label>
+            </value>
+            <value>
+                <fullName>Disney Sings</fullName>
+                <default>false</default>
+                <label>Disney Sings</label>
+            </value>
+            <value>
+                <fullName>Jazz it Up</fullName>
+                <default>false</default>
+                <label>Jazz it Up</label>
+            </value>
+            <value>
+                <fullName>Professional Insights</fullName>
+                <default>false</default>
+                <label>Professional Insights</label>
+            </value>
+            <value>
+                <fullName>Technically Speaking</fullName>
+                <default>false</default>
+                <label>Technically Speaking</label>
+            </value>
+            <value>
+                <fullName>Your Instrumental</fullName>
+                <default>false</default>
+                <label>Your Instrumental</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

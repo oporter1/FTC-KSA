@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_Jillian_Spring_Inq_sales_kit_fup</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Application_Received__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Sales_Call_Notes__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Communication_History__c</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Inquiry,Sales Kit Sent,Follow-up</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Girls Golf,Girls Lacrosse,Girls Tennis,Softball,Track &amp; Field,Wrestling</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Oliver</value>
+    </filters>
+    <label>2025 Jillian Spring Inq, sales kit, fup</label>
+</ListView>

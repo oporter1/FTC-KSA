@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_FB_Delaware_Valley</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 FB Delaware Valley</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <label>2022 FB Delaware Valley</label>
+</ListView>

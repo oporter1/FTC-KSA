@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_GBB_WON_EVY</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.AMOUNT</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Arrival_Airport_Code__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Estimated_Air_Rate__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Air_Contract_Signed__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019 GBB</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Closed Lost</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <label>2019 GBB WON EVY</label>
+</ListView>

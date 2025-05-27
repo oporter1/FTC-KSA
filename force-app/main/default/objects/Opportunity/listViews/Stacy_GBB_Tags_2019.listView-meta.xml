@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stacy_GBB_Tags_2019</fullName>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Email__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>X5th_Deposit__c</columns>
+    <columns>X6th_Deposit__c</columns>
+    <columns>X7th_Deposit__c</columns>
+    <columns>Final_Payment__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>McGuffey</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notContain</operation>
+        <value>Contracted,Closed Lost,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>Stacy GBB Tags 2019</label>
+</ListView>

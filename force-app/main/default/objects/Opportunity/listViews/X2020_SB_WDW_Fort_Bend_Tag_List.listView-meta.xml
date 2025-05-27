@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2020_SB_WDW_Fort_Bend_Tag_List</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Rainforest_Cafe_Specialty_Meal__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Dinner_Coupon__c</columns>
+    <columns>Sea_World_Meal_Coupon__c</columns>
+    <columns>Sea_World_Theme_Park_Admission__c</columns>
+    <columns>Sea_World_Performance__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Top_Golf__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Universal_Performance__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Workshop__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Universal_Educations_Programs__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>equals</operation>
+        <value>Fort Bend Christian Academy</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2020 SB</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <label>2020 SB WDW Fort Bend Tag List</label>
+</ListView>

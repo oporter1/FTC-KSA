@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2020_FB_Delaware_Valley_HS_Seniors</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Email__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2020 FB Delaware Valley HS Senior,2020 FB Delaware Valley High School Senior</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Closed Lost</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2020 FB Delaware Valley HS Seniors</label>
+</ListView>

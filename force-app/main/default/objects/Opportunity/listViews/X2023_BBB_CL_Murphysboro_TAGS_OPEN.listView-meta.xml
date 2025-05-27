@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_BBB_CL_Murphysboro_TAGS_OPEN</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>SportName__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 BBB CL Murphysboro</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2023 BBB CL Murphysboro TAGS OPEN</label>
+</ListView>

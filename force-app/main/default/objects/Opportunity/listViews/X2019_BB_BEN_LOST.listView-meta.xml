@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_BB_BEN_LOST</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.CREATED_DATE</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Email__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Volleyball</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notContain</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>X2_Digit_Year__c</field>
+        <operation>equals</operation>
+        <value>19</value>
+    </filters>
+    <label>2019 BB BEN LOST</label>
+</ListView>

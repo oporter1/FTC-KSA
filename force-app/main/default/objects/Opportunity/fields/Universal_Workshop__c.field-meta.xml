@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Universal_Workshop__c</fullName>
+    <label>Universal Workshop</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sound Design</fullName>
+                <default>false</default>
+                <label>Sound Design</label>
+            </value>
+            <value>
+                <fullName>Dance is Universal</fullName>
+                <default>false</default>
+                <label>Dance is Universal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

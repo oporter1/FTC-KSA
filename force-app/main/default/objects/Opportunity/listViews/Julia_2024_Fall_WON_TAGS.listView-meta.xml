@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Julia_2024_Fall_WON_TAGS</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Football,Volleyball</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>Julia</value>
+    </filters>
+    <label>Julia 2024 Fall WON TAGS</label>
+</ListView>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_BLAX_St_Michael_s_Catholic_AIR</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <columns>Seats_Sold__c</columns>
+    <columns>Air_Arrival_Date__c</columns>
+    <columns>Inbound_Flight__c</columns>
+    <columns>Inbound_Departure_Time__c</columns>
+    <columns>Inbound_Arrival_Time__c</columns>
+    <columns>Air_Departure_Date__c</columns>
+    <columns>Outbound_Flight__c</columns>
+    <columns>Outbound_Departure_Time__c</columns>
+    <columns>Outbound_Arrival_Time__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Arrival_Airport_Code__c</columns>
+    <columns>Sold_Ticket_Price__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Boys Lacrosse</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025 BLAX St. Michael&apos;s Catholic</value>
+    </filters>
+    <label>2025 BLAX St. Michael&apos;s Catholic AIR</label>
+</ListView>

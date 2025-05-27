@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_s_your_motivation__c</fullName>
+    <label>What&apos;s your motivation?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Team Bonding</fullName>
+                <default>false</default>
+                <label>Team Bonding</label>
+            </value>
+            <value>
+                <fullName>Help filling my Schedule</fullName>
+                <default>false</default>
+                <label>Help filling my Schedule</label>
+            </value>
+            <value>
+                <fullName>Competition</fullName>
+                <default>false</default>
+                <label>Competition</label>
+            </value>
+            <value>
+                <fullName>National Exposure</fullName>
+                <default>false</default>
+                <label>National Exposure</label>
+            </value>
+            <value>
+                <fullName>Love Theme Parks</fullName>
+                <default>false</default>
+                <label>Love Theme Parks</label>
+            </value>
+            <value>
+                <fullName>Reward for a Successful Season</fullName>
+                <default>false</default>
+                <label>Reward for a Successful Season</label>
+            </value>
+            <value>
+                <fullName>Increase Athlete Participation</fullName>
+                <default>false</default>
+                <label>Increase Athlete Participation</label>
+            </value>
+            <value>
+                <fullName>Hate The Cold, Love the Warm Weather!</fullName>
+                <default>false</default>
+                <label>Hate The Cold, Love the Warm Weather!</label>
+            </value>
+            <value>
+                <fullName>Not Listed</fullName>
+                <default>false</default>
+                <label>Not Listed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

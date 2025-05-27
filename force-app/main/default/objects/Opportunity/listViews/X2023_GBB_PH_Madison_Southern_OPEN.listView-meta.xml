@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_GBB_PH_Madison_Southern_OPEN</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Closed Lost,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 gbb ph madison</value>
+    </filters>
+    <label>2023 GBB PH Madison Southern OPEN</label>
+</ListView>

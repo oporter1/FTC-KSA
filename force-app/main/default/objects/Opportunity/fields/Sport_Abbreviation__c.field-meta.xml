@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sport_Abbreviation__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Volleyball&quot;), &quot;VB&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Track &amp; Field&quot;), &quot;Track&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Music&quot;), &quot;MUS&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Cross Country&quot;), &quot;CC&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Chorus&quot;), &quot;Chorus&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Field Hockey&quot;), &quot;FH&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Football&quot;), &quot;FB&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Wrestling&quot;), &quot;WR&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Girls Basketball&quot;), &quot;GBB&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Boys Basketball&quot;), &quot;BBB&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Softball&quot;), &quot;SB&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Baseball&quot;), &quot;BA&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Boys Lacrosse&quot;), &quot;BLAX&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Girls Lacrosse&quot;), &quot;GLAX&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Boys Tennis&quot;), &quot;BTEN&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Girls Tennis&quot;), &quot;GTEN&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Boys Golf&quot;), &quot;BGLF&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Girls Golf&quot;), &quot;GGLF&quot;,
+IF(ISPICKVAL(  KSASport_or_Performing_Art__c  , &quot;Instrumental&quot;), &quot;INS&quot;,
+NULL)))))))))))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sport Abbreviation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

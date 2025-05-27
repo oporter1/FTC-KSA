@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Emma_Mass_Edit</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024 BA Glenbrook North HS</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Closed Lost,Booked</value>
+    </filters>
+    <label>Emma Mass Edit</label>
+</ListView>

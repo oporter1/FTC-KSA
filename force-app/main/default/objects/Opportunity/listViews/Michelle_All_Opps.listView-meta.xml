@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Michelle_All_Opps</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Email__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>Final_Payment__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>equals</operation>
+        <value>Michelle Elkott</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2019</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>contains</operation>
+        <value>North Warren</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>Michelle All Opps</label>
+</ListView>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_BBB_CL_Tiverton_Order_Sheet</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Disney_Meal_Coupon__c</columns>
+    <columns>Disney_Theme_Park_Admissions__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>Resort_Welcome_Dinner__c</columns>
+    <columns>Food_Beverage_Notes__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>contains</operation>
+        <value>Tiverton</value>
+    </filters>
+    <label>2022 BBB CL Tiverton Order Sheet</label>
+</ListView>

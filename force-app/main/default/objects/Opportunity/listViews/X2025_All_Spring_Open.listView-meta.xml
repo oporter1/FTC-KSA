@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_All_Spring_Open</fullName>
+    <columns>Sales_Manager__c</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Loss_Reason__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Athletic Director,Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Girls Golf,Girls Lacrosse,Girls Tennis,Softball</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Verbal Definite,Contracted,Closed Lost</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Sales_Manager__c</field>
+        <operation>equals</operation>
+        <value>Kelly Hayes</value>
+    </filters>
+    <label>2025 All Spring - Open</label>
+</ListView>

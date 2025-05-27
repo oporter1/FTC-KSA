@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2021_BBB_TAg_Open</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Email__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Closed Lost</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2021 BBB</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted</value>
+    </filters>
+    <label>2021 BBB TAg - Open</label>
+</ListView>

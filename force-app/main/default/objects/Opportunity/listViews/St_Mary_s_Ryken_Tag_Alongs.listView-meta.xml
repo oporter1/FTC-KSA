@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>St_Mary_s_Ryken_Tag_Alongs</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Email__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.LAST_UPDATE</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>Final_Payment__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019 FB St Mary&apos;s</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Closed Lost,Booked</value>
+    </filters>
+    <label>St Mary&apos;s Ryken Tag Alongs</label>
+</ListView>

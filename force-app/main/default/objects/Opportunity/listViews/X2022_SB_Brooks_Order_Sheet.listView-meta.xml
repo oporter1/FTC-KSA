@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_SB_Brooks_Order_Sheet</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 SB Brooks</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Ashley</value>
+    </filters>
+    <label>2022 SB Brooks Spring Order Sheet</label>
+</ListView>

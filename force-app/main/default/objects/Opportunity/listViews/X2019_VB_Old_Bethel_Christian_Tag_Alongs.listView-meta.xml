@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_VB_Old_Bethel_Christian_Tag_Alongs</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.PROBABILITY</columns>
+    <columns>OPPORTUNITY.LAST_ACTIVITY</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Email__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Webcode__c</columns>
+    <columns>Arrival_Airport_Code__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019 VB Old Bethel</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <label>2019 VB Old Bethel Christian Tag Alongs</label>
+</ListView>

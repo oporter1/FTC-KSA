@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Julia_2023_Spring_Schools</fullName>
+    <columns>Arrival_Date__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Rollover__c</columns>
+    <columns>Email__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <columns>Schedule_Request_Recv_d__c</columns>
+    <columns>Application_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Julia</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Lacrosse,Girls Lacrosse,Softball,Track &amp; Field</value>
+    </filters>
+    <label>Julia 2023 Spring Schools</label>
+</ListView>

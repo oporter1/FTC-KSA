@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_FB_OPEN</fullName>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>KSADestination_Interested_in_Traveling__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Sales_Manager__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Comments__c</columns>
+    <columns>Sales_Call_Notes__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025 FB</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notContain</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notContain</operation>
+        <value>Closed Lost</value>
+    </filters>
+    <label>2025 FB OPEN</label>
+</ListView>

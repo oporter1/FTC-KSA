@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_all_Spring_Tags_Laura</fullName>
+    <columns>Account_Manager__c</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Email__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Field Hockey,Girls Golf,Girls Lacrosse,Girls Tennis,Instrumental,Softball,Track &amp; Field</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Closed Lost</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>Laura</value>
+    </filters>
+    <label>2023 all Spring Tags Laura</label>
+</ListView>

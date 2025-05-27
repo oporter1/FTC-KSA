@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_MUS_Pocono_mountain_East_Booked</fullName>
+    <columns>Passenger_Count__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Invoiced__c</columns>
+    <columns>School_Contact__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 MUS pocono</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 MUS Indian</value>
+    </filters>
+    <label>2022 MUS Pocono mountain East Booked</label>
+</ListView>

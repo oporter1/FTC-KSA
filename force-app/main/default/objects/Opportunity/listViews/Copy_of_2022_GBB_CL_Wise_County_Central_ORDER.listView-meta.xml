@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_2022_GBB_CL_Wise_County_Central_ORDER</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Sea_World_Theme_Park_Admission__c</columns>
+    <columns>Invoice_Notes__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Celebration_of_Athletes__c</columns>
+    <columns>Food_Beverage_Notes__c</columns>
+    <columns>Welcome_Drink_Vouchers__c</columns>
+    <columns>Welcome_Dinner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024 gbb ph wise</value>
+    </filters>
+    <label>2024 GBB PH Wise County Central ORDER</label>
+</ListView>

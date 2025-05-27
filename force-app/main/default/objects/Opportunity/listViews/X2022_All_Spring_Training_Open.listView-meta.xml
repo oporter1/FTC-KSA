@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_All_Spring_Training_Open</fullName>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>What_s_your_motivation__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.NEXT_STEP</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>RGP_Accepted__c</columns>
+    <columns>Individual_Registration__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Closed Lost</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Lacrosse,Girls Lacrosse,Golf,Softball,Tennis,Track &amp; Field</value>
+    </filters>
+    <label>2022 All Spring Training Open</label>
+</ListView>

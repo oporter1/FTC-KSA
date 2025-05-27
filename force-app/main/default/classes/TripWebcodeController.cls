@@ -6,12 +6,21 @@ public without sharing class TripWebcodeController {
     public List<Event__c> eventRecords { get; set; }
     public List<Opportunity> notRegisteredList { get; private set; }
     public List<RegistrationWrapper> registeredList { get; private set; }
+    public List<RegistrationWrapper> allFansList { get; private set; }
     public Decimal totalAmount { get; private set; }
     public Decimal totalPaid { get; private set; }
     public List<Event__c> eventList { get; set; }
     
-    @TestVisible private static Boolean isTestMode = false;
-    @TestVisible private static Decimal testPaidAmount = 0;
+    // Constructor to initialize lists
+    public TripWebcodeController() {
+        eventRecords = new List<Event__c>();
+        notRegisteredList = new List<Opportunity>();
+        registeredList = new List<RegistrationWrapper>();
+        allFansList = new List<RegistrationWrapper>();
+        eventList = new List<Event__c>();
+        totalAmount = 0;
+        totalPaid = 0;
+    }
     
     public PageReference searchWebcode() {
         try {
@@ -23,7 +32,11 @@ public without sharing class TripWebcodeController {
             List<Opportunity> trips = [
                 SELECT Id, Name, Account.Name, KSASport_or_Performing_Art__c,
                        Departure_Date__c, Arrival_Date__c, Resort_Option__c,
-                       KSA_Webcode__c
+                       KSA_Webcode__c,
+                       School_Contact__r.FirstName,
+                       School_Contact__r.LastName,
+                       School_Contact__r.Email,
+                       School_Contact__r.Phone
                 FROM Opportunity 
                 WHERE KSA_Webcode__c = :webcode.trim()
                 AND Coaches_Pin__c = :pin
@@ -70,7 +83,8 @@ public without sharing class TripWebcodeController {
                            Arrival_Airport_Code__c, X2nd_Return_Airport_Code__c, Air_Inventory__c,
                            Seats_Sold__c, Estimated_Air_Rate__c,
                            Estimated_Air_Seats_Needed__c, Sold_Ticket_Price__c,
-                           Airline_Ticketing_Fee__c
+                           Airline_Ticketing_Fee__c, Billing_Type__c,
+                           Baggage_Info__c, Airline_Manifest_Due__c
                     FROM Opportunity 
                     WHERE KSA_Webcode__c = :urlWebcode
                     AND Coaches_Pin__c = :Integer.valueOf(urlPin)
@@ -102,74 +116,98 @@ public without sharing class TripWebcodeController {
                 WHERE GL_Opportunity__c = :foundTrip.Id
                 ORDER BY Date__c ASC NULLS FIRST, Event_Time__c ASC NULLS FIRST
             ];
+        } else {
+            // Keep the initialized empty list
+            eventRecords = new List<Event__c>();
         }
     }
 
     private void loadRegistrations() {
         if (foundTrip != null) {
             try {
+                // Re-initialize lists
                 registeredList = new List<RegistrationWrapper>();
                 notRegisteredList = new List<Opportunity>();
+                allFansList = new List<RegistrationWrapper>();
                 totalAmount = 0;
                 totalPaid = 0;
                 
-                // Get all child opportunities
+                System.debug('Found Trip ID: ' + foundTrip.Id);
+                System.debug('Found Trip Webcode: ' + foundTrip.KSA_Webcode__c);
+                
+                // Get all child opportunities with record type information
                 List<Opportunity> allOpps = [
-                    SELECT Id, Name, School_Contact__r.Name, School_Contact__r.Email,
-                           School_Contact__r.Phone, RecordTypeId, IsWon, StageName
+                    SELECT Id, Name, 
+                           School_Contact__r.Name, 
+                           School_Contact__r.FirstName, 
+                           School_Contact__r.LastName, 
+                           School_Contact__r.Email, 
+                           School_Contact__r.MobilePhone, 
+                           School_Contact__r.Phone,
+                           RecordTypeId, 
+                           RecordType.Name, 
+                           IsWon, 
+                           StageName,
+                           Count__c,
+                           Other_Type__c
                     FROM Opportunity
-                    WHERE Team_Opportunity__c = :foundTrip.Id
+                    WHERE (Team_Opportunity__c = :foundTrip.Id 
+                           OR KSA_Webcode__c = :foundTrip.KSA_Webcode__c)
+                    AND Id != :foundTrip.Id
+                    ORDER BY RecordType.Name ASC, School_Contact__r.Name ASC
                 ];
                 
-                List<Opportunity> regOpps = new List<Opportunity>();
+                System.debug('Total opportunities found: ' + allOpps.size());
                 
-                // Split into registered (IsWon) and not registered
+                // Get all invoices for these opportunities
+                Map<Id, fw1__Invoice__c> invoiceByOppId = new Map<Id, fw1__Invoice__c>();
+                if (!allOpps.isEmpty()) {
+                    for (fw1__Invoice__c inv : [
+                        SELECT fw1__Total_Invoice_Amount__c, 
+                               fw1__Total_Paid_Amount__c,
+                               fw1__Balance_Due__c,
+                               fw1__Opportunity__c,
+                               CreatedDate
+                        FROM fw1__Invoice__c
+                        WHERE fw1__Opportunity__c IN :allOpps
+                    ]) {
+                        invoiceByOppId.put(inv.fw1__Opportunity__c, inv);
+                    }
+                }
+                
+                // Clear the lists first
+                notRegisteredList.clear();
+                registeredList.clear();
+                
+                // Use IsWon to determine registration status
                 for (Opportunity opp : allOpps) {
-                    if (opp.StageName == 'Booked') {  // Check for Booked stage
-                        regOpps.add(opp);
+                    if (opp.IsWon) {
+                        fw1__Invoice__c inv = invoiceByOppId.get(opp.Id);
+                        registeredList.add(new RegistrationWrapper(opp, inv));
+                        if (inv != null) {
+                            totalAmount += inv.fw1__Total_Invoice_Amount__c != null ? 
+                                inv.fw1__Total_Invoice_Amount__c : 0;
+                            totalPaid += inv.fw1__Total_Paid_Amount__c != null ? 
+                                inv.fw1__Total_Paid_Amount__c : 0;
+                        }
                     } else {
                         notRegisteredList.add(opp);
                     }
                 }
                 
-                // Get invoices for registered opportunities
-                if (!regOpps.isEmpty()) {
-                    if (isTestMode) {
-                        // Use mock data in test context
-                        for (Opportunity opp : regOpps) {
-                            fw1__Invoice__c mockInvoice = new fw1__Invoice__c(
-                                fw1__Total_Paid_Amount__c = testPaidAmount
-                            );
-                            registeredList.add(new RegistrationWrapper(opp, mockInvoice));
-                            totalAmount += 1000;  // Hard-code for test
-                            totalPaid += testPaidAmount;
-                        }
-                    } else {
-                        Map<Id, fw1__Invoice__c> invoiceByOppId = new Map<Id, fw1__Invoice__c>();
-                        for (fw1__Invoice__c inv : [
-                            SELECT fw1__Total_Invoice_Amount__c, 
-                                   fw1__Total_Paid_Amount__c,
-                                   fw1__Balance_Due__c,
-                                   fw1__Opportunity__c
-                            FROM fw1__Invoice__c
-                            WHERE fw1__Opportunity__c IN :regOpps
-                        ]) {
-                            invoiceByOppId.put(inv.fw1__Opportunity__c, inv);
-                        }
-                        
-                        for (Opportunity opp : regOpps) {
-                            fw1__Invoice__c inv = invoiceByOppId.get(opp.Id);
-                            registeredList.add(new RegistrationWrapper(opp, inv));
-                            
-                            if (inv != null) {
-                                totalAmount += inv.fw1__Total_Invoice_Amount__c != null ? 
-                                    inv.fw1__Total_Invoice_Amount__c : 0;
-                                totalPaid += inv.fw1__Total_Paid_Amount__c != null ? 
-                                    inv.fw1__Total_Paid_Amount__c : 0;
-                            }
-                        }
+                // Create allFansList with ALL Fan opportunities (including Tag Along Opportunity)
+                System.debug('Total opportunities found: ' + allOpps.size());
+                for (Opportunity opp : allOpps) {
+                    System.debug('Opportunity: ' + opp.Name + ', RecordType: ' + opp.RecordType.Name);
+                    if (opp.RecordType.Name == 'Fan' || opp.RecordType.Name == 'Tag_Along_Opportunity' || opp.RecordType.Name == 'Tag Along Opportunity') {
+                        fw1__Invoice__c inv = invoiceByOppId.get(opp.Id);
+                        Integer paxCount = getPaxCount(opp.Id);
+                        allFansList.add(new RegistrationWrapper(opp, inv, paxCount));
+                        System.debug('Added to allFansList: ' + opp.Name);
                     }
                 }
+                System.debug('Final allFansList size: ' + allFansList.size());
+                
             } catch (Exception e) {
                 System.debug('Error in loadRegistrations: ' + e.getMessage());
             }
@@ -185,6 +223,58 @@ public without sharing class TripWebcodeController {
                 WHERE GL_Opportunity__c = :foundTrip.Id
                 ORDER BY Date__c  NULLS FIRST, Event_Time__c NULLS FIRST
             ];
+        } else {
+            // Keep the initialized empty list
+            eventList = new List<Event__c>();
+        }
+    }
+    
+    @TestVisible
+    private Integer getPaxCount(Id opportunityId) {
+        try {
+            List<Registrations__c> registrations = [
+                SELECT X1_First_Name__c, X1_Last_Name__c,
+                       X2_First_Name__c, X2_Last_Name__c,
+                       X3_First_Name__c, X3_Last_Name__c,
+                       X4_First_Name__c, X4_Last_Name__c,
+                       X5_First_Name__c, X5_Last_Name__c,
+                       X6_First_Name__c, X6_Last_Name__c
+                FROM Registrations__c 
+                WHERE Opportunity__c = :opportunityId
+                LIMIT 1
+            ];
+            
+            if (registrations.isEmpty()) {
+                return 0;
+            }
+            
+            Registrations__c reg = registrations[0];
+            Integer count = 0;
+            
+            // Count populated PAX names (both first and last name must be populated)
+            if (String.isNotBlank(reg.X1_First_Name__c) && String.isNotBlank(reg.X1_Last_Name__c)) {
+                count++;
+            }
+            if (String.isNotBlank(reg.X2_First_Name__c) && String.isNotBlank(reg.X2_Last_Name__c)) {
+                count++;
+            }
+            if (String.isNotBlank(reg.X3_First_Name__c) && String.isNotBlank(reg.X3_Last_Name__c)) {
+                count++;
+            }
+            if (String.isNotBlank(reg.X4_First_Name__c) && String.isNotBlank(reg.X4_Last_Name__c)) {
+                count++;
+            }
+            if (String.isNotBlank(reg.X5_First_Name__c) && String.isNotBlank(reg.X5_Last_Name__c)) {
+                count++;
+            }
+            if (String.isNotBlank(reg.X6_First_Name__c) && String.isNotBlank(reg.X6_Last_Name__c)) {
+                count++;
+            }
+            
+            return count;
+        } catch (Exception e) {
+            System.debug('Error getting PAX count for opportunity ' + opportunityId + ': ' + e.getMessage());
+            return 0;
         }
     }
 
@@ -192,12 +282,40 @@ public without sharing class TripWebcodeController {
         public Opportunity opportunity { get; set; }
         public fw1__Invoice__c invoice { get; set; }
         public String travelerType { get; set; }
+        public String bestPhoneNumber { get; set; }
+        public Boolean isRegistered { get; set; }
+        public Integer paxCount { get; set; }
         
         public RegistrationWrapper(Opportunity opp, fw1__Invoice__c inv) {
             this.opportunity = opp;
             this.invoice = inv;
-            this.travelerType = (opp.RecordTypeId == '012f4000000aRkZAAU') ? 'Fan' : 
-                               (opp.RecordTypeId == '012f4000000aRkUAAU') ? 'Athlete' : '';
+            this.isRegistered = (inv != null);
+            this.paxCount = 0;
+            
+                        // Use Record Type Name instead of hardcoded IDs
+            if (opp.RecordType.Name == 'Fan' || opp.RecordType.Name == 'Tag_Along_Opportunity' || opp.RecordType.Name == 'Tag Along Opportunity') {
+                this.travelerType = 'Fan';
+            } else if (opp.RecordType.Name == 'Athlete_Opportunity' || opp.RecordType.Name == 'Athlete Opportunity') {
+                this.travelerType = 'Athlete';
+            } else if (opp.RecordType.Name == 'Other') {
+                // For Other type - concatenate with Other_Type__c field
+                if (String.isNotBlank(opp.Other_Type__c)) {
+                    this.travelerType = 'Other (' + opp.Other_Type__c + ')';
+                } else {
+                    this.travelerType = 'Other';
+                }
+            } else {
+                this.travelerType = opp.RecordType.Name;
+            }
+            this.bestPhoneNumber = String.isNotBlank(opp.School_Contact__r.MobilePhone) ? 
+                                  opp.School_Contact__r.MobilePhone : 
+                                  String.isNotBlank(opp.School_Contact__r.Phone) ? 
+                                  opp.School_Contact__r.Phone : 'Not Available';
+        }
+        
+        public RegistrationWrapper(Opportunity opp, fw1__Invoice__c inv, Integer paxCount) {
+            this(opp, inv);
+            this.paxCount = paxCount;
         }
     }
 }

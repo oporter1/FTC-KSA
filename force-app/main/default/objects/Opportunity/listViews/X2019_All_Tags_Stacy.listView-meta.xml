@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_All_Tags_Stacy</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Email__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019,2020</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>stacy</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>notContain</operation>
+        <value>VB,FB,FH,BA,SB,GOLF,BLAX,GLAX,BTEN,GTEN</value>
+    </filters>
+    <label>2019 All Tags Stacy</label>
+</ListView>

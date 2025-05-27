@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_2024_All_Spring_Contracted</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Package_Component_Sheets_Complete__c</columns>
+    <columns>Package_Component_Sheet_Double_Checked__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <columns>Rooming_List_Sent_To_Resort__c</columns>
+    <columns>Final_Billed__c</columns>
+    <columns>Draft_Itinerary_Call__c</columns>
+    <columns>Final_Itinerary__c</columns>
+    <columns>Airline_Manifest_Complete__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Chorus,Girls Golf,Girls Lacrosse,Girls Tennis,Instrumental,Music,Softball,Track &amp; Field</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>3/18/2024</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>4/1/2024</value>
+    </filters>
+    <label>2024 All Spring Contracted - Block 3</label>
+</ListView>

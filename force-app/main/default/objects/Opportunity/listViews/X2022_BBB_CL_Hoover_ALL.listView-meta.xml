@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_BBB_CL_Hoover_ALL</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Email__c</columns>
+    <columns>OPPORTUNITY.CREATED_DATE</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>OPPORTUNITY.LAST_UPDATE</columns>
+    <columns>Tag_Along_Loss_Reason__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 BBB CL Hoover</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport</value>
+    </filters>
+    <label>2022 BBB CL Hoover ALL</label>
+</ListView>

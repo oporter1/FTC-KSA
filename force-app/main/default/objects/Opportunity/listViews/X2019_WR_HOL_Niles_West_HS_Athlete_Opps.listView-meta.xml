@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_WR_HOL_Niles_West_HS_Athlete_Opps</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Email__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>Final_Payment__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Arrival_Airport_Code__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019 WR HOL Niles</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport</value>
+    </filters>
+    <label>2019 WR HOL Niles West HS Athlete Opps</label>
+</ListView>

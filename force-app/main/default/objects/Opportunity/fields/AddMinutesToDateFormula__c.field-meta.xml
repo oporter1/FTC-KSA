@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AddMinutesToDateFormula__c</fullName>
+    <formula>IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=1,  Zoom_Meeting__c+(10/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=2,  Zoom_Meeting__c+(30/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=3,  Zoom_Meeting__c+(50/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=4,  Zoom_Meeting__c+(80/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=5,  Zoom_Meeting__c+(110/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=6,  Zoom_Meeting__c+(140/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=7,  Zoom_Meeting__c+(170/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=8,  Zoom_Meeting__c+(200/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=9,  Zoom_Meeting__c+(230/1440), 
+IF(MOD(VALUE(Code_Auto_Number__c), 10)+1=10,  Zoom_Meeting__c+(260/1440), 
+DATETIMEVALUE(Zoom_Meeting__c)))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>AddMinutesToDateFormula</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

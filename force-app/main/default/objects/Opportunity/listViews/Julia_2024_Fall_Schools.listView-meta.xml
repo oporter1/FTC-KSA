@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Julia_2024_Fall_Schools</fullName>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Final_Billed__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <columns>Airline_Manifest_Complete__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>School_Contact__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Julia</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Cross Country,Field Hockey,Football,Volleyball</value>
+    </filters>
+    <label>Julia 2024 Fall Schools</label>
+</ListView>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2020_All_Spring_Contracted_Craig</fullName>
+    <columns>Passenger_Count__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Application_Received__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Tag_Along_Fan_List__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2020</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.WON</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>notContain</operation>
+        <value>tag</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>notEqual</operation>
+        <value>Cross Country,Field Hockey,Football,Girls Basketball,Girls Leadership</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>notEqual</operation>
+        <value>Athletic Director,Boys Basketball,Cheer and Dance,Volleyball,Wrestling</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Craig</value>
+    </filters>
+    <label>2020 All Spring Contracted- Craig</label>
+</ListView>

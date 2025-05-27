@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Terry_Account_Management_Schools</fullName>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>SportName__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Draft_Itinerary__c</columns>
+    <columns>Draft_Itinerary_Call__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <columns>Final_Billed__c</columns>
+    <columns>Package_Component_Sheets_Complete__c</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Verbal Definite,Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Terry</value>
+    </filters>
+    <label>Terry Account Management Schools</label>
+</ListView>

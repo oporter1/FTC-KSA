@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_2025_SB_Ramapo_OPEN</fullName>
+    <columns>OPPORTUNITY.CREATED_DATE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>SportName__c</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>Destination__c</columns>
+    <columns>KSADestination_Interested_in_Traveling__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2025 SB Rham</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Inquiry,Initial Intro,Follow-up</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2025 SB RHAM OPEN</label>
+</ListView>

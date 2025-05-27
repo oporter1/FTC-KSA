@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_MUS_Spirit_Gems_Bookings</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>School_Contact__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>Athletes_Date_of_Birth__c</columns>
+    <columns>Date_of_Birth_Pax1__c</columns>
+    <columns>Date_of_Birth_Pax2__c</columns>
+    <columns>Date_of_Birth_Pax5__c</columns>
+    <columns>PAX_1__c</columns>
+    <columns>PAX_2__c</columns>
+    <columns>PAX_3__c</columns>
+    <columns>Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 MUS Spirit Gems</value>
+    </filters>
+    <label>2022 MUS Spirit Gems Bookings</label>
+</ListView>

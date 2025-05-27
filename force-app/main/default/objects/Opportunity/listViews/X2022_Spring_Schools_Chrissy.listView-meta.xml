@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_Spring_Schools_Chrissy</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Individual_Registration__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>equals</operation>
+        <value>Chrissy</value>
+    </filters>
+    <label>2022 Spring Schools - Chrissy</label>
+</ListView>

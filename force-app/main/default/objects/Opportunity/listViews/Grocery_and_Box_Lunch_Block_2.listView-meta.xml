@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grocery_and_Box_Lunch_Block_2</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Team_Grocery_Order__c</columns>
+    <columns>Food_Beverage_Notes__c</columns>
+    <columns>Specialty_Meal_Date_Time__c</columns>
+    <columns>Specialty_Meal_2_Date_Time__c</columns>
+    <columns>Specialty_Meal_3_Date_Time__c</columns>
+    <columns>Specialty_Meals__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Chorus,Girls Golf,Girls Lacrosse,Girls Tennis,Instrumental,Music,Softball,Track &amp; Field</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>2/10/2024</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>3/18/2024</value>
+    </filters>
+    <label>Grocery and Box Lunch Block 2</label>
+</ListView>

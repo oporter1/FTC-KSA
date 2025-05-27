@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_All_Spring_Contracted_Air_Needed</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Air_Status__c</columns>
+    <columns>Air_Inventory__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Inbound_Departure_Time__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Estimated_Air_Rate__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Lacrosse,Choral,Girls Lacrosse,Instrumental,Softball,Track &amp; Field</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>notEqual</operation>
+        <value>Booked Own Air,Land Only</value>
+    </filters>
+    <label>2023 All Spring Contracted Air Needed</label>
+</ListView>

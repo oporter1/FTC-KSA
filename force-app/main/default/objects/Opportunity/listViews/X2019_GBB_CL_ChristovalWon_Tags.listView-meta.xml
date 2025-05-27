@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_GBB_CL_ChristovalWon_Tags</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Margaritaville_Specialty_Meal__c</columns>
+    <columns>Rainforest_Cafe_Specialty_Meal__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2019 GBB CL Christoval</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <label>2019 GBB CL Christoval Won Tags</label>
+</ListView>

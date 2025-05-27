@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2024_Collin_Fall</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Zoom_Meeting__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Application_Received__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Communication_History__c</columns>
+    <columns>Sales_Call_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Cross Country,Field Hockey,Football,Volleyball</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.LAST_NAME</field>
+        <operation>contains</operation>
+        <value>Hairr</value>
+    </filters>
+    <label>2024 Collin Fall</label>
+</ListView>

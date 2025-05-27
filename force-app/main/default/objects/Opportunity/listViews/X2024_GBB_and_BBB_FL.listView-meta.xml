@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2024_GBB_and_BBB_FL</fullName>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Sales_Manager__c</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Sales_Call_Notes__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>What_s_your_motivation__c</columns>
+    <columns>KSAPreferred_Mode_of_Communication__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Resort_Option__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Boys Basketball,Girls Basketball</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>equals</operation>
+        <value>Florida School</value>
+    </filters>
+    <label>2024 GBB and BBB FL</label>
+</ListView>

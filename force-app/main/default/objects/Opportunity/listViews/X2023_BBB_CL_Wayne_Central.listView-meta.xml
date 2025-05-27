@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_BBB_CL_Wayne_Central</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Air_Arrival_Date__c</columns>
+    <columns>Air_Departure_Date__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <columns>Inbound_Flight__c</columns>
+    <columns>Inbound_Arrival_Time__c</columns>
+    <columns>Inbound_Departure_Time__c</columns>
+    <columns>Outbound_Arrival_Time__c</columns>
+    <columns>Outbound_Departure_Time__c</columns>
+    <columns>Outbound_Flight__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Seats_Sold__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 BBB cl Wayne Central</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport</value>
+    </filters>
+    <label>2023 BBB CL Wayne Central All Confirmed</label>
+</ListView>

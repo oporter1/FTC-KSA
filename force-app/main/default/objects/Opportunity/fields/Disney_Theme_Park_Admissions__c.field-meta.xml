@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disney_Theme_Park_Admissions__c</fullName>
+    <label>Disney Theme Park Admissions</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1 Day Base</fullName>
+                <default>false</default>
+                <label>1 Day Base</label>
+            </value>
+            <value>
+                <fullName>1 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>1 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>1 Day Premium</fullName>
+                <default>false</default>
+                <label>1 Day Premium</label>
+            </value>
+            <value>
+                <fullName>2 Day Base</fullName>
+                <default>false</default>
+                <label>2 Day Base</label>
+            </value>
+            <value>
+                <fullName>2 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>2 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>2 Day Premium</fullName>
+                <default>false</default>
+                <label>2 Day Premium</label>
+            </value>
+            <value>
+                <fullName>3 Day Base</fullName>
+                <default>false</default>
+                <label>3 Day Base</label>
+            </value>
+            <value>
+                <fullName>3 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>3 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>3 Day Premium</fullName>
+                <default>false</default>
+                <label>3 Day Premium</label>
+            </value>
+            <value>
+                <fullName>4 Day Base</fullName>
+                <default>false</default>
+                <label>4 Day Base</label>
+            </value>
+            <value>
+                <fullName>4 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>4 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>4 Day Premium</fullName>
+                <default>false</default>
+                <label>4 Day Premium</label>
+            </value>
+            <value>
+                <fullName>5 Day Base</fullName>
+                <default>false</default>
+                <label>5 Day Base</label>
+            </value>
+            <value>
+                <fullName>5 Day Park Hopper</fullName>
+                <default>false</default>
+                <label>5 Day Park Hopper</label>
+            </value>
+            <value>
+                <fullName>5 Day Premium</fullName>
+                <default>false</default>
+                <label>5 Day Premium</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_All_BBB_Winter_Contracted_CL</fullName>
+    <columns>Transportation_Type__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Air_Status__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Email__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Seats_Sold__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Rooming_List_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Boys Basketball,Girls Basketball,Wrestling</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>CL</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Boys Basketball</value>
+    </filters>
+    <label>2022 All BBB Winter Contracted- CL</label>
+</ListView>

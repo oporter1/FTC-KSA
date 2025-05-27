@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Avon_HS_WR_ALL</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Invoice_Notes__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 WR HOL Avon</value>
+    </filters>
+    <label>Avon HS WR ALL</label>
+</ListView>

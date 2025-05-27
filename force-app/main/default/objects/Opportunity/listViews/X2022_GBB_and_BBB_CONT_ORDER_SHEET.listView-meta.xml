@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_GBB_and_BBB_CONT_ORDER_SHEET</fullName>
+    <columns>Account_Manager__c</columns>
+    <columns>Early_Booking__c</columns>
+    <columns>Individual_Registration__c</columns>
+    <columns>Rollover__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Fan_List__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>School_Contact__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Application_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>GBB,BBB,WR</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>notContain</operation>
+        <value>SB</value>
+    </filters>
+    <label>2022 GBB and BBB CONT ORDER SHEET</label>
+</ListView>

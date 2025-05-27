@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_BBB_CL_Copper_Hills_Won_Tags</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Kobe_Steakhouse__c</columns>
+    <columns>Disney_Performance_Workshops__c</columns>
+    <columns>Hard_Rock_Meal__c</columns>
+    <columns>Disney_Performance__c</columns>
+    <columns>NBC_Grille_Specialty_Meal__c</columns>
+    <columns>Illuminations_Specialty_Meal__c</columns>
+    <columns>Pre_Game_Pasta_Meal__c</columns>
+    <columns>Sea_World_Performance__c</columns>
+    <columns>Pizza_Party__c</columns>
+    <columns>Pre_Game_Tailgate_Party__c</columns>
+    <columns>Margaritaville_Specialty_Meal__c</columns>
+    <columns>Rainforest_Cafe_Specialty_Meal__c</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2014</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <label>2019 BBB CL Copper Hills Won Tags</label>
+</ListView>

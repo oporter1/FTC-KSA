@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_FB_Resurrection_Christian_WON</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>SportName__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 FB resurrection ch</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2023 FB Resurrection Christian WON</label>
+</ListView>

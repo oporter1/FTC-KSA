@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2024_SB_Archbishop_Chapelle_ORDER_SHEET</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Resort_Counter_Service_Breakfast_Coupon__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Specialty_Meals__c</columns>
+    <columns>Food_Beverage_Notes__c</columns>
+    <columns>Specialty_Meal_Date_Time__c</columns>
+    <columns>Specialty_Meal_2_Date_Time__c</columns>
+    <columns>Final_Billed__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2024 SB Archbishop Chapelle</value>
+    </filters>
+    <label>2024 SB Archbishop Chapelle ORDER SHEET</label>
+</ListView>

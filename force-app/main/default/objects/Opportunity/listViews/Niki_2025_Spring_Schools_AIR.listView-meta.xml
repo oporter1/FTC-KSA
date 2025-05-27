@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Niki_2025_Spring_Schools_AIR</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Air_Status__c</columns>
+    <columns>Air_Contract_Signed__c</columns>
+    <columns>Estimated_Air_Rate__c</columns>
+    <columns>Estimated_Air_Seats_Needed__c</columns>
+    <columns>Predicted_Athletes__c</columns>
+    <columns>Predicted_Coaches__c</columns>
+    <columns>Predicted_Fans__c</columns>
+    <columns>Airline_Manifest_Due__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Verbal Definite,Contracted</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>startsWith</operation>
+        <value>Niki</value>
+    </filters>
+    <filters>
+        <field>SportName__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Lacrosse,Girls Lacrosse,Golf,Softball,Tennis,Track and Field</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>equals</operation>
+        <value>KSA Events Air</value>
+    </filters>
+    <label>Niki 2025 Spring Schools AIR</label>
+</ListView>

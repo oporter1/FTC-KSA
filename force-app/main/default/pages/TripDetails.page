@@ -422,10 +422,12 @@
 
             <nav>
                 <a href="#" class="active" onclick="showSection('home'); return false;">Home</a>
+                <a href="#" onclick="showSection('fan-registrations'); return false;">Fans</a>
                 <a href="#" onclick="showSection('accommodations'); return false;">Accommodations</a>
                 <a href="#" onclick="showSection('airfare'); return false;">Airfare</a>
                 <a href="#" onclick="showSection('registrations'); return false;">Registrations</a>
                 <a href="#" onclick="showSection('room-builder'); return false;">Room Builder</a>
+                <a href="#" onclick="showSection('schedule-results'); return false;">Schedule and Results</a>
             </nav>
 
             <main>
@@ -458,6 +460,61 @@
                     </div>
                 </div>
 
+                <div id="fan-registrations" class="content-section" style="display:none;">
+                    <div class="table-section" style="background: #2a2a2a; border-radius: 0.625rem; box-shadow: 0 0.25rem 0.625rem -0.125rem rgba(0,0,0,0.8); padding: 2rem; margin-bottom: 3rem;">
+                        <h2 style="color: var(--ksa-red); font-size: 1.8rem; font-weight: 600; margin-bottom: 1.5rem;">Fan Registrations</h2>
+                        <table class="registration-table" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Main Fan</th>
+                                    <th style="text-align: center;">PAX Count</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th style="text-align: center;">Registration Date</th>
+                                    <th>Registration Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- All Fans (Fan opportunities) -->
+                                <apex:repeat value="{!allFansList}" var="fan">
+                                    <tr>
+                                        <td>{!fan.opportunity.School_Contact__r.FirstName} {!fan.opportunity.School_Contact__r.LastName}</td>
+                                        <td style="text-align: center;">{!IF(fan.paxCount == 0, 'Not Available', TEXT(fan.paxCount))}</td>
+                                        <td>
+                                            <apex:outputLink value="tel:{!fan.opportunity.School_Contact__r.MobilePhone}" style="color: #007bff; text-decoration: underline;" rendered="{!NOT(ISBLANK(fan.opportunity.School_Contact__r.MobilePhone))}">
+                                                {!fan.opportunity.School_Contact__r.MobilePhone}
+                                            </apex:outputLink>
+                                            <apex:outputText value="No Phone Number" rendered="{!ISBLANK(fan.opportunity.School_Contact__r.MobilePhone)}" style="color: #999;"/>
+                                        </td>
+                                        <td>
+                                            <apex:outputLink value="mailto:{!fan.opportunity.School_Contact__r.Email}" style="color: #007bff; text-decoration: underline;" rendered="{!NOT(ISBLANK(fan.opportunity.School_Contact__r.Email))}">
+                                                {!fan.opportunity.School_Contact__r.Email}
+                                            </apex:outputLink>
+                                            <apex:outputText value="Not Available" rendered="{!ISBLANK(fan.opportunity.School_Contact__r.Email)}" style="color: #999;"/>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!fan.isRegistered}">
+                                                <apex:param value="{!fan.invoice.CreatedDate}"/>
+                                            </apex:outputText>
+                                            <apex:outputText value="Not Available" rendered="{!NOT(fan.isRegistered)}" style="color: #999;"/>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="Registered" rendered="{!fan.isRegistered}" style="color: #28a745; font-weight: 600;"/>
+                                            <apex:outputText value="Not Registered" rendered="{!NOT(fan.isRegistered)}" style="color: #dc3545; font-weight: 600;"/>
+                                        </td>
+                                    </tr>
+                                </apex:repeat>
+                                <!-- Show message if no fans found -->
+                                <apex:outputPanel rendered="{!allFansList.size == 0}">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 2rem; color: #ffffff;">No fan registrations found for this trip.</td>
+                                    </tr>
+                                </apex:outputPanel>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <div id="accommodations" class="content-section">
                     <div class="welcome-section">
                         <div class="table-section">
@@ -466,6 +523,20 @@
                                 <div class="detail-row">
                                     <h3>School</h3>
                                     <p>{!foundTrip.Account.Name}</p>
+                                </div>
+                                <div class="detail-row">
+                                    <h3>Sport Name</h3>
+                                    <p>{!foundTrip.KSASport_or_Performing_Art__c}</p>
+                                </div>
+                                <div class="detail-row">
+                                    <h3>Billing Type</h3>
+                                    <p>{!foundTrip.Billing_Type__c}</p>
+                                </div>
+                                <div class="detail-row">
+                                    <h3>Expected Number of Passengers</h3>
+                                    <p>{!IF(ISNULL(foundTrip.Predicted_Athletes__c), 0, foundTrip.Predicted_Athletes__c) + 
+                                       IF(ISNULL(foundTrip.Predicted_Coaches__c), 0, foundTrip.Predicted_Coaches__c) + 
+                                       IF(ISNULL(foundTrip.Predicted_Fans__c), 0, foundTrip.Predicted_Fans__c)}</p>
                                 </div>
                                 <div class="detail-row">
                                     <h3>Arrival Date</h3>
@@ -543,6 +614,11 @@
                                         <th>Date</th>
                                         <th>Departure Time</th>
                                         <th>Arrival Time</th>
+                                        <th>Departure Airport Code</th>
+                                        <th>Arrival Airport Code</th>
+                                        <th>Baggage Info</th>
+                                        <th>Seats Sold</th>
+                                        <th>Airline Manifest Due</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -557,6 +633,15 @@
                                         </td>
                                         <td>{!foundTrip.Inbound_Departure_Time__c}</td>
                                         <td>{!foundTrip.Inbound_Arrival_Time__c}</td>
+                                        <td>{!foundTrip.Deaprture_Airport_Code__c}</td>
+                                        <td>{!foundTrip.Arrival_Airport_Code__c}</td>
+                                        <td>{!foundTrip.Baggage_Info__c}</td>
+                                        <td>{!foundTrip.Seats_Sold__c}</td>
+                                        <td>
+                                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                <apex:param value="{!foundTrip.Airline_Manifest_Due__c}"/>
+                                            </apex:outputText>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>{!foundTrip.X2nd_Air_Schedule__c}</td>
@@ -569,13 +654,19 @@
                                         </td>
                                         <td>{!foundTrip.Outbound_Departure_Time__c}</td>
                                         <td>{!foundTrip.Outbound_Arrival_Time__c}</td>
+                                        <td>{!foundTrip.Deaprture_Airport_Code__c}</td>
+                                        <td>{!foundTrip.X2nd_Return_Airport_Code__c}</td>
+                                        <td>{!foundTrip.Baggage_Info__c}</td>
+                                        <td>{!foundTrip.Seats_Sold__c}</td>
+                                        <td>
+                                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                <apex:param value="{!foundTrip.Airline_Manifest_Due__c}"/>
+                                            </apex:outputText>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="booking-notes">
-                                <h3>Booking Notes</h3>
-                                <p>{!foundTrip.Air_Booking_Notes__c}</p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -588,18 +679,38 @@
                                 <tr>
                                     <th>Contact Name</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
+                                    <th>Mobile</th>
                                     <th>Type</th>
+                                    <th>Stage</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <apex:repeat value="{!notRegisteredList}" var="opp">
                                     <tr>
-                                        <td>{!opp.School_Contact__r.Name}</td>
-                                        <td>{!opp.School_Contact__r.Email}</td>
-                                        <td>{!opp.School_Contact__r.Phone}</td>
-                                        <td>{!IF(opp.RecordTypeId == '012f4000000aRkZAAU', 'Fan', IF(opp.RecordTypeId == '012f4000000aRkUAAU',
-                                            'Athlete', ''))}</td>
+                                        <td>{!opp.School_Contact__r.FirstName} {!opp.School_Contact__r.LastName}</td>
+                                        <td>
+                                            <apex:outputText value="{!IF(ISBLANK(opp.School_Contact__r.Email), 'Not Available', opp.School_Contact__r.Email)}" 
+                                                           style="{!IF(ISBLANK(opp.School_Contact__r.Email), 'color: #999;', 'color: #007bff; text-decoration: underline;')}"
+                                                           rendered="{!ISBLANK(opp.School_Contact__r.Email)}"/>
+                                            <apex:outputLink value="mailto:{!opp.School_Contact__r.Email}" style="color: #007bff; text-decoration: underline;" rendered="{!NOT(ISBLANK(opp.School_Contact__r.Email))}">
+                                                {!opp.School_Contact__r.Email}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td>{!IF(ISBLANK(opp.School_Contact__r.MobilePhone), 
+                                               IF(ISBLANK(opp.School_Contact__r.Phone), 
+                                                  'No Phone Number', 
+                                                  opp.School_Contact__r.Phone), 
+                                               opp.School_Contact__r.MobilePhone)}</td>
+                                        <td>{!IF(opp.RecordType.Name == 'Athlete_Opportunity', 'Athlete',
+                                               IF(opp.RecordType.Name == 'Athlete Opportunity', 'Athlete',
+                                               IF(opp.RecordType.Name == 'Fan', 'Fan',
+                                               IF(opp.RecordType.Name == 'Tag_Along_Opportunity', 'Fan',
+                                               IF(opp.RecordType.Name == 'Tag Along Opportunity', 'Fan',
+                                               IF(opp.RecordType.Name == 'Other', 
+                                                  IF(ISBLANK(opp.Other_Type__c), 'Other', 'Other (' + opp.Other_Type__c + ')'),
+                                               IF(opp.RecordType.Name == 'Sport', 'Team',
+                                               opp.RecordType.Name)))))))}</td>
+                                        <td>{!opp.StageName}</td>
                                     </tr>
                                 </apex:repeat>
                             </tbody>
@@ -613,8 +724,9 @@
                                 <tr>
                                     <th>Contact Name</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
+                                    <th>Mobile</th>
                                     <th>Type</th>
+                                    <th>Stage</th>
                                     <th>Amount</th>
                                     <th>Paid</th>
                                     <th>Due</th>
@@ -623,10 +735,16 @@
                             <tbody>
                                 <apex:repeat value="{!registeredList}" var="reg">
                                     <tr>
-                                        <td>{!reg.opportunity.School_Contact__r.Name}</td>
-                                        <td>{!reg.opportunity.School_Contact__r.Email}</td>
-                                        <td>{!reg.opportunity.School_Contact__r.Phone}</td>
+                                        <td>{!reg.opportunity.School_Contact__r.FirstName} {!reg.opportunity.School_Contact__r.LastName}</td>
+                                        <td>
+                                            <apex:outputText value="Not Available" rendered="{!ISBLANK(reg.opportunity.School_Contact__r.Email)}" style="color: #999;"/>
+                                            <apex:outputLink value="mailto:{!reg.opportunity.School_Contact__r.Email}" style="color: #007bff; text-decoration: underline;" rendered="{!NOT(ISBLANK(reg.opportunity.School_Contact__r.Email))}">
+                                                {!reg.opportunity.School_Contact__r.Email}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td>{!reg.bestPhoneNumber}</td>
                                         <td>{!reg.travelerType}</td>
+                                        <td>{!reg.opportunity.StageName}</td>
                                         <td>${!reg.invoice.fw1__Total_Invoice_Amount__c}</td>
                                         <td>${!reg.invoice.fw1__Total_Paid_Amount__c}</td>
                                         <td>${!reg.invoice.fw1__Total_Invoice_Amount__c - reg.invoice.fw1__Total_Paid_Amount__c}</td>
@@ -637,8 +755,16 @@
                     </div>
                 </div>
 
-                <apex:includeLightning/>
+                <apex:includeLightning />
                 <div id="room-builder" class="content-section"/>
+                <div id="schedule-results" class="content-section" style="display:none;">
+                    <div class="table-section" style="background: #2a2a2a; border-radius: 0.625rem; box-shadow: 0 0.25rem 0.625rem -0.125rem rgba(0,0,0,0.8); padding: 2rem; margin-bottom: 3rem;">
+                        <h2 style="color: var(--ksa-red); font-size: 1.8rem; font-weight: 600; margin-bottom: 1.5rem;">Schedule and Results</h2>
+                        <button id="scheduleResultsBtn" style="background-color: var(--ksa-red); color: #fff; border: none; border-radius: 0.5rem; padding: 0.75rem 2rem; font-size: 1.2rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: background 0.2s; margin-top: 1rem;">
+                            Go to Schedule and Results (Coming Soon)
+                        </button>
+                    </div>
+                </div>
             </main>
 
             <footer>
@@ -690,7 +816,8 @@
                             maxValue: 100,
                             textStyle: { color: '#ffffff' },
                             baselineColor: '#ffffff',
-                            gridlines: { color: 'transparent' }
+                            gridlines: { color: 'transparent' },
+                            format: '#\'%\''
                         },
                         vAxis: {
                             textStyle: { color: 'transparent' },
@@ -712,27 +839,49 @@
                     var athleteDue = 0;
                     var fanPaid = 0;
                     var fanDue = 0;
+                    var otherPaid = 0;
+                    var otherDue = 0;
+                    var otherSubTypes = {}; // Track Other sub-types
 
                     <apex:repeat value="{!registeredList}" var="reg">
                         var amount = {!IF(ISNULL(reg.invoice.fw1__Total_Invoice_Amount__c), 0, reg.invoice.fw1__Total_Invoice_Amount__c)};
                         var paid = {!IF(ISNULL(reg.invoice.fw1__Total_Paid_Amount__c), 0, reg.invoice.fw1__Total_Paid_Amount__c)};
-                        var due = amount - paid;
+                        var due = Math.max(0, amount - paid);
+                        var travelerType = '{!reg.travelerType}';
+                        
+                        // Debug output
+                        console.log('Payment Chart - Traveler Type: "' + travelerType + '", Amount: ' + amount + ', Paid: ' + paid + ', Due: ' + due);
 
-                        if ('{!reg.travelerType}' === 'Athlete') {
+                        if (travelerType === 'Athlete') {
                             athletePaid += paid;
-                        athleteDue += due;
-                        } else {
+                            athleteDue += due;
+                        } else if (travelerType === 'Fan') {
                             fanPaid += paid;
-                        fanDue += due;
+                            fanDue += due;
+                        } else if (travelerType === 'Other' || travelerType.startsWith('Other (')) {
+                            otherPaid += paid;
+                            otherDue += due;
+                            // Track sub-types
+                            if (!otherSubTypes[travelerType]) {
+                                otherSubTypes[travelerType] = { paid: 0, due: 0, count: 0 };
+                            }
+                            otherSubTypes[travelerType].paid += paid;
+                            otherSubTypes[travelerType].due += due;
+                            otherSubTypes[travelerType].count++;
                         }
                     </apex:repeat>
+                    
+                    console.log('Final totals - Athlete Paid: ' + athletePaid + ', Athlete Due: ' + athleteDue + ', Fan Paid: ' + fanPaid + ', Fan Due: ' + fanDue + ', Other Paid: ' + otherPaid + ', Other Due: ' + otherDue);
+                    console.log('Other sub-types found:', otherSubTypes);
 
                     var data = google.visualization.arrayToDataTable([
                         ['Category', 'Amount', { role: 'tooltip' }],
                         ['Athlete Paid', athletePaid, 'Athlete Paid: $' + athletePaid.toFixed(2)],
                         ['Athlete Due', athleteDue, 'Athlete Due: $' + athleteDue.toFixed(2)],
                         ['Fan Paid', fanPaid, 'Fan Paid: $' + fanPaid.toFixed(2)],
-                        ['Fan Due', fanDue, 'Fan Due: $' + fanDue.toFixed(2)]
+                        ['Fan Due', fanDue, 'Fan Due: $' + fanDue.toFixed(2)],
+                        ['Other Paid', otherPaid, 'Other Paid: $' + otherPaid.toFixed(2)],
+                        ['Other Due', otherDue, 'Other Due: $' + otherDue.toFixed(2)]
                     ]);
 
                     var options = {
@@ -742,7 +891,9 @@
                             '#FFD700',  // Yellow for Athlete Paid
                             '#FF8C00',  // Dark Orange for Athlete Due
                             '#FFA500',  // Orange for Fan Paid
-                            '#e31837'   // KSA Red for Fan Due
+                            '#e31837',  // KSA Red for Fan Due
+                            '#9C27B0',  // Purple for Other Paid
+                            '#673AB7'   // Dark Purple for Other Due
                         ],
                         legend: {
                             textStyle: { color: '#ffffff' },
@@ -766,18 +917,24 @@
                     var athleteDue = 0;
                     var fanPaid = 0;
                     var fanDue = 0;
+                    var otherPaid = 0;
+                    var otherDue = 0;
 
                     <apex:repeat value="{!registeredList}" var="reg">
                         var amount = {!IF(ISNULL(reg.invoice.fw1__Total_Invoice_Amount__c), 0, reg.invoice.fw1__Total_Invoice_Amount__c)};
                         var paid = {!IF(ISNULL(reg.invoice.fw1__Total_Paid_Amount__c), 0, reg.invoice.fw1__Total_Paid_Amount__c)};
-                        var due = amount - paid;
+                        var due = Math.max(0, amount - paid);
+                        var travelerType = '{!reg.travelerType}';
 
-                        if ('{!reg.travelerType}' === 'Athlete') {
+                        if (travelerType === 'Athlete') {
                             athletePaid += paid;
-                        athleteDue += due;
-                        } else {
+                            athleteDue += due;
+                        } else if (travelerType === 'Fan') {
                             fanPaid += paid;
-                        fanDue += due;
+                            fanDue += due;
+                        } else if (travelerType === 'Other' || travelerType.startsWith('Other (')) {
+                            otherPaid += paid;
+                            otherDue += due;
                         }
                     </apex:repeat>
 
@@ -786,7 +943,9 @@
                         ['Athlete Paid', athletePaid, '#FFD700', 'Athlete Paid: $' + athletePaid.toFixed(2)],
                         ['Athlete Due', athleteDue, '#FF8C00', 'Athlete Due: $' + athleteDue.toFixed(2)],
                         ['Fan Paid', fanPaid, '#FFA500', 'Fan Paid: $' + fanPaid.toFixed(2)],
-                        ['Fan Due', fanDue, '#e31837', 'Fan Due: $' + fanDue.toFixed(2)]
+                        ['Fan Due', fanDue, '#e31837', 'Fan Due: $' + fanDue.toFixed(2)],
+                        ['Other Paid', otherPaid, '#9C27B0', 'Other Paid: $' + otherPaid.toFixed(2)],
+                        ['Other Due', otherDue, '#673AB7', 'Other Due: $' + otherDue.toFixed(2)]
                     ]);
 
                     var options = {
@@ -816,31 +975,41 @@
                     var athleteNotRegisteredCount = 0;
                     var fanRegisteredCount = 0;
                     var fanNotRegisteredCount = 0;
+                    var otherRegisteredCount = 0;
+                    var otherNotRegisteredCount = 0;
 
-                            // Count registered
-                            <apex:repeat value="{!registeredList}" var="reg">
-                                if ('{!reg.travelerType}' === 'Athlete') {
-                                    athleteRegisteredCount++;
-                                } else {
-                                    fanRegisteredCount++;
-                                }
-                            </apex:repeat>
-                            
-                            // Count not registered
-                            <apex:repeat value="{!notRegisteredList}" var="opp">
-                                if ('{!IF(opp.RecordTypeId == "012f4000000aRkUAAU", "Athlete", "Fan")}' === 'Athlete') {
-                                    athleteNotRegisteredCount++;
-                                } else {
-                                    fanNotRegisteredCount++;
-                                }
-                            </apex:repeat>
+                    // Count registered - using the same travelerType from controller
+                    <apex:repeat value="{!registeredList}" var="reg">
+                        var travelerType = '{!reg.travelerType}';
+                        if (travelerType === 'Athlete') {
+                            athleteRegisteredCount++;
+                        } else if (travelerType === 'Fan') {
+                            fanRegisteredCount++;
+                        } else if (travelerType === 'Other' || travelerType.startsWith('Other (')) {
+                            otherRegisteredCount++;
+                        }
+                    </apex:repeat>
+                    
+                    // Count not registered - using the travelerType logic from the table
+                    <apex:repeat value="{!notRegisteredList}" var="opp">
+                        var recordTypeName = '{!opp.RecordType.Name}';
+                        if (recordTypeName === 'Athlete_Opportunity' || recordTypeName === 'Athlete Opportunity') {
+                            athleteNotRegisteredCount++;
+                        } else if (recordTypeName === 'Fan' || recordTypeName === 'Tag_Along_Opportunity' || recordTypeName === 'Tag Along Opportunity') {
+                            fanNotRegisteredCount++;
+                        } else if (recordTypeName === 'Other') {
+                            otherNotRegisteredCount++;
+                        }
+                    </apex:repeat>
 
                     var data = google.visualization.arrayToDataTable([
                         ['Category', 'Count', { role: 'style' }, { role: 'tooltip' }],
                         ['Athlete Reg', athleteRegisteredCount, '#FFD700', 'Athletes Registered: ' + athleteRegisteredCount],
                         ['Athlete Not', athleteNotRegisteredCount, '#FF8C00', 'Athletes Not Registered: ' + athleteNotRegisteredCount],
                         ['Fan Reg', fanRegisteredCount, '#FFA500', 'Fans Registered: ' + fanRegisteredCount],
-                        ['Fan Not', fanNotRegisteredCount, '#e31837', 'Fans Not Registered: ' + fanNotRegisteredCount]
+                        ['Fan Not', fanNotRegisteredCount, '#e31837', 'Fans Not Registered: ' + fanNotRegisteredCount],
+                        ['Other Reg', otherRegisteredCount, '#9C27B0', 'Other Registered: ' + otherRegisteredCount],
+                        ['Other Not', otherNotRegisteredCount, '#673AB7', 'Other Not Registered: ' + otherNotRegisteredCount]
                     ]);
 
                     var options = {

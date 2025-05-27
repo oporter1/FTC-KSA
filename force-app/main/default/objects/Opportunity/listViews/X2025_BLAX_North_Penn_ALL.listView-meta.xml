@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_BLAX_North_Penn_ALL</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Resort_Option__c</columns>
+    <columns>Sales_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>contains</operation>
+        <value>north penn</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2025 blax</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity,Opportunity.Sport,Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2025 BLAX North Penn ALL</label>
+</ListView>

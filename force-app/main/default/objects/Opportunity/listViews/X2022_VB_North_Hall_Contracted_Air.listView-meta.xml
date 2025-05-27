@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_VB_North_Hall_Contracted_Air</fullName>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Seats_Sold__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Inbound_Flight__c</columns>
+    <columns>Inbound_Departure_Time__c</columns>
+    <columns>Inbound_Arrival_Time__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Outbound_Flight__c</columns>
+    <columns>Outbound_Departure_Time__c</columns>
+    <columns>Outbound_Arrival_Time__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2022 VB North</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.TYPE</field>
+        <operation>notEqual</operation>
+        <value>Florida School</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2022 VB North Hall Contracted - Air</label>
+</ListView>

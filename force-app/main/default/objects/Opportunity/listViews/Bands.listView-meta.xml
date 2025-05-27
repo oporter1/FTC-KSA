@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bands</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Tag_Along_Fan_List__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Application_Received__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2020 MUS</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Instrumental</value>
+    </filters>
+    <label>Bands</label>
+</ListView>

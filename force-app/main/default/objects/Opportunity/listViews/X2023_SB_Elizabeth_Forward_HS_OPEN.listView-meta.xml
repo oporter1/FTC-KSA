@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_SB_Elizabeth_Forward_HS_OPEN</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Mobile_Number__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <columns>Invoice_Notes__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 SB Elizabeth</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Booked</value>
+    </filters>
+    <label>2023 SB Elizabeth Forward HS OPEN</label>
+</ListView>

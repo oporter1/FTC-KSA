@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2022_BBB_CL_Pingree_WON</fullName>
+    <columns>OPPORTUNITY.CREATED_DATE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Box_Lunch__c</columns>
+    <columns>KSA_Events_Backpack__c</columns>
+    <columns>Local_Transportation__c</columns>
+    <columns>Passenger_Count__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Resort_Booking_Notes__c</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Unlimited_Beverage_Mug__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>2022 BBB CL Pingree</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <label>2022 BBB CL Pingree WON</label>
+</ListView>

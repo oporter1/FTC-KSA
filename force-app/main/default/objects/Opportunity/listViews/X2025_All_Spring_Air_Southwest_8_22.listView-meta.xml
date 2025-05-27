@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_All_Spring_Air_Southwest_8_22</fullName>
+    <columns>Air_Status__c</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>X2nd_Air_Schedule__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Preferred_Airline_Schedule__c</columns>
+    <columns>Estimated_Air_Seats_Needed__c</columns>
+    <columns>Air_Booking_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Verbal Definite,Contracted</value>
+    </filters>
+    <filters>
+        <field>KSASport_or_Performing_Art__c</field>
+        <operation>equals</operation>
+        <value>Baseball,Boys Golf,Boys Lacrosse,Boys Tennis,Flag Football,Girls Golf,Girls Lacrosse,Girls Tennis,Softball,Track and Field,Wrestling</value>
+    </filters>
+    <filters>
+        <field>Transportation_Type__c</field>
+        <operation>equals</operation>
+        <value>KSA Events Air</value>
+    </filters>
+    <filters>
+        <field>Air_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Contracted,Final</value>
+    </filters>
+    <filters>
+        <field>X2nd_Air_Schedule__c</field>
+        <operation>contains</operation>
+        <value>Southwest</value>
+    </filters>
+    <filters>
+        <field>Arrival_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>4/7/2025</value>
+    </filters>
+    <label>2025 All Spring Air - Southwest 8/22</label>
+</ListView>

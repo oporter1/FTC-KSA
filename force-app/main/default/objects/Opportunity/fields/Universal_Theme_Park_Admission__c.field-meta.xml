@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Universal_Theme_Park_Admission__c</fullName>
+    <label>Universal Theme Park Admission</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2 Park - 1 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park - 1 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park - 2 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park - 2 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park - 3 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park - 3 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park - 4 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park - 4 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>2 Park - 5 Day Park to Park</fullName>
+                <default>false</default>
+                <label>2 Park - 5 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park - 2 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park - 2 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park - 3 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park - 3 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park - 4 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park - 4 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>3 Park - 5 Day Park to Park</fullName>
+                <default>false</default>
+                <label>3 Park - 5 Day Park to Park</label>
+            </value>
+            <value>
+                <fullName>Volcano Bay - 1 Day</fullName>
+                <default>false</default>
+                <label>Volcano Bay - 1 Day</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

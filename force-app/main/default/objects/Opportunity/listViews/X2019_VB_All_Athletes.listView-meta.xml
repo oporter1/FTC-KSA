@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_VB_All_Athletes</fullName>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>Invoiced__c</columns>
+    <columns>Webcode__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Deposit_Received__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Tag_Along_Fan_List__c</columns>
+    <columns>Application_Received__c</columns>
+    <columns>X1st_Deposit__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>Final_Payment__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2019 VB</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>notContain</operation>
+        <value>tag</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <label>2019 VB All Athletes</label>
+</ListView>

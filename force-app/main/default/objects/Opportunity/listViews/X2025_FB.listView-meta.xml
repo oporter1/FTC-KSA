@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2025_FB</fullName>
+    <columns>KSASport_or_Performing_Art__c</columns>
+    <columns>OPPORTUNITY.TYPE</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>OPPORTUNITY.RECORDTYPE</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Application_Received__c</columns>
+    <columns>Travel_Agreement_Received__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Email__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Transportation_Type__c</columns>
+    <columns>Deaprture_Airport_Code__c</columns>
+    <columns>Billing_Type__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Sport</value>
+    </filters>
+    <label>2025 opps</label>
+</ListView>

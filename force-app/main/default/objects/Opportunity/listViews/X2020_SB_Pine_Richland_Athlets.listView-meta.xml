@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2020_SB_Pine_Richland_Athlets</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Invoiced__c</columns>
+    <columns>X2nd_Deposit__c</columns>
+    <columns>X2nd_Deposit_Received__c</columns>
+    <columns>X3rd_Deposit__c</columns>
+    <columns>X3rd_Deposit_Received__c</columns>
+    <columns>X4th_Deposit__c</columns>
+    <columns>X4th_Deposit_Received__c</columns>
+    <columns>X5th_Deposit__c</columns>
+    <columns>Final_Payment__c</columns>
+    <columns>First_Deposit_Received__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2020 SB Pine</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Athlete_Opportunity</value>
+    </filters>
+    <label>2020 SB Pine Richland Athlets</label>
+</ListView>

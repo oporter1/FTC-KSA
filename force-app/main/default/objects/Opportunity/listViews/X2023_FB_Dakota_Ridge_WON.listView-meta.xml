@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2023_FB_Dakota_Ridge_WON</fullName>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Universal_Meal_Coupon__c</columns>
+    <columns>Universal_Theme_Park_Admission__c</columns>
+    <columns>Lunch_Vouchers__c</columns>
+    <columns>Resort_Breakfast_Coupon__c</columns>
+    <columns>Pre_Game_Tailgate_Party__c</columns>
+    <columns>Pre_Game_Pasta_Meal__c</columns>
+    <columns>Resort_Booking_Notes__c</columns>
+    <columns>Theme_Park_Ticket_Notes__c</columns>
+    <columns>Specialty_Meals__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>startsWith</operation>
+        <value>2023 FB Dakota</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Contracted,Booked</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Tag_Along_Opportunity</value>
+    </filters>
+    <label>2023 FB Dakota Ridge WON</label>
+</ListView>
