@@ -8,7 +8,7 @@
 * ──────────────────────────────────────────────────────────────────────────────────────────────────
 * @notes: 
 */
-public with sharing class roomBuilder {
+public without sharing class roomBuilder {
   public roomBuilder() {
   }
 

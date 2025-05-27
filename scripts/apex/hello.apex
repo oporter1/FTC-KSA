@@ -97,3 +97,6 @@ for(Opportunity opp : oppsToUpdate) {
 // Perform the update
 update oppsToUpdate;
 System.debug('Updated ' + oppsToUpdate.size() + ' opportunities to Booked stage');
+
+
+SELECT Id, Name, Team_Opportunity__c, KSA_Webcode__c, Coaches_Pin__c, CreatedDate, RecordType.Name, Billing_Type__c, Single_Room__c, Double_Room__c, Triple_Room__c, Quad_Rooms__c FROM Opportunity
