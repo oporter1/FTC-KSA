@@ -946,7 +946,8 @@
                             function(cmp, status, errorMessage) {
                             }
                         );
-                    }
+                    },
+                    "https://ksaevents.my.salesforce-sites.com/CoachesApp"
                 );
             </script>
         </body>
