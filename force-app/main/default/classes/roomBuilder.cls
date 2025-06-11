@@ -1,13 +1,13 @@
 /* ─────────────────────────────────────────────────────────────────────────────────────────────────
-* TITLE:          roomBuilder apex
-* DESCRIPTION:    Pulls/creates the least amount of rooms for all the athletes for a given a webcode
-* @created        03/24/2025
-* @updated
-* @testClass      roomBuilderTest.cls
-* @by             FTC       hey@freethinkersconsulting.com
-* ──────────────────────────────────────────────────────────────────────────────────────────────────
-* @notes: 
-*/
+ * TITLE:          roomBuilder apex
+ * DESCRIPTION:    Pulls/creates the least amount of rooms for all the athletes for a given a webcode
+ * @created        03/24/2025
+ * @updated
+ * @testClass      roomBuilderTest.cls
+ * @by             FTC       hey@freethinkersconsulting.com
+ * ──────────────────────────────────────────────────────────────────────────────────────────────────
+ * @notes:
+ */
 public without sharing class roomBuilder {
   public roomBuilder() {
   }
@@ -42,14 +42,22 @@ public without sharing class roomBuilder {
         AND Id != :teamOppId
         AND Billing_Type__c = 'Individual Billing'
         AND RecordType.Name = 'Athlete Opportunity'
-        AND (
-          StageName = 'Booked' OR StageName = 'Paid in Full'
-        )
+        AND (StageName = 'Booked'
+        OR StageName = 'Paid in Full')
     ];
     System.debug('athletes - ' + athletes.size());
 
     List<Rooms__c> rooms = [
-      SELECT Id, Opportunity__c, Name, Room_No__c, Room_Number__c, Room_Size__c, Type__c, CreatedDate
+      SELECT
+        Id,
+        Opportunity__c,
+        Name,
+        Room_No__c,
+        Room_Number__c,
+        Room_Size__c,
+        Type__c,
+        Coaches_Notes__c,
+        CreatedDate
       FROM Rooms__c
       WHERE Opportunity__c = :teamOppId
       ORDER BY Room_Number__c
@@ -162,7 +170,9 @@ public without sharing class roomBuilder {
         Rooms__c room = roomObj.room;
         Integer roomCapacity = roomType2Integer(room.Type__c);
         // Check if room should be deleted
-        System.debug('Loop room - ' + roomObj.spacesLeft + ' : ' + roomCapacity);
+        System.debug(
+          'Loop room - ' + roomObj.spacesLeft + ' : ' + roomCapacity
+        );
         if (roomObj.spacesLeft == roomCapacity) {
           if (room.Id != null) {
             System.debug('DELETED ROOM - ' + room);
@@ -175,27 +185,28 @@ public without sharing class roomBuilder {
         room.Room_Size__c = room.Type__c;
         room.Type__c = String.valueOf(roomCapacity);
         everyRoom.add(room);
-        if (room.Room_Number__c != null) roomNumsMap.put(Integer.valueOf(room.Room_Number__c), true);
+        if (room.Room_Number__c != null)
+          roomNumsMap.put(Integer.valueOf(room.Room_Number__c), true);
       }
     }
     Integer counter = 1;
     for (Rooms__c room : everyRoom) {
-        // Add new room
-        if (room.Id == null) {
-          System.debug('new room - ' + room);
-          for (Integer i = counter; i < everyRoom.size() + 1; i++) {
-            System.debug('\t find room num ' + roomNumsMap.get(i));
-            if (roomNumsMap.get(i) == null) {
-              roomNumsMap.put(i, true);
-              room.Room_Number__c = i;
-              counter = i + 1;
-              break;
-            }
+      // Add new room
+      if (room.Id == null) {
+        System.debug('new room - ' + room);
+        for (Integer i = counter; i < everyRoom.size() + 1; i++) {
+          System.debug('\t find room num ' + roomNumsMap.get(i));
+          if (roomNumsMap.get(i) == null) {
+            roomNumsMap.put(i, true);
+            room.Room_Number__c = i;
+            counter = i + 1;
+            break;
           }
-          newRooms.add(room);
         }
+        newRooms.add(room);
+      }
     }
-    
+
     // System.debug('NewRooms - ' + newRooms.size());
     insert newRooms;
     delete deleteRooms;
@@ -209,6 +220,15 @@ public without sharing class roomBuilder {
   public static void updateAthletes(List<Opportunity> athletes) {
     try {
       update athletes;
+    } catch (Exception e) {
+      throw new AuraHandledException(e.getMessage());
+    }
+  }
+
+  @AuraEnabled
+  public static void updateRoom(Rooms__c room){
+    try {
+      update room;
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }

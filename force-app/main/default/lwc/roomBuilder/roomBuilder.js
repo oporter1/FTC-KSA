@@ -11,6 +11,7 @@
 import { api, LightningElement } from 'lwc';
 import getAthletesAndRooms from '@salesforce/apex/roomBuilder.getAthletesAndRooms';
 import updateAthletes from '@salesforce/apex/roomBuilder.updateAthletes';
+import updateRoom from '@salesforce/apex/roomBuilder.updateRoom';
 
 export default class RoomBuilder extends LightningElement {
     @api
@@ -68,6 +69,7 @@ export default class RoomBuilder extends LightningElement {
 
     members = []
     rooms = []
+    selectedRoom = null
 
     // Current member being dragged
     draggedMemberId = null;
@@ -492,6 +494,37 @@ export default class RoomBuilder extends LightningElement {
     saveAthleteRoomInfo() {
         updateAthletes({ athletes: this.members }).then(() => {
         })
+    }
+
+    // Notes Logic
+    openModal = false
+    openNotesModal = false
+    tempNotes = ''
+    openNotesModalHandler(e) {
+        const roomId = e.target.dataset.id;
+        console.log('rooms - ', JSON.stringify(this.rooms))
+        console.log('openNotesModal() roomId - ', roomId)
+        this.selectedRoom = this.rooms.find((r) => r.Id === roomId)
+        this.tempNotes = this.selectedRoom.Coaches_Notes__c || ''
+        this.openModal = true
+        this.openNotesModal = true
+    }
+
+    async closeNotesModal() {
+        if (this.tempNotes) {
+            this.selectedRoom.Coaches_Notes__c = this.tempNotes
+            await updateRoom({ room: this.selectedRoom })
+        }
+
+        this.openModal = false
+        this.openNotesModal = false
+        this.selectedRoom = null
+    }
+
+    notesInputHandler(e) {
+        const v = e.target.value
+        console.log('notesINputHandler - ', v, ' : ', JSON.stringify(this.selectedRoom))
+        this.tempNotes = v
     }
 }
 

@@ -86,7 +86,6 @@
   background-color: rgba(79, 79, 78, 0.25);
   border: 1.5px solid #616161;
   border-radius: 4px;
-  cursor: move;
   transition: background-color 0.2s;
   color: white;
 }

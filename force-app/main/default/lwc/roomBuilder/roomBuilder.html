@@ -1,7 +1,10 @@
 <template>
   <!-- Toast  Component -->
   <!-- Gotta inline the class styles since we append this to the document body -->
-  <div class="toastContainer" style="width: 100%; text-align: center; display: none;">
+  <div
+    class="toastContainer"
+    style="width: 100%; text-align: center; display: none"
+  >
     <div
       class="slds-notify slds-notify_toast slds-theme_error"
       role="status"
@@ -14,7 +17,7 @@
         border-radius: 0.25rem;
         margin: 0.5rem;
         padding: 0.75rem 3rem 0.75rem 1.5rem;
-        
+
         text-align: left;
         justify-content: flex-start;
       "
@@ -69,7 +72,13 @@
       <div class="slds-notify__content" style="">
         <h2
           class="slds-text-heading_small"
-          style="font-size: 1rem; line-height: 1.25; margin: 0; padding: 0; font-weight: inherit;"
+          style="
+            font-size: 1rem;
+            line-height: 1.25;
+            margin: 0;
+            padding: 0;
+            font-weight: inherit;
+          "
         >
           {errorMsg}
         </h2>
@@ -268,68 +277,86 @@
               ondrop={handleDrop}
             >
               <div class="room-header">
-                <div class="">
+                <div class="left-room-header">
                   <div style="font-weight: bold">
                     Room {room.Room_Number__c}
                   </div>
                   <div>Room Size: {room.Room_Size__c}</div>
                 </div>
-                <div style="display: flex; gap: 0.5rem; align-items: center">
-                  <div>{room.spotsLeftText}</div>
 
-                  <div
-                    class="ring-container"
-                    style="
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      border-radius: 10000px;
-                    "
-                    data-id={room.Id}
-                    data-name={room.Name}
-                  >
-                    <template if:false={room.isFull}>
-                      <svg class="background-ring" viewBox="0 0 100 100">
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="40"
-                          fill="none"
-                          stroke="#e6e6e6"
-                          stroke-width="10"
-                        />
-                      </svg>
-                      <svg class="progress-ring" viewBox="0 0 100 100">
-                        <path
-                          data-id="progress-arc"
-                          fill="none"
-                          stroke="#EB5757"
-                          stroke-width="10"
-                          stroke-linecap="round"
-                        />
-                      </svg>
-                    </template>
+                <div
+                  class="right-room-header"
+                  style="display: flex; flex-direction: column; gap: 0.5rem"
+                >
+                  <div style="display: flex; gap: 0.5rem; align-items: center">
+                    <div>{room.spotsLeftText}</div>
 
-                    <template if:true={room.isFull}>
-                      <svg
-                        width="13"
-                        height="13"
-                        viewBox="0 0 13 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M4.73088 10.3048L0.741611 6.39181C0.596546 6.25037 0.596546 6.01465 0.741611 5.87322L1.27351 5.35464C1.41858 5.21321 1.66035 5.21321 1.80542 5.35464L4.80341 8.30114C4.90012 8.39543 5.06937 8.39543 5.16608 8.30114L11.0412 2.526C11.1862 2.38456 11.428 2.38456 11.5731 2.526L12.105 3.04458C12.2501 3.18601 12.2501 3.42173 12.105 3.56316L5.26278 10.3048C5.11772 10.4698 4.87595 10.4698 4.73088 10.3048V10.3048Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </template>
+                    <!-- ring -->
+                    <div
+                      class="ring-container"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 10000px;
+                      "
+                      data-id={room.Id}
+                      data-name={room.Name}
+                    >
+                      <template if:false={room.isFull}>
+                        <svg class="background-ring" viewBox="0 0 100 100">
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            fill="none"
+                            stroke="#e6e6e6"
+                            stroke-width="10"
+                          />
+                        </svg>
+                        <svg class="progress-ring" viewBox="0 0 100 100">
+                          <path
+                            data-id="progress-arc"
+                            fill="none"
+                            stroke="#EB5757"
+                            stroke-width="10"
+                            stroke-linecap="round"
+                          />
+                        </svg>
+                      </template>
+
+                      <template if:true={room.isFull}>
+                        <svg
+                          width="13"
+                          height="13"
+                          viewBox="0 0 13 13"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M4.73088 10.3048L0.741611 6.39181C0.596546 6.25037 0.596546 6.01465 0.741611 5.87322L1.27351 5.35464C1.41858 5.21321 1.66035 5.21321 1.80542 5.35464L4.80341 8.30114C4.90012 8.39543 5.06937 8.39543 5.16608 8.30114L11.0412 2.526C11.1862 2.38456 11.428 2.38456 11.5731 2.526L12.105 3.04458C12.2501 3.18601 12.2501 3.42173 12.105 3.56316L5.26278 10.3048C5.11772 10.4698 4.87595 10.4698 4.73088 10.3048V10.3048Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </template>
+                    </div>
+                  </div>
+                  <div style="display: flex; justify-content: end">
+                    <lightning-icon
+                      icon-name="utility:chat"
+                      alternative-text="Chat"
+                      title="Chat"
+                      size="small"
+                      style="cursor: pointer"
+                      data-id={room.Id}
+                      onclick={openNotesModalHandler}
+                    ></lightning-icon>
                   </div>
                 </div>
               </div>
-              <div class="">
+              <div class="" style="cursor: move">
                 <ul
                   class="member-list"
                   style="
@@ -369,4 +396,42 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal BG -->
+  
+  <template lwc:if={openModal}>
+    <div
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(166 172 176 / 50%);
+    "
+  >
+    <!-- Notes Modal -->
+    <template lwc:if={openNotesModal}>
+      <div
+      style="
+        position: absolute;
+        left: 60%;
+        top: 25%;
+        transform: translateX(-50%);
+        height: 500px;
+        width: 500px;
+        background-color: #252525;
+        color: white;
+      "
+    >
+      <div>Notes Modal - {selectedRoom.Name}</div>
+      <div onclick={closeNotesModal}>Close button</div>
+
+      <input style="color: black;" value={tempNotes} oninput={notesInputHandler} />
+    </div>
+    </template>
+  </div>
+  </template>
+
+  <!-- Todo - add passenger modal -->
 </template>
